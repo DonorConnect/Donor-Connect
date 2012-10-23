@@ -31,8 +31,5 @@ dependencies {
 tomcatRun {
     httpPort = 8080
     httpsPort = 8081
-}
 
-war {
-	classpath fileTree('lib')
 }
