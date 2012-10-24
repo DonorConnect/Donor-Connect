@@ -5,3 +5,7 @@ Given a project called "Sample Project" which is its unique id
  Then I should see a page with the project name "Sample Project"
   And I should see the image "sample_image.jpg"
   And I should see the text "some very long sample description here"
+
+Given a page with a specific project
+When I change the name of this project
+Then I refresh this page I should see the name of project updated

@@ -28,6 +28,22 @@ public class Project {
         this.image = image;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String n) {
+        name = n;
+    }
+
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImage() {
+        return image;
+    }
 
     public Project() {
     }
@@ -50,5 +66,9 @@ public class Project {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (description != null ? description.hashCode() : 0);
         return result;
+    }
+
+    public long getId() {
+        return id;
     }
 }

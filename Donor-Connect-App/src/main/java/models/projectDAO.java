@@ -25,14 +25,22 @@ public class ProjectDAO {
         entityManager.getTransaction().begin();
         entityManager.persist(project);
         entityManager.getTransaction().commit();
-        entityManager.close();
+//        entityManager.close();
     }
 
     public Project fetch(long id) {
         entityManager.getTransaction().begin();
         Project project_found = entityManager.find(Project.class, id);
         entityManager.getTransaction().commit();
-        entityManager.close();
+//        entityManager.close();
         return project_found;
     }
+
+    public void update(Project project){
+        entityManager.getTransaction().begin();
+        entityManager.refresh(project);
+        entityManager.getTransaction().commit();
+    }
+
+
 }

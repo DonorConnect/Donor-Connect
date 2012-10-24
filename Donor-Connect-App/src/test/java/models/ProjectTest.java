@@ -11,13 +11,9 @@ public class ProjectTest {
     @Test
     public void testStoreRetrieve() {
         ProjectDAO.getInstance().save(project);
-
-    }
-    @Test
-    public void testFetchRetrieve() {
-        Project project_expect = ProjectDAO.getInstance().fetch((long) 1);
+        Project project_expect = ProjectDAO.getInstance().fetch(project.getId());
         assertEquals(project, project_expect);
-
     }
+
 
 }
