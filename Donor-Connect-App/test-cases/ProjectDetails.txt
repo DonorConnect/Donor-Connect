@@ -1,0 +1,7 @@
+Given a project called "Sample Project" which is its unique id
+  And it has an image called "sample_image.jpg"
+  And it has a description "some very long sample description here"
+ When I view the project on "http://donorconnect.com/project_id=1"
+ Then I should see a page with the project name "Sample Project"
+  And I should see the image "sample_image.jpg"
+  And I should see the text "some very long sample description here"

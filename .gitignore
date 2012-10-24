@@ -1,3 +1,7 @@
 out
 Donor-Connect-App/.gradle
 Donor-Connect-App/build
+.idea/libraries/hibernate_4_1_1.xml
+tmp/
+.idea/workspace.xml
+
