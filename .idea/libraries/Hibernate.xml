@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Hibernate">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Donor-Connect-App/lib/javax.persistence.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Donor-Connect-App/lib/mysql-connector-java-5.1.18-bin.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
