@@ -6,7 +6,7 @@
            version="2.5">
 
    <welcome-file-list>
-       <welcome-file>project_detail.html</welcome-file>
+       <welcome-file>/home.ftl</welcome-file>
    </welcome-file-list>
 
     <servlet>
@@ -18,6 +18,6 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>spring</servlet-name>
-        <url-pattern>*.html</url-pattern>
+        <url-pattern>*.ftl</url-pattern>
     </servlet-mapping>
 </web-app>

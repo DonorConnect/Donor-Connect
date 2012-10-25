@@ -14,7 +14,7 @@ public class ProjectController {
 
     private ProjectDAO dao = ProjectDAO.getInstance();
 
-    @RequestMapping(value="/project_detail", method = RequestMethod.GET)
+    @RequestMapping(value="/project_detail.ftl", method = RequestMethod.GET)
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int project_id){
 
         Project project = dao.fetch(project_id);

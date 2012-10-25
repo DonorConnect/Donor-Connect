@@ -1,4 +1,10 @@
 body {
     background-color: #EEECE3;
-    margin: 0;
+    width: 960px;
+    margin: 0 auto;
+    clear: both;
+    padding-top: 25px;
+}
+.body {
+    clear: both;
 }
