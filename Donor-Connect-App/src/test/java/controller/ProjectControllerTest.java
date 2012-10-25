@@ -25,7 +25,7 @@ public class ProjectControllerTest {
     private AnnotationMethodHandlerAdapter adapter;
     private ProjectController controller;
     private Project dummyProject;
-    private ProjectDAO projectDAO;
+    private ProjectDAO ProjectDAO;
 
     @Before
     public void setUp() {
@@ -39,10 +39,10 @@ public class ProjectControllerTest {
         request.setParameter("project_id", "1");
 
         controller = new ProjectController();
-        projectDAO = mock(ProjectDAO.class);
-        controller.setDao(projectDAO);
+        ProjectDAO = mock(ProjectDAO.class);
+        controller.setDao(ProjectDAO);
 
-        when(projectDAO.fetch((long) 1)).thenReturn(dummyProject);
+        when(ProjectDAO.fetch((long) 1)).thenReturn(dummyProject);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class ProjectControllerTest {
     @Test
     public void shouldFetchAProjectBasedOnTheIDProvided() throws Exception {
         adapter.handle(request, response, controller);
-        verify(projectDAO, Mockito.times(1)).fetch((long) 1);
+        verify(ProjectDAO, Mockito.times(1)).fetch((long) 1);
     }
 
     @Test
