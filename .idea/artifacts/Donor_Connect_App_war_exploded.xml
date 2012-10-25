@@ -7,14 +7,7 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Donor-Connect-App" />
         </element>
-        <element id="directory" name="lib">
-          <element id="library" level="project" name="spring-3.1.0" />
-          <element id="library" level="project" name="spring-mvc-3.1.2.RELEASE" />
-          <element id="library" level="project" name="Glassfish / JAX-WS 2.X RI / Metro 1.X / JWSDP 2.0-Glassfish / JAX-WS 2.X RI / Metro 1.X / JWSDP 2.0" />
-          <element id="library" level="project" name="JPA 2.0-2.0" />
-          <element id="library" level="project" name="hibernate-4.1.1" />
-          <element id="library" level="project" name="Hibernate" />
-        </element>
+        <element id="directory" name="lib" />
       </element>
     </root>
   </artifact>
