@@ -33,7 +33,7 @@ public class ProjectControllerTest {
         adapter = new AnnotationMethodHandlerAdapter();
         dummyProject = new Project("name", "description", "image/path");
 
-        request.setRequestURI("/project_detail");
+        request.setRequestURI("/project_detail.ftl");
         request.setMethod("GET");
         request.setParameter("project_id", "1");
 
