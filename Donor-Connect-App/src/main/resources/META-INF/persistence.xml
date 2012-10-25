@@ -3,6 +3,7 @@
 
     <persistence-unit name="NewPersistenceUnit">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <class>models.Project</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" value="update"/>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost/donor_connect"/>
