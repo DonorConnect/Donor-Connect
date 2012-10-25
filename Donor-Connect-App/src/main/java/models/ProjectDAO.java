@@ -7,18 +7,18 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.spi.PersistenceProvider;
 import java.util.HashMap;
 
-public class ProjectDAOTmp {
+public class ProjectDAO {
 
     private static EntityManager entityManager;
 
-    private ProjectDAOTmp() {
+    private ProjectDAO() {
         PersistenceProvider persistenceProvider = new HibernatePersistence();
         EntityManagerFactory entityManagerFactory = persistenceProvider.createEntityManagerFactory("NewPersistenceUnit", new HashMap());
         entityManager = entityManagerFactory.createEntityManager();
     }
 
-    public static ProjectDAOTmp getInstance() {
-        return new ProjectDAOTmp();
+    public static ProjectDAO getInstance() {
+        return new ProjectDAO();
     }
 
     public void save(Project project) {

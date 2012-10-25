@@ -16,8 +16,8 @@ public class ProjectTest {
 
     @Test
     public void testStoreRetrieve() {
-        ProjectDAOTmp.getInstance().save(project);
-        Project projectExpect = ProjectDAOTmp.getInstance().fetch(project.getId());
+        ProjectDAO.getInstance().save(project);
+        Project projectExpect = ProjectDAO.getInstance().fetch(project.getId());
         assertEquals(project, projectExpect);
     }
 

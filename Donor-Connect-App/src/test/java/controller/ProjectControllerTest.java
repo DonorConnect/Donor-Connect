@@ -1,7 +1,6 @@
 package controller;
 
 import models.Project;
-import models.ProjectDAOTmp;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -25,7 +24,7 @@ public class ProjectControllerTest {
     private AnnotationMethodHandlerAdapter adapter;
     private ProjectController controller;
     private Project dummyProject;
-    private ProjectDAOTmp ProjectDAO;
+    private models.ProjectDAO ProjectDAO;
 
     @Before
     public void setUp() {
@@ -39,7 +38,7 @@ public class ProjectControllerTest {
         request.setParameter("project_id", "1");
 
         controller = new ProjectController();
-        ProjectDAO = mock(ProjectDAOTmp.class);
+        ProjectDAO = mock(models.ProjectDAO.class);
         controller.setDao(ProjectDAO);
 
         when(ProjectDAO.fetch((long) 1)).thenReturn(dummyProject);

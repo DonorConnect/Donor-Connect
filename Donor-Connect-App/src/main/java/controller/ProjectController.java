@@ -1,7 +1,7 @@
 package controller;
 
 import models.Project;
-import models.ProjectDAOTmp;
+import models.ProjectDAO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProjectController {
 
-    private ProjectDAOTmp dao = ProjectDAOTmp.getInstance();
+    private ProjectDAO dao = ProjectDAO.getInstance();
 
     @RequestMapping(value="/project_detail", method = RequestMethod.GET)
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int project_id){
@@ -24,7 +24,7 @@ public class ProjectController {
         return "project_detail";
     }
 
-    public void setDao(ProjectDAOTmp dao) {
+    public void setDao(ProjectDAO dao) {
         this.dao = dao;
     }
 }
