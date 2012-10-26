@@ -1,5 +1,7 @@
 package models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,10 +11,11 @@ import javax.persistence.PersistenceUnit;
 
 @Repository("projectDAO")
 public class ProjectDAOImpl implements ProjectDAO {
+    @PersistenceUnit
     private EntityManagerFactory entityManagerFactory;
 
-    @PersistenceUnit
-    public void setEntityManagerFactory(EntityManagerFactory entityManagerFactory) {
+    @Autowired(required = true)
+    public ProjectDAOImpl(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
 

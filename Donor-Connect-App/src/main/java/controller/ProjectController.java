@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProjectController {
     @Autowired
-    @Qualifier("projectDAO")  //narrowing the set of type matches so that a specific bean is chosen for each argument.
+    @Qualifier("projectDAO")
     private ProjectDAO dao;
 
     @RequestMapping(value="/project_detail.ftl", method = RequestMethod.GET)

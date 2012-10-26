@@ -7,25 +7,20 @@ import org.junit.Test;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
-import static junit.framework.Assert.assertEquals;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ProjectDAOImplTest {
     private Project project;
     private ProjectDAOImpl projectDAO;
     private EntityManager entityManager;
-    private EntityManagerFactory entityManagerFactory;
 
     @Before
     public void setUp() {
         project = new Project("My Project", "description", "image/path");
-        projectDAO = new ProjectDAOImpl();
-        entityManagerFactory = mock(EntityManagerFactory.class);
+        EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
         entityManager = mock(EntityManager.class);
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
-        projectDAO.setEntityManagerFactory(entityManagerFactory);
+        projectDAO = new ProjectDAOImpl(entityManagerFactory);
     }
 
     @Test
