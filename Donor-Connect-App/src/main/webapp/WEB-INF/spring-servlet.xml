@@ -22,7 +22,5 @@
         <property name="suffix" value=".ftl"/>
     </bean>
 
-    <context:component-scan
-            base-package="controller" />
 
 </beans>

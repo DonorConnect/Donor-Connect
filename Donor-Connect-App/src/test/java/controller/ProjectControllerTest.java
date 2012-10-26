@@ -1,6 +1,7 @@
 package controller;
 
 import models.Project;
+import models.ProjectDAOImpl;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -24,7 +25,7 @@ public class ProjectControllerTest {
     private AnnotationMethodHandlerAdapter adapter;
     private ProjectController controller;
     private Project dummyProject;
-    private models.ProjectDAO ProjectDAO;
+    private models.ProjectDAO projectDAO;
 
     @Before
     public void setUp() {
@@ -38,10 +39,10 @@ public class ProjectControllerTest {
         request.setParameter("project_id", "1");
 
         controller = new ProjectController();
-        ProjectDAO = mock(models.ProjectDAO.class);
-        controller.setDao(ProjectDAO);
+        projectDAO = mock(ProjectDAOImpl.class);
+        controller.setDao(projectDAO);
 
-        when(ProjectDAO.fetch((long) 1)).thenReturn(dummyProject);
+        when(projectDAO.fetch((long) 1)).thenReturn(dummyProject);
     }
 
     @Test
@@ -53,7 +54,7 @@ public class ProjectControllerTest {
     @Test
     public void shouldFetchAProjectBasedOnTheIDProvided() throws Exception {
         adapter.handle(request, response, controller);
-        verify(ProjectDAO, Mockito.times(1)).fetch((long) 1);
+        verify(projectDAO, Mockito.times(1)).fetch((long) 1);
     }
 
     @Test

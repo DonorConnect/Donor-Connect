@@ -2,6 +2,8 @@ package controller;
 
 import models.Project;
 import models.ProjectDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,15 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class ProjectController {
-
-    private ProjectDAO dao = ProjectDAO.getInstance();
+    @Autowired
+    @Qualifier("projectDAO")  //narrowing the set of type matches so that a specific bean is chosen for each argument.
+    private ProjectDAO dao;
 
     @RequestMapping(value="/project_detail.ftl", method = RequestMethod.GET)
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int project_id){
-
         Project project = dao.fetch(project_id);
 
         modelMap.addAttribute("project", project);
+        modelMap.addAttribute("anotherVar", project_id);
 
         return "project_detail";
     }
