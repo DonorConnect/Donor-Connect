@@ -12,6 +12,8 @@
 
         </div>
     </div>
-
+    <div class=" welcomeBody col12">
+        <a href="all_projects.ftl" style="float: right">see all..</a>
+    </div>
 </div>
 </@layout.defaultLayout>
