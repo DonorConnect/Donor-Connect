@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import java.util.List;
 
 @Repository("projectDAO")
 public class ProjectDAOImpl implements ProjectDAO {
@@ -38,6 +39,19 @@ public class ProjectDAOImpl implements ProjectDAO {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             return entityManager.find(Project.class, id);
+        }
+        finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    @Override
+    public List<Project> fetchAll() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            return entityManager.createQuery("From Project").getResultList();
         }
         finally {
             if (entityManager != null) {

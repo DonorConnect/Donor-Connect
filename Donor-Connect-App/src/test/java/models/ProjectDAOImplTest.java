@@ -3,9 +3,12 @@ package models;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.verification.VerificationMode;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NamedQuery;
+import javax.persistence.Query;
 
 import static org.mockito.Mockito.*;
 
@@ -35,6 +38,18 @@ public class ProjectDAOImplTest {
     public void testFetchRetrieve() {
         projectDAO.fetch(project.getId());
         verify(entityManager).find(Project.class, project.getId());
+        verify(entityManager).close();
+    }
+
+    @Test
+    public void shouldFetchAllProjects() throws Exception {
+        Query allProjectsQuery = mock(Query.class);
+        when(entityManager.createQuery("From Project")).thenReturn(allProjectsQuery);
+
+        projectDAO.fetchAll();
+
+        verify(entityManager).createQuery("From Project");
+        verify(allProjectsQuery).getResultList();
         verify(entityManager).close();
     }
 
