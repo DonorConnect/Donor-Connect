@@ -5,4 +5,5 @@ Donor-Connect-App/build
 tmp/
 .idea/workspace.xml
 .idea/*
-
+Functional-Test/.idea/*
+Donor-Connect-App/.idea/*
