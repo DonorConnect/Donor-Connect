@@ -8,8 +8,8 @@
         <div id="project_name">Project Name:<input type="text" name="name" /><br /></div>
         <div id="project_description">Project Description:<input type="text" name="description" /><br /></div>
         <div id="project_image">Project Image:<input type="text" name="img" /><br /></div>
-        <input type="submit" />
+        <div id = "submit_button"> <input type="submit" /> </div>
     </form>
-    <a href="delete_project.ftl">Delete All Projects</a>
+    <div id = "delete_projects"> <a href="delete_project.ftl">Delete All Projects</a> </div>
 </div>
 </@layout.defaultLayout>
