@@ -36,8 +36,8 @@ public class AllProjectsControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject1 = new Project("name", "description", "image/path",true,"image/path","summary");
-        dummyProject2 = new Project("name2", "description2", "image/path2",true,"image/path","summary");
+        dummyProject1 = new Project(0, "name", "description", "image/path",true,"image/path","summary");
+        dummyProject2 = new Project(0, "name2", "description2", "image/path2",true,"image/path","summary");
 
         request.setRequestURI("/all_projects.ftl");
         request.setMethod("GET");

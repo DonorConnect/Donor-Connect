@@ -18,7 +18,7 @@ public class ProjectDAOImplTest {
 
     @Before
     public void setUp() {
-        project = new Project("My Project", "description", "image/path",true,"image/path","summary");
+        project = new Project(0, "My Project", "description", "image/path",true,"image/path","summary");
         EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
         entityManager = mock(EntityManager.class);
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
