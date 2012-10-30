@@ -22,10 +22,15 @@ public class Project {
     @Column
     private String image;
 
-    public Project(String name, String description, String image) {
-        this.name=name;
+    public Project(long id, String name, String description, String image) {
+        this.id = id;
+        this.name = name;
         this.description = description;
         this.image = image;
+    }
+
+    public Project(String name, String description, String image) {
+        this(0, name, description, image);
     }
 
     public String getName() {

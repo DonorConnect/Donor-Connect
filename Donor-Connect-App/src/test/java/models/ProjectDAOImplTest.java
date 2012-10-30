@@ -3,11 +3,10 @@ package models;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.verification.VerificationMode;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NamedQuery;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
 import static org.mockito.Mockito.*;
@@ -23,6 +22,7 @@ public class ProjectDAOImplTest {
         EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
         entityManager = mock(EntityManager.class);
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
+        when(entityManager.getTransaction()).thenReturn(mock(EntityTransaction.class));
         projectDAO = new ProjectDAOImpl(entityManagerFactory);
     }
 
@@ -53,5 +53,19 @@ public class ProjectDAOImplTest {
         verify(entityManager).close();
     }
 
+    @Test
+    public void shouldDeleteAllProjects() throws Exception {
+        Query deleteAllProjectQuery = mock(Query.class);
+        EntityTransaction mockTransaction = mock(EntityTransaction.class);
 
+        when(entityManager.createQuery("Delete From Project")).thenReturn(deleteAllProjectQuery);
+        when(entityManager.getTransaction()).thenReturn(mockTransaction);
+
+        projectDAO.deleteAll();
+
+        verify(entityManager).createQuery("Delete From Project");
+        verify(deleteAllProjectQuery).executeUpdate();
+        verify(mockTransaction).begin();
+        verify(mockTransaction).commit();
+    }
 }

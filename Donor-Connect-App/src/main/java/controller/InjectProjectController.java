@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import java.util.HashMap;
 
 @Controller
 public class InjectProjectController {
@@ -15,14 +18,24 @@ public class InjectProjectController {
     @Qualifier("projectDAO")
     private ProjectDAO dao;
 
-    @RequestMapping(value="/inject_project.ftl", method = RequestMethod.POST)
-    public String injectProject(@RequestParam("name") String name, @RequestParam("description") String desc, @RequestParam("img") String img){
-        dao.save(new Project(name, desc, img));
+    @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.GET)
+    public String renderInjectProject() {
         return "inject_project";
     }
 
-    @RequestMapping(value="/inject_project.ftl", method = RequestMethod.GET)
-    public String notInjectProject(){
+    @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.POST)
+    public ModelAndView injectProject(@RequestParam("name") String name, @RequestParam("description") String desc, @RequestParam("img") String img) {
+        final Project project = dao.save(new Project(name, desc, img));
+
+        HashMap<String, String> model = new HashMap<String, String>() {{
+            put("created_project_id", String.valueOf(project.getId()));
+        }};
+        return new ModelAndView("inject_project", model);
+    }
+
+    @RequestMapping(value = "/delete_project.ftl", method = RequestMethod.GET)
+    public String deleteAllProjects() {
+        dao.deleteAll();
         return "inject_project";
     }
 

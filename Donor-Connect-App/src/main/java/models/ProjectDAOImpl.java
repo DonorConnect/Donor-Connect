@@ -3,11 +3,8 @@ package models;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.*;
 import java.util.List;
 
 @Repository("projectDAO")
@@ -21,11 +18,13 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    @Transactional
-    public void save(Project project) {
+    public Project save(Project project) {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
+            entityManager.getTransaction().begin();
             entityManager.persist(project);
+            entityManager.getTransaction().commit();
+            return project;
         }
         finally {
             if (entityManager != null) {
@@ -52,6 +51,23 @@ public class ProjectDAOImpl implements ProjectDAO {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             return entityManager.createQuery("From Project").getResultList();
+        }
+        finally {
+            if (entityManager != null) {
+                entityManager.close();
+            }
+        }
+    }
+
+    public void deleteAll() {
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try{
+
+            EntityTransaction entityTransaction = entityManager.getTransaction();
+            entityTransaction.begin();
+            Query deleteQuery = entityManager.createQuery("Delete From Project");
+            deleteQuery.executeUpdate();
+            entityTransaction.commit();
         }
         finally {
             if (entityManager != null) {
