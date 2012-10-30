@@ -5,6 +5,7 @@ Donor-Connect-App/build
 tmp/
 .idea/workspace.xml
 .idea/*
+.idea/misc.xml
 Functional-Test/.idea/*
 Donor-Connect-App/.idea/*
 .gradle
