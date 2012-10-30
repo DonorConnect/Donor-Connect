@@ -36,8 +36,8 @@ public class AllProjectsControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject1 = new Project("name", "description", "image/path");
-        dummyProject2 = new Project("name2", "description2", "image/path2");
+        dummyProject1 = new Project("name", "description", "image/path",true,"image/path","summary");
+        dummyProject2 = new Project("name2", "description2", "image/path2",true,"image/path","summary");
 
         request.setRequestURI("/all_projects.ftl");
         request.setMethod("GET");
@@ -49,7 +49,7 @@ public class AllProjectsControllerTest {
         allProjects = new ArrayList<Project>();
         allProjects.add(dummyProject1);
         allProjects.add(dummyProject2);
-        when(projectDAO.fetchAll()).thenReturn(allProjects);
+        when(projectDAO.fetchAllCurrent()).thenReturn(allProjects);
     }
 
     @Test
@@ -61,7 +61,7 @@ public class AllProjectsControllerTest {
     @Test
     public void shouldFetchAllProjects() throws Exception {
         adapter.handle(request, response, controller);
-        verify(projectDAO, Mockito.times(1)).fetchAll();
+        verify(projectDAO, Mockito.times(1)).fetchAllCurrent();
     }
 
     @Test

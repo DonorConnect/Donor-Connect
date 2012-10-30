@@ -10,7 +10,6 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -22,7 +21,7 @@ public class AllProjectsController {
 
     @RequestMapping(value="/all_projects.ftl", method = RequestMethod.GET)
     public String showAllProjects(@ModelAttribute("model") ModelMap modelMap){
-        List<Project> allProjects = dao.fetchAll();
+        List<Project> allProjects = dao.fetchAllCurrent();
 
         modelMap.addAttribute("allProjects", allProjects);
 

@@ -2,6 +2,38 @@ p {
     /*font-size: 50px;*/
 }
 
+#project_listing {
+    border-color: black;
+    border: 1px;
+    border-style: double;
+}
+
+#summary_container {
+    width: 620px;
+    height: 100px;
+    border: 3px solid #808080;
+    margin-bottom: 20px;
+}
+#listing-thumbnail {
+    float: left;
+    width: 100px;
+    height: 100px;
+}
+
+#listing-summary {
+    float: left;
+    width: 520px;
+    height: 100px;
+}
+
+#project-name {
+    height: 20px;
+}
+
+#project-summary {
+    height: 80px;
+}
+
 .project {
     background-color: white;
 }

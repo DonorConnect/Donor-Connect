@@ -1,6 +1,13 @@
-<div style="border-color: black; border: 1px; border-style: double;">
-    Name: ${project.getName()}
-    <br>
-    Desc: ${project.getDescription()}
-    <br>
+<div id="summary_container">
+    <div id="listing-thumbnail">
+        <img src=${project.getThumbnail()}>
+    </div>
+    <div id="listing-summary">
+        <div id="project-name">
+            Name: ${project.getName()}
+        </div>
+        <div id="project-summary">
+            Summary: ${project.getSummary()}
+        </div>
+    </div>
 </div>

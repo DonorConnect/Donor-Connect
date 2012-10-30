@@ -7,7 +7,8 @@ public interface ProjectDAO {
 
     Project fetch(long id);
 
-    List<Project> fetchAll();
+    List<Project> fetchAllCurrent();
 
     void deleteAll();
+
 }

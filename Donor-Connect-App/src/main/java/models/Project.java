@@ -22,25 +22,35 @@ public class Project {
     @Column
     private String image;
 
-    public Project(long id, String name, String description, String image) {
+    @Column
+    private boolean status;
+
+    @Column
+    private String thumbnail;
+
+    @Column
+    private String summary;
+
+    public Project(long id, String name, String description, String image, boolean status, String thumbnail, String summary) {
         this.id = id;
-        this.name = name;
+        this.name=name;
         this.description = description;
         this.image = image;
+        this.status = status;
+        this.thumbnail = thumbnail;
+        this.summary = summary;
     }
 
     public Project(String name, String description, String image) {
-        this(0, name, description, image);
+        this(0, name, description, image,false,"","");
+    }
+
+    public Project() {
     }
 
     public String getName() {
         return name;
     }
-
-    public void setName(String n) {
-        name = n;
-    }
-
 
     public String getDescription() {
         return description;
@@ -50,7 +60,12 @@ public class Project {
         return image;
     }
 
-    public Project() {
+    public String getThumbnail() {
+        return thumbnail;
+    }
+
+    public String getSummary() {
+        return summary;
     }
 
     @Override

@@ -47,7 +47,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     @Override
-    public List<Project> fetchAll() {
+    public List<Project> fetchAllCurrent() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
             return entityManager.createQuery("From Project").getResultList();

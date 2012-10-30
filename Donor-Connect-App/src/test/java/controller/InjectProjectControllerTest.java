@@ -29,13 +29,16 @@ public class InjectProjectControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project(100, "project_name", "project_desc", "img");
+        dummyProject = new Project(100,"project_name", "project_desc", "img",true,"image/path","summary");
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");
         request.setParameter("name", "project_name");
         request.setParameter("description", "project_desc");
         request.setParameter("img", "img");
+        request.setParameter("status","true");
+        request.setParameter("thumbnail","thumbnail");
+        request.setParameter("summary","summary");
 
         controller = new InjectProjectController();
         projectDAO = mock(ProjectDAOImpl.class);

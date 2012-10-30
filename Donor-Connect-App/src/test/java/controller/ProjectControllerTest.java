@@ -32,7 +32,7 @@ public class ProjectControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project("name", "description", "image/path");
+        dummyProject = new Project("name", "description", "image/path",true,"image/path","summary");
 
         request.setRequestURI("/project_detail.ftl");
         request.setMethod("GET");
