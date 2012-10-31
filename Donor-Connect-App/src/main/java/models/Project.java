@@ -22,8 +22,9 @@ public class Project {
     @Column
     private String image;
 
+    @Enumerated(EnumType.STRING)
     @Column
-    private boolean status;
+    private ProjectStatus status;
 
     @Column
     private String thumbnail;
@@ -31,7 +32,7 @@ public class Project {
     @Column
     private String summary;
 
-    public Project(long id, String name, String description, String image, boolean status, String thumbnail, String summary) {
+    public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
         this.id = id;
         this.name=name;
         this.description = description;
@@ -42,8 +43,18 @@ public class Project {
     }
 
     public Project(String name, String description, String image) {
-        this(0, name, description, image,false,"","");
+        this(0, name, description, image, ProjectStatus.CURRENT ,"","");
     }
+
+    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+        this.name=name;
+        this.description = description;
+        this.image = image;
+        this.status = status;
+        this.thumbnail = thumbnail;
+        this.summary = summary;
+    }
+
 
     public Project() {
     }

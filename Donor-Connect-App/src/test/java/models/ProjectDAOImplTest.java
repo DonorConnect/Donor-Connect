@@ -18,7 +18,7 @@ public class ProjectDAOImplTest {
 
     @Before
     public void setUp() {
-        project = new Project(0, "My Project", "description", "image/path",true,"image/path","summary");
+        project = new Project(0, "My Project", "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
         EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
         entityManager = mock(EntityManager.class);
         when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
@@ -44,11 +44,11 @@ public class ProjectDAOImplTest {
     @Test
     public void shouldFetchAllCurrentProjects() throws Exception {
         Query allProjectsQuery = mock(Query.class);
-        when(entityManager.createQuery("From Project p where p.status = true")).thenReturn(allProjectsQuery);
+        when(entityManager.createQuery("From Project p where p.status = 'CURRENT'")).thenReturn(allProjectsQuery);
 
         projectDAO.fetchAllCurrent();
 
-        verify(entityManager).createQuery("From Project p where p.status = true");
+        verify(entityManager).createQuery("From Project p where p.status = 'CURRENT'");
         verify(allProjectsQuery).getResultList();
         verify(entityManager).close();
     }

@@ -2,6 +2,7 @@ package controller;
 
 import models.Project;
 import models.ProjectDAOImpl;
+import models.ProjectStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -36,8 +37,8 @@ public class AllProjectsControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject1 = new Project(0, "name", "description", "image/path",true,"image/path","summary");
-        dummyProject2 = new Project(0, "name2", "description2", "image/path2",true,"image/path","summary");
+        dummyProject1 = new Project(0, "name", "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
+        dummyProject2 = new Project(0, "name2", "description2", "image/path2",ProjectStatus.CURRENT,"image/path","summary");
 
         request.setRequestURI("/all_projects.ftl");
         request.setMethod("GET");

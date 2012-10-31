@@ -2,6 +2,7 @@ package controller;
 
 import models.Project;
 import models.ProjectDAOImpl;
+import models.ProjectStatus;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -29,14 +30,14 @@ public class InjectProjectControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project(100,"project_name", "project_desc", "img",true,"image/path","summary");
+        dummyProject = new Project(100,"project_name", "project_desc", "img", ProjectStatus.CURRENT,"image/path","summary");
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");
         request.setParameter("name", "project_name");
         request.setParameter("description", "project_desc");
         request.setParameter("img", "img");
-        request.setParameter("status","true");
+        request.setParameter("status","CURRENT");
         request.setParameter("thumbnail","thumbnail");
         request.setParameter("summary","summary");
 

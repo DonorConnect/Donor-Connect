@@ -8,6 +8,15 @@
         <div id="project_name">Project Name:<input type="text" name="name" /><br /></div>
         <div id="project_description">Project Description:<input type="text" name="description" /><br /></div>
         <div id="project_image">Project Image:<input type="text" name="img" /><br /></div>
+        <div>Project Status:
+            <select name="status">
+                <option value="CURRENT" >CURRENT</option>
+                <option value="COMPLETE">COMPLETE</option>
+            </select>
+         </div>
+        <div id="project_thumbnail">Project Thumbnail:<input type="text" name="thumbnail" /><br /></div>
+        <div id="project-summary">Project Summary:<input type="text" name="summary" /><br /></div>
+
         <div id = "submit_button"> <input type="submit" /> </div>
     </form>
     <div id = "delete_projects"> <a href="delete_project.ftl">Delete All Projects</a> </div>

@@ -50,7 +50,7 @@ public class ProjectDAOImpl implements ProjectDAO {
     public List<Project> fetchAllCurrent() {
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         try {
-            return entityManager.createQuery("From Project p where p.status = true").getResultList();
+            return entityManager.createQuery("From Project p where p.status = 'CURRENT'").getResultList();
         }
         finally {
             if (entityManager != null) {

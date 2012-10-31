@@ -2,6 +2,7 @@ package controller;
 
 import models.Project;
 import models.ProjectDAO;
+import models.ProjectStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,15 @@ public class InjectProjectController {
     }
 
     @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.POST)
-    public ModelAndView injectProject(@RequestParam("name") String name, @RequestParam("description") String desc, @RequestParam("img") String img) {
-        final Project project = dao.save(new Project(name, desc, img));
+    public ModelAndView injectProject(@RequestParam("name") String name, @RequestParam("description") String desc, @RequestParam("img") String img, @RequestParam("status") ProjectStatus status,
+                                      @RequestParam("thumbnail") String thumbnail, @RequestParam("summary") String summary) {
+        System.out.println("should print new project");
+        final Project project = dao.save(new Project(name, desc, img,status,thumbnail,summary));
+        System.out.println(project.getDescription());
+        System.out.println(project.getSummary());
+        System.out.println(project.getThumbnail());
+
+
 
         HashMap<String, String> model = new HashMap<String, String>() {{
             put("created_project_id", String.valueOf(project.getId()));
