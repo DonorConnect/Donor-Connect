@@ -1,0 +1,1 @@
+ALTER TABLE Project MODIFY description longtext NOT NULL;
