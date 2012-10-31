@@ -22,6 +22,11 @@ sourceSets {
             srcDir "src/main/resources"
         }
     }
+    test {
+        resources {
+            srcDir "src/test/resources"
+        }
+    }
 }
 
 repositories {
@@ -51,6 +56,7 @@ dependencies {
     testCompile 'junit:junit:4.10'
     testCompile 'org.mockito:mockito-all:1.9.0'
     testCompile 'hsqldb:hsqldb:1.8.0.10'
+    testCompile 'cglib:cglib:2.2.2'
 }
 
 tomcatRun {
