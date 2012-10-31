@@ -12,7 +12,8 @@ public class ProjectDAOImpl implements ProjectDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ProjectDAOImpl(EntityManager entityManager) {
+    public ProjectDAOImpl(EntityManager entityManager)
+    {
         this.entityManager = entityManager;
     }
 
