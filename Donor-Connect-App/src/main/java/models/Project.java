@@ -1,5 +1,6 @@
 package models;
 
+import com.sun.istack.internal.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -13,23 +14,23 @@ public class Project {
     @GenericGenerator(name = "projectId", strategy = "increment")
     private long id;
 
-    @Column
+    @Column (nullable = false)
     private String name;
 
-    @Column
+    @Column (nullable = false)
     private String description;
 
-    @Column
+    @Column (nullable = false)
     private String image;
 
     @Enumerated(EnumType.STRING)
-    @Column
+    @Column (nullable = false)
     private ProjectStatus status;
 
-    @Column
+    @Column (nullable = false)
     private String thumbnail;
 
-    @Column
+    @Column (nullable = false)
     private String summary;
 
     public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
