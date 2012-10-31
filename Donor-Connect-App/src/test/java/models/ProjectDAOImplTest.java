@@ -44,11 +44,11 @@ public class ProjectDAOImplTest {
     @Test
     public void shouldFetchAllProjects() throws Exception {
         Query allProjectsQuery = mock(Query.class);
-        when(entityManager.createQuery("From Project")).thenReturn(allProjectsQuery);
+        when(entityManager.createQuery("From Project where status = 'CURRENT'")).thenReturn(allProjectsQuery);
 
         projectDAO.fetchAllCurrent();
 
-        verify(entityManager).createQuery("From Project");
+        verify(entityManager).createQuery("From Project where status = 'CURRENT'");
         verify(allProjectsQuery).getResultList();
     }
 

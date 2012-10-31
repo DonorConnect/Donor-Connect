@@ -27,7 +27,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
     @Override
     public List<Project> fetchAllCurrent() {
-        return entityManager.createQuery("From Project").getResultList();
+        return entityManager.createQuery("From Project where status = 'CURRENT'").getResultList();
     }
 
     public void deleteAll() {
