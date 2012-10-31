@@ -3,6 +3,7 @@ package models;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -20,7 +21,8 @@ public class ProjectDAOImplTest {
         project = new Project("My Project", "description", "image/path");
         entityManager = mock(EntityManager.class);
         when(entityManager.getTransaction()).thenReturn(mock(EntityTransaction.class));
-        projectDAO = new ProjectDAOImpl(entityManager);
+        projectDAO = new ProjectDAOImpl();
+        ReflectionTestUtils.setField(projectDAO, "entityManager", entityManager);
     }
 
     @Test

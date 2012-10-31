@@ -12,11 +12,6 @@ public class ProjectDAOImpl implements ProjectDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public ProjectDAOImpl(EntityManager entityManager)
-    {
-        this.entityManager = entityManager;
-    }
-
     @Override
     public Project save(Project project) {
         Project merge = entityManager.merge(project);
