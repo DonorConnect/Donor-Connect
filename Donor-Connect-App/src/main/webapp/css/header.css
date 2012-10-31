@@ -1,7 +1,19 @@
 .header {
-    border-bottom: 2px solid #CCC;
-    background-color: #FFFEFE;
+    background-color: #CBC69E;
+    border: 2px solid #7E9BB4;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: -3px 3px 8px 0px gray inset;
+}
+.logopic {
+    float: left;
 }
 nav ul li {
     float: left;
+}
+.logo {
+    font-size: 42px;
+    font-family: cursive;
+    margin: 0px;
+    color: #666;
 }

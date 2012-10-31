@@ -1,9 +1,14 @@
 <div class="row">
-    <div class="col12" style="background-color: #ffffff;">
-        <div xmlns="http://www.w3.org/1999/html" style="padding-left: 15px">
-            <img src="image/LOGO.jpg">
-            </img>
+    <div class="col12 ">
+        <div class="header">
+            <img src="image/logo.png" alt="logo.png" width="80px" height="70px" class="logopic">
+            <p class="logo">Donor-Connect</p>
+
+
+            <div class="menu">
+            </div>
         </div>
+
     </div>
 
 </div>
