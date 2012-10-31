@@ -50,6 +50,7 @@ dependencies {
     testCompile 'org.springframework:spring-test:3.1.2.RELEASE'
     testCompile 'junit:junit:4.10'
     testCompile 'org.mockito:mockito-all:1.9.0'
+    testCompile 'hsqldb:hsqldb:1.8.0.10'
 }
 
 tomcatRun {

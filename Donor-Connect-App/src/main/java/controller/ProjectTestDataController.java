@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 
 @Controller
-public class InjectProjectController {
+public class ProjectTestDataController {
     @Autowired
     @Qualifier("projectDAO")
     private ProjectDAO dao;

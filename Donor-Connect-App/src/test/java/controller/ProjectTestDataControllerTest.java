@@ -17,11 +17,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-public class InjectProjectControllerTest {
+public class ProjectTestDataControllerTest {
     private MockHttpServletResponse response;
     private MockHttpServletRequest request;
     private AnnotationMethodHandlerAdapter adapter;
-    private InjectProjectController controller;
+    private ProjectTestDataController testDataController;
     private Project dummyProject;
     private models.ProjectDAO projectDAO;
 
@@ -41,16 +41,16 @@ public class InjectProjectControllerTest {
         request.setParameter("thumbnail","thumbnail");
         request.setParameter("summary","summary");
 
-        controller = new InjectProjectController();
+        testDataController = new ProjectTestDataController();
         projectDAO = mock(ProjectDAOImpl.class);
-        controller.setDao(projectDAO);
+        testDataController.setDao(projectDAO);
     }
 
     @Test
     public void shouldInjectProject() throws Exception {
         when(projectDAO.save(dummyProject)).thenReturn(dummyProject);
 
-        ModelAndView modelAndView = adapter.handle(request, response, controller);
+        ModelAndView modelAndView = adapter.handle(request, response, testDataController);
 
         verify(projectDAO).save(dummyProject);
         assertThat(modelAndView.getViewName(), is("inject_project"));
@@ -60,7 +60,7 @@ public class InjectProjectControllerTest {
     @Test
     public void shouldNotInjectProjectForGetMethod() throws Exception {
         request.setMethod("GET");
-        adapter.handle(request, response, controller);
+        adapter.handle(request, response, testDataController);
         verify(projectDAO, Mockito.times(0)).save(dummyProject);
     }
 
@@ -69,7 +69,7 @@ public class InjectProjectControllerTest {
         MockHttpServletRequest request = new MockHttpServletRequest();
         request.setRequestURI("/delete_project.ftl");
         request.setMethod("GET");
-        adapter.handle(request, response, controller);
+        adapter.handle(request, response, testDataController);
         verify(projectDAO).deleteAll();
     }
 }
