@@ -1,13 +1,11 @@
-<div id="summary_container">
-    <div id="listing-thumbnail">
+<div class="each-project">
+    <div class="project-thumbnail">
         <img src=${project.getThumbnail()}>
     </div>
-    <div id="listing-summary">
-        <div id="project-name">
-            Name: ${project.getName()}
-        </div>
-        <div id="project-summary">
-            Summary: ${project.getSummary()}
-        </div>
+    <div class="project-summary">
+        <p class="project-name"> ${project.getName()}</p>
+
+        <p class="project-breif"> ${project.getSummary()}</p>
+
     </div>
 </div>

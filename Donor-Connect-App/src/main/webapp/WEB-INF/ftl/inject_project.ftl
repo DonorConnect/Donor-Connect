@@ -11,7 +11,7 @@
         <div>Project Status:
             <select name="status">
                 <option value="CURRENT" >CURRENT</option>
-                <option value="COMPLETE">COMPLETE</option>
+                <option value="COMPLETED">COMPLETE</option>
             </select>
          </div>
         <div id="project_thumbnail">Project Thumbnail:<input type="text" name="thumbnail" /><br /></div>
