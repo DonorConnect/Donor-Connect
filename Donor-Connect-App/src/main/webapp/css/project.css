@@ -91,6 +91,16 @@ p {
     margin: 0;
 }
 
+.project-summary a {
+    text-decoration: none;
+    color: black;
+}
+
+.project-summary a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
 .each-project .project-breif {
     /*margin: 0;*/
 }
