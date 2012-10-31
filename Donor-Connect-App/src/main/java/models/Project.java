@@ -16,7 +16,7 @@ public class Project {
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
+    @Column (nullable = false ,columnDefinition = "LONGTEXT" ) 
     private String description;
 
     @Column(nullable = false)
@@ -43,11 +43,11 @@ public class Project {
     }
 
     public Project(String name, String description, String image) {
-        this(0, name, description, image, ProjectStatus.CURRENT, "", "");
+        this(0, name, description, image, ProjectStatus.CURRENT ,"","");
     }
 
     public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
-        this.name = name;
+        this.name=name;
         this.description = description;
         this.image = image;
         this.status = status;
