@@ -1,78 +1,41 @@
 package models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Repository("projectDAO")
+@Transactional
 public class ProjectDAOImpl implements ProjectDAO {
-    @PersistenceUnit
-    private EntityManagerFactory entityManagerFactory;
+    @PersistenceContext
+    private EntityManager entityManager;
 
-    @Autowired(required = true)
-    public ProjectDAOImpl(@Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
-        this.entityManagerFactory = entityManagerFactory;
+    public ProjectDAOImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
     public Project save(Project project) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            entityManager.getTransaction().begin();
-            entityManager.persist(project);
-            entityManager.getTransaction().commit();
-            return project;
-        }
-        finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
+        Project merge = entityManager.merge(project);
+        entityManager.flush();
+        project.setId(merge.getId());
+        return project;
     }
 
     @Override
     public Project fetch(long id) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            return entityManager.find(Project.class, id);
-        }
-        finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
+        return entityManager.find(Project.class, id);
     }
 
     @Override
     public List<Project> fetchAllCurrent() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try {
-            return entityManager.createQuery("From Project p where p.status = 'CURRENT'").getResultList();
-        }
-        finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
+        return entityManager.createQuery("From Project").getResultList();
     }
 
     public void deleteAll() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        try{
-
-            EntityTransaction entityTransaction = entityManager.getTransaction();
-            entityTransaction.begin();
-            Query deleteQuery = entityManager.createQuery("Delete From Project");
-            deleteQuery.executeUpdate();
-            entityTransaction.commit();
-        }
-        finally {
-            if (entityManager != null) {
-                entityManager.close();
-            }
-        }
+        Query deleteQuery = entityManager.createQuery("Delete From Project");
+        deleteQuery.executeUpdate();
     }
 }

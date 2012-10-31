@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 
@@ -18,19 +17,19 @@ public class ProjectDAOImplTest {
 
     @Before
     public void setUp() {
-        project = new Project(0, "My Project", "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
-        EntityManagerFactory entityManagerFactory = mock(EntityManagerFactory.class);
+        project = new Project("My Project", "description", "image/path");
         entityManager = mock(EntityManager.class);
-        when(entityManagerFactory.createEntityManager()).thenReturn(entityManager);
         when(entityManager.getTransaction()).thenReturn(mock(EntityTransaction.class));
-        projectDAO = new ProjectDAOImpl(entityManagerFactory);
+        projectDAO = new ProjectDAOImpl(entityManager);
     }
 
     @Test
     public void shouldSaveAProject() {
+        when(entityManager.merge(project)).thenReturn(project);
+
         projectDAO.save(project);
-        verify(entityManager).persist(project);
-        verify(entityManager).close();
+        verify(entityManager).merge(project);
+        verify(entityManager).flush();
     }
 
 
@@ -38,19 +37,17 @@ public class ProjectDAOImplTest {
     public void testFetchRetrieve() {
         projectDAO.fetch(project.getId());
         verify(entityManager).find(Project.class, project.getId());
-        verify(entityManager).close();
     }
 
     @Test
-    public void shouldFetchAllCurrentProjects() throws Exception {
+    public void shouldFetchAllProjects() throws Exception {
         Query allProjectsQuery = mock(Query.class);
-        when(entityManager.createQuery("From Project p where p.status = 'CURRENT'")).thenReturn(allProjectsQuery);
+        when(entityManager.createQuery("From Project")).thenReturn(allProjectsQuery);
 
         projectDAO.fetchAllCurrent();
 
-        verify(entityManager).createQuery("From Project p where p.status = 'CURRENT'");
+        verify(entityManager).createQuery("From Project");
         verify(allProjectsQuery).getResultList();
-        verify(entityManager).close();
     }
 
     @Test
@@ -65,7 +62,5 @@ public class ProjectDAOImplTest {
 
         verify(entityManager).createQuery("Delete From Project");
         verify(deleteAllProjectQuery).executeUpdate();
-        verify(mockTransaction).begin();
-        verify(mockTransaction).commit();
     }
 }
