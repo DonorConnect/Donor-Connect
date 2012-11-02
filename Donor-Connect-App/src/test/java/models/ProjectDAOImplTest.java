@@ -1,68 +1,60 @@
 package models;
 
 
-import org.junit.Before;
 import org.junit.Test;
-import org.springframework.test.util.ReflectionTestUtils;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
+import java.util.List;
 
-import static org.mockito.Mockito.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.junit.Assert.assertThat;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:hibernateContext-test.xml"})
+@Transactional
 public class ProjectDAOImplTest {
-    private Project project;
-    private ProjectDAOImpl projectDAO;
-    private EntityManager entityManager;
-
-    @Before
-    public void setUp() {
-        project = new Project("My Project", "description", "image/path");
-        entityManager = mock(EntityManager.class);
-        when(entityManager.getTransaction()).thenReturn(mock(EntityTransaction.class));
-        projectDAO = new ProjectDAOImpl();
-        ReflectionTestUtils.setField(projectDAO, "entityManager", entityManager);
-    }
+    @Autowired
+    private ProjectDAO projectDAO;
 
     @Test
     public void shouldSaveAProject() {
-        when(entityManager.merge(project)).thenReturn(project);
+        Project project = createProject();
+        Project savedProject = projectDAO.save(project);
 
-        projectDAO.save(project);
-        verify(entityManager).merge(project);
-        verify(entityManager).flush();
-    }
+        Project fetchedProject = projectDAO.fetch(savedProject.getId());
 
-
-    @Test
-    public void testFetchRetrieve() {
-        projectDAO.fetch(project.getId());
-        verify(entityManager).find(Project.class, project.getId());
+        assertThat(fetchedProject, notNullValue());
     }
 
     @Test
     public void shouldFetchAllProjects() throws Exception {
-        Query allProjectsQuery = mock(Query.class);
-        when(entityManager.createQuery("From Project where status = 'CURRENT'")).thenReturn(allProjectsQuery);
+        Project project1 = createProject();
+        Project project2 = createProject();
 
-        projectDAO.fetchAllCurrent();
+        projectDAO.save(project1);
+        projectDAO.save(project2);
 
-        verify(entityManager).createQuery("From Project where status = 'CURRENT'");
-        verify(allProjectsQuery).getResultList();
+        List<Project> projects = projectDAO.fetchAllCurrent();
+
+        assertThat(projects.size(), is(2));
     }
 
     @Test
     public void shouldDeleteAllProjects() throws Exception {
-        Query deleteAllProjectQuery = mock(Query.class);
-        EntityTransaction mockTransaction = mock(EntityTransaction.class);
-
-        when(entityManager.createQuery("Delete From Project")).thenReturn(deleteAllProjectQuery);
-        when(entityManager.getTransaction()).thenReturn(mockTransaction);
+        projectDAO.save(createProject());
 
         projectDAO.deleteAll();
 
-        verify(entityManager).createQuery("Delete From Project");
-        verify(deleteAllProjectQuery).executeUpdate();
+        List<Project> projects = projectDAO.fetchAllCurrent();
+        assertThat(projects.size(), is(0));
+    }
+
+    private Project createProject() {
+        return new Project("test project", "test project description", "test/image");
     }
 }
