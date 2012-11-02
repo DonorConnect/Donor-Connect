@@ -1,11 +1,6 @@
-.header {
 
-}
 header {
-    background-color: #DDECEF;
-    border: 2px solid #7E9BB4;
     padding: 10px;
-    box-shadow: -3px 3px 8px 0px gray inset;
 }
 header a {
     text-decoration: none;
