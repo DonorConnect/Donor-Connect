@@ -1,5 +1,5 @@
 <div class="row">
-    <header>
+    <header style="background: #BFD9DA">
         <div class="header">
             <div class="col6">
                 <a href="home.ftl">
