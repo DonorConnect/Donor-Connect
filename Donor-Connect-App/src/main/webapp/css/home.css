@@ -4,8 +4,21 @@
     padding-top: 20px;
     border-bottom: 1px solid #938754;
 }
-.project_pic {
+.projectPic {
     border: 2px solid #7E9BB4;
     border-radius: 5px;
     box-shadow: -3px 3px 8px 0px gray;
+}
+
+.welcomeText {
+    margin: 10px;
+}
+.activeProject {
+    background-color: #ffffff;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-bottom: 1px solid #938754;
+}
+.keyProjectsImage{
+    text-align: center;
 }

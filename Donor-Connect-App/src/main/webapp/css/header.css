@@ -1,19 +1,48 @@
 .header {
+
+}
+header {
     background-color: #CBC69E;
     border: 2px solid #7E9BB4;
-    border-radius: 5px;
     padding: 10px;
     box-shadow: -3px 3px 8px 0px gray inset;
+}
+header a {
+    text-decoration: none;
 }
 .logopic {
     float: left;
 }
-nav ul li {
-    float: left;
-}
+
 .logo {
     font-size: 42px;
     font-family: cursive;
     margin: 0px;
     color: #666;
+}
+
+.menubar ul{
+    list-style: none;
+}
+
+.menubar ul a{
+    text-decoration: none;
+    color: #666;
+}
+
+.menubar ul a:hover{
+    text-decoration: underline;
+    color: #3F0F79;
+}
+
+.menubar li{
+    color: #666;
+    float:left;
+    padding: 10px;
+    height: 7px;
+}
+
+.menu{
+    padding:20px 10px 5px 0px;
+    float:right;
 }

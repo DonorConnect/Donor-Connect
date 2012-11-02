@@ -1,18 +1,30 @@
 <#import "DefaultLayout.ftl" as layout>
 <@layout.defaultLayout>
 <div class="row">
-    <div class="welcomeBody col12">
-        <div style="float: left; width: 50%; margin: 10px">
-            <h1>welcome...</h1>
+    <div class="welcomeBody">
+        <div class="col4">
+            <div class="welcomeText">
+                <h1>welcome...</h1>
 
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer</p>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+                    massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+                    quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                    Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut,
+                    imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer</p>
+            </div>
         </div>
-        <div style="float: right; width: 46%">
-            <img src="image/children.jpg" height="300px" width="400px" class="project_pic" />
-
+        <div class="col8">
+            <div class="keyProjectsImage">
+                <img src="image/children.jpg" height="350px" width="500px" class="projectPic"/>
+            </div>
         </div>
+        <div style="clear:both"></div>
     </div>
-    <div class=" welcomeBody col12">
+
+</div>
+
+<div class="row">
+    <div class="activeProject">
         <a href="all_projects.ftl" style="float: right">see all..</a>
     </div>
 </div>
