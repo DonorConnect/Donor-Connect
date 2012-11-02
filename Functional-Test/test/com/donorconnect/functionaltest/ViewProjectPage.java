@@ -15,11 +15,14 @@ import static org.junit.Assert.*;
 public class ViewProjectPage {
     WebDriver wd = new HtmlUnitDriver();
 
-    public void fillForm(String name, String description, String image) {
+    public void fillForm(String name, String description, String image,String thumbnail,String summary,String status) {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
         wd.findElement(By.name("name")).sendKeys(name);
         wd.findElement(By.name("description")).sendKeys(description);
         wd.findElement(By.name("img")).sendKeys(image);
+        wd.findElement(By.name("thumbnail")).sendKeys(thumbnail);
+        wd.findElement(By.name("summary")).sendKeys(summary);
+
 
         wd.findElement(By.xpath("//div[@id='submit_button']/input")).click();
 
@@ -39,20 +42,12 @@ public class ViewProjectPage {
     }
 
 
-    /* @Test
-    public void  TestScenario()
-    {
-          //Injection("gnkdjfg'\n'fdfgjdfgn","gdfg","ghfbhgb");
-          //Injection("###############@@@@@@@@@%%%%%%%%%%bjhhhhhhhhhhhhhhhhhhhhhhhh bhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjggggggggggggggggggggggggggggggggggggggggggggggggggggggggggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjgfb cccvvvvvvvvvvvvvvvvvvvvvvvvvrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrmnmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmssssssssssssssssssssss;;;;;;;;;;;;;;;;;;;;;;","gdfg","ghfbhgb");
-    } */
 
     public void assertPositive(String name, String description, String image){
         assertEquals(name, wd.findElement(By.className("project-name")).getText());
         assertEquals(wd.findElement(By.className("project-detail")).getText(), description);
-        //System.out.println(wd.findElement(By.xpath("//img[@alt='children' and @src='"+image+"']")));
-        assertTrue(wd.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed());
-        //Assert.assertTrue(wd.findElement(By.className("project-image")).isDisplayed());
-    }
+       assertTrue(wd.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed());
+       }
 
 
     public void assertNegative(String name, String description, String image){
@@ -63,29 +58,35 @@ public class ViewProjectPage {
 
     @Test
     public void verifyPageWithHappyPath(){
-        fillForm("Sailee", "TWU29", "image/images.jpeg");
+        fillForm("Sailee", "TWU29", "image/images.jpeg","image/children_thumbnail.png","Summary","Current");
         assertPositive("Sailee", "TWU29", "image/images.jpeg");
 
     }
 
     @Test
     public void verifyPageWithSpecialCharAndNo(){
-        fillForm("###############@@@@@@@@@%%%%%%%%%%", "gdfg", "ghfbhgb");
+        fillForm("###############@@@@@@@@@%%%%%%%%%%", "gdfg", "ghfbhgb","image/children_thumbnail.png","Summary","Current");
         assertPositive("###############@@@@@@@@@%%%%%%%%%%", "gdfg", "ghfbhgb");
-        fillForm("456666666666666667", "7658777777777", "6788888888888888888888");
+        fillForm("456666666666666667", "7658777777777", "6788888888888888888888","image/children.png","Summary","Current");
         assertPositive("456666666666666667", "7658777777777", "6788888888888888888888");
     }
 
     @Test
     public void verifyPageWithMultipleSpaces(){
-        fillForm("C       r         w        q  a  r t", "gdfg", "ghfbhgb");
+        fillForm("C       r         w        q  a  r t", "gdfg", "ghfbhgb","image/children_thumbnail.png","Summary","Current");
         assertNegative("C       r         w        q  a  r t", "gdfg", "ghfbhgb");
     }
 
 
     @Test
     public void verifyPageForLongProjectName() {
-        fillForm("###############@@@@@@@@@%%%%%%%%%%bjhhhhhhhhhhhhhhhhhhhhhhhh bhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjggggggggggggggggggggggggggggggggggggggggggggggggggggggggggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "gdfg", "ghfbhgb");
-        assertPositive("###############@@@@@@@@@%%%%%%%%%%bjhhhhhhhhhhhhhhhhhhhhhhhh bhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjggggggggggggggggggggggggggggggggggggggggggggggggggggggggggbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "gdfg", "ghfbhgb");
+        fillForm("############### @@@@@@@@@ %%%%%%%%%% b j hhhhhhhhhhhhhhhhhhhhhhhh b h jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj gggggggggggggggggggggggggggggggggggggggggggggggggggggggggg bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "gdfg", "ghfbhgb","image/children_thumbnail.png","Summary","Current");
+        assertPositive("############### @@@@@@@@@ %%%%%%%%%% b j hhhhhhhhhhhhhhhhhhhhhhhh b h jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj gggggggggggggggggggggggggggggggggggggggggggggggggggggggggg bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb", "gdfg", "ghfbhgb");
+    }
+
+    @Test
+    public void VerifyLongDescription(){
+        fillForm("Project_with_Long_description","aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaas sssssssssssssss ssssssssssssdfdd dssssssssss sdddddddddddddddd dsssssssssss sdddddddddddddc sdddddddddd ssdccssdds dccdsddssddcdcdcds ddddddddddddd cccccccccccc dsssssssssssss sdddddddddddddddddd sdddddddddddddddddddddd dssssssssssssssssssss","image/children.jpeg","image/children_thumbnail.png","Summary","Current");
+        assertPositive("Project_with_Long_description","aaaaaaaaaaaaaaaaa aaaaaaaaaaaaaas sssssssssssssss ssssssssssssdfdd dssssssssss sdddddddddddddddd dsssssssssss sdddddddddddddc sdddddddddd ssdccssdds dccdsddssddcdcdcds ddddddddddddd cccccccccccc dsssssssssssss sdddddddddddddddddd sdddddddddddddddddddddd dssssssssssssssssssss","image/children.jpeg");
     }
 }
