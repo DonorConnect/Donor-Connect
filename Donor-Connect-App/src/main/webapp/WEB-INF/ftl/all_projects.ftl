@@ -1,7 +1,7 @@
 <#import "DefaultLayout.ftl" as layout>
 <@layout.defaultLayout>
 <div class="row">
-    <div id="projectHeader">
+    <div class="projectHeader">
         <h3> Currently Running Projects </h3>
     </div>
 </div>

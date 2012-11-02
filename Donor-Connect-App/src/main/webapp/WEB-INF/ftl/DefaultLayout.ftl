@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/header.css">
     <title>Donors-Connect-Project</title></head>
 <body>
-<div><#include "header.ftl" /></div>
+<div style="background: #BFD9DA"><#include "header.ftl" /></div>
 <div style="height: 20px; clear: both;">
 </div>
 <div class="body">
