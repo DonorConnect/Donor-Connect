@@ -36,7 +36,7 @@ p {
     background-color: white;
 }
 
-.project-content {
+.projectContent {
     padding: 5px 25px;
 }
 
@@ -56,7 +56,7 @@ p {
     cursor: pointer;
 }
 
-.project-content button {
+.projectContent button {
     padding: 0;
     border: none;
     border-radius: 2px;
@@ -72,39 +72,65 @@ p {
     background-color: #fff;
 }
 
-.each-project {
-    height: 100px;
+.eachProject {
+    height: 115px;
     padding: 20px;
-    margin-bottom: 10px;
-    border-bottom: 2px dotted #ccc;
+    margin-bottom: 20px;
 }
 
 
-.project-thumbnail {
+.projectThumbnail {
+    box-shadow: 3px 3px 4px 1px #CCC;
     margin-right: 10px;
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 170px;
 }
 
-.each-project .project-name {
+.projectSummary h4{
+    height: 18px;
+    overflow: hidden;
+    margin:0px 0px 5px 0px;
+    background-color: #DDECEF;
+    padding: 5px 0px ;
+}
+
+.projectSummary h4 a{
+    text-decoration: none;
+    color: #333;
+}
+
+ h4 a:hover{
+    text-decoration: underline;
+    color: #3F0F79;
+}
+
+
+.thumbnailImage{
+    width: 170px;
+    height: 140px;
+}
+.eachProject .projectName {
     margin: 0;
 }
 
-.project-summary a {
-    text-decoration: none;
-    color: black;
-}
-
-.project-summary a:hover {
-    text-decoration: underline;
-    color: blue;
-}
-
-.each-project .project-breif {
+.eachProject .projectBrief {
+    font-size: 14px;
+    margin: 0;
+    height: 42px;
+    overflow: auto;
     /*margin: 0;*/
 }
 
 .brief-info {
     /*float: right;*/
+}
+
+.allProjectsBody{
+    background-color: #ffffff;
+
+}
+.projectSummary {
+    box-shadow: 2px 3px 4px 1px #ccc;
+    background-color: #DDECEF;
+    margin-left: 177px;
 }
