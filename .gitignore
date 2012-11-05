@@ -10,3 +10,4 @@ Functional-Test/.idea/*
 Donor-Connect-App/.idea/*
 .gradle
 build
+*.iml
