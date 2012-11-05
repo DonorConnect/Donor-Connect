@@ -28,7 +28,7 @@ public class ViewProjectListPage {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         //Assert.assertEquals("http://localhost:8080/Donor-Connect-App/all_projects.ftl",wd.getCurrentUrl());
         Assert.assertTrue(wd.findElement(By.className("logopic")).isDisplayed());
-        Assert.assertTrue(wd.findElement(By.xpath("//div[@id='Project_Header']/h2")).isDisplayed());
+        Assert.assertTrue(wd.findElement(By.xpath("//div[@class='projectHeader']/h3")).isDisplayed());
     }
 
     @Test
@@ -48,9 +48,9 @@ public class ViewProjectListPage {
     @Test
     public void clickableProjectName() {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        if(wd.findElement(By.xpath("(//a[@class='project-name'])[1]")).isDisplayed())
+        if(wd.findElement(By.xpath("(//a[@class='projectName'])[1]")).isDisplayed())
         {
-            wd.findElement(By.xpath("(//a[@class='project-name'])[1]")).click();
+            wd.findElement(By.xpath("(//a[@class='projectName'])[1]")).click();
             Assert.assertTrue(wd.getCurrentUrl().contains("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl"));
         }
         else
@@ -62,11 +62,11 @@ public class ViewProjectListPage {
     @Test
     public void checkProjectName() {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        if(wd.findElement(By.xpath("(//a[@class='project-name'])[1]")).isDisplayed())
+        if(wd.findElement(By.xpath("(//a[@class='projectName'])[1]")).isDisplayed())
         {
-            String project_name = wd.findElement(By.xpath("(//a[@class='project-name'])[1]")).getText();
-            wd.findElement(By.xpath("(//a[@class='project-name'])[1]")).click();
-            Assert.assertEquals(wd.findElement(By.xpath("//h2")).getText(),project_name);
+            String project_name = wd.findElement(By.xpath("(//a[@class='projectName'])[1]")).getText();
+            wd.findElement(By.xpath("(//a[@class='projectName'])[1]")).click();
+            Assert.assertEquals(wd.findElement(By.xpath("//h2[@class='project-name']")).getText(),project_name);
         }
         else
         {
@@ -100,9 +100,9 @@ public class ViewProjectListPage {
 
     public void verifyPositive(String name,String thumbnail,String summary) {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        Assert.assertEquals((wd.findElement(By.xpath("//div[@class='each-project'][last()]/div/a[@class='project-name']")).getText()), name);
-        Assert.assertEquals((wd.findElement(By.xpath("//div[@class='each-project'][last()]/div/p")).getText()),summary);
-        assertTrue(wd.findElement(By.xpath("//div[@class='each-project'][last()]/div/a/img[@src='"+thumbnail+"']")).isDisplayed());
+        Assert.assertEquals((wd.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText()), name);
+        Assert.assertEquals((wd.findElement(By.xpath("//div[@class='eachProject'][last()]/div/p[@class='projectBrief']")).getText()),summary);
+        assertTrue(wd.findElement(By.xpath("//div[@class='eachProject'][last()]/div/a/img[@src='"+thumbnail+"']")).isDisplayed());
     }
 
     public boolean isElementPresent(By by) {
@@ -116,7 +116,7 @@ public class ViewProjectListPage {
 
     public void verifyNegative(String name,String thumbnail,String summary) {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        boolean x = isElementPresent(By.xpath("//div[@class='each-project'][last()]/div/a[@class='project-name']"));
+        boolean x = isElementPresent(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']"));
         if (!x){
             System.out.println("Test Successful");
         }
