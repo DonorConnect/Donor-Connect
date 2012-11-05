@@ -5,6 +5,14 @@ repositories {
     mavenCentral()
 }
 
+task smokeTest {
+    //TODO
+}
+
+task functionalTest (dependsOn: [test, smokeTest]) {
+
+}
+
 dependencies {
     testCompile 'junit:junit:4.10'
     testCompile 'org.seleniumhq.selenium:selenium-java:2.25.0'
