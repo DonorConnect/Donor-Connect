@@ -1,5 +1,3 @@
-package com.donorconnect.functionaltest;
-
 import junit.framework.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
