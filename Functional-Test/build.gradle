@@ -10,3 +10,11 @@ dependencies {
     testCompile 'org.seleniumhq.selenium:selenium-java:2.25.0'
     testCompile 'org.seleniumhq.selenium:selenium-server:2.25.0'
 }
+
+sourceSets {
+    test {
+        java {
+            srcDir 'test/'
+        }
+    }
+}
