@@ -30,7 +30,7 @@ public class ProjectTestDataControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project(100,"project_name", "project_desc", "img", ProjectStatus.CURRENT,"image/path","summary");
+        dummyProject = new Project(100,"project_name", "project_desc", "img", ProjectStatus.CURRENT,"image/path", "summary", 655);
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");
@@ -40,6 +40,7 @@ public class ProjectTestDataControllerTest {
         request.setParameter("status","CURRENT");
         request.setParameter("thumbnail","thumbnail");
         request.setParameter("summary","summary");
+        request.setParameter("charityId", "655");
 
         testDataController = new ProjectTestDataController();
         projectDAO = mock(ProjectDAOImpl.class);

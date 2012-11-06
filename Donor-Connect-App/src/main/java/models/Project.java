@@ -32,7 +32,12 @@ public class Project {
     @Column(nullable = false)
     private String summary;
 
-    public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+    @Column(nullable = false)
+    private long charityId;
+
+
+
+    public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -40,19 +45,21 @@ public class Project {
         this.status = status;
         this.thumbnail = thumbnail;
         this.summary = summary;
+        this.charityId = charityId;
     }
 
     public Project(String name, String description, String image) {
-        this(0, name, description, image, ProjectStatus.CURRENT ,"","");
+        this(0, name, description, image, ProjectStatus.CURRENT ,"","", 655);
     }
 
-    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId) {
         this.name=name;
         this.description = description;
         this.image = image;
         this.status = status;
         this.thumbnail = thumbnail;
         this.summary = summary;
+        this.charityId = charityId;
     }
 
 
@@ -77,6 +84,10 @@ public class Project {
 
     public String getSummary() {
         return summary;
+    }
+
+    public long getCharityId() {
+        return charityId;
     }
 
     @Override

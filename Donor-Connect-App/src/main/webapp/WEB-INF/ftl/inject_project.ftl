@@ -16,6 +16,7 @@
          </div>
         <div id="project_thumbnail">Project Thumbnail:<input type="text" name="thumbnail" /><br /></div>
         <div id="project-summary">Project Summary:<input type="text" name="summary" /><br /></div>
+        <div id="charity-id">Charity Id:<input type="text" name="charityId" value="655" readonly="true"/><br /></div>
 
         <div id = "submit_button"> <input type="submit" /> </div>
     </form>
