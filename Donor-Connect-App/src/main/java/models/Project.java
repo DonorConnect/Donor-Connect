@@ -3,6 +3,7 @@ package models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "Project")
@@ -15,6 +16,15 @@ public class Project {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false)
+    private Date creationDate;
+
+    @Column(nullable = false)
+    private Date endDate;
+
+    @Column(nullable = true)
+    private Double totalAmount;
 
     @Column (nullable = false ,columnDefinition = "LONGTEXT" ) 
     private String description;
@@ -32,9 +42,12 @@ public class Project {
     @Column(nullable = false)
     private String summary;
 
-    public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+    public Project(long id, String name, Date creationDate, Date endDate, Double totalAmount, String description, String image, ProjectStatus status, String thumbnail, String summary) {
         this.id = id;
         this.name = name;
+        this.creationDate = creationDate;
+        this.endDate = endDate;
+        this.totalAmount = totalAmount;
         this.description = description;
         this.image = image;
         this.status = status;
@@ -42,8 +55,8 @@ public class Project {
         this.summary = summary;
     }
 
-    public Project(String name, String description, String image) {
-        this(0, name, description, image, ProjectStatus.CURRENT ,"","");
+    public Project(String name, String description, String image, Date creationDate, Date endDate, Double totalAmount) {
+        this(0, name, creationDate, endDate, totalAmount, description, image, ProjectStatus.CURRENT ,"","");
     }
 
     public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
@@ -61,6 +74,18 @@ public class Project {
 
     public String getName() {
         return name;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public Double getTotalAmount() {
+        return totalAmount;
     }
 
     public String getDescription() {

@@ -11,11 +11,12 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 public class ProjectTestDataControllerTest {
     private MockHttpServletResponse response;
@@ -30,7 +31,11 @@ public class ProjectTestDataControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project(100,"project_name", "project_desc", "img", ProjectStatus.CURRENT,"image/path","summary");
+        Date creationDate = Calendar.getInstance().getTime();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 10);
+        Date endDate = calendar.getTime();
+        dummyProject = new Project(100,"project_name", creationDate, endDate, 500.0, "project_desc", "img", ProjectStatus.CURRENT,"image/path","summary");
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");

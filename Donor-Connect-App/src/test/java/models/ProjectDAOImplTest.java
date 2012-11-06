@@ -8,6 +8,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -55,6 +57,10 @@ public class ProjectDAOImplTest {
     }
 
     private Project createProject() {
-        return new Project("test project", "test project description", "test/image");
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, 10); // add 10 days
+        Date creationDate = Calendar.getInstance().getTime();
+        Date endDate = cal.getTime();
+        return new Project("test project", "test project description", "test/image", creationDate, endDate, 500.0);
     }
 }

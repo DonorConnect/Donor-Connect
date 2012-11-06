@@ -12,6 +12,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -33,7 +36,11 @@ public class ProjectControllerTest {
         request = new MockHttpServletRequest();
         response = new MockHttpServletResponse();
         adapter = new AnnotationMethodHandlerAdapter();
-        dummyProject = new Project(0, "name", "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
+        Date creationDate = Calendar.getInstance().getTime();
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 10);
+        Date endDate = calendar.getTime();
+        dummyProject = new Project(0, "name", creationDate, endDate, 500.0, "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
 
         request.setRequestURI("/project_detail.ftl");
         request.setMethod("GET");
