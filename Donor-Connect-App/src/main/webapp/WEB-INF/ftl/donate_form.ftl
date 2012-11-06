@@ -10,5 +10,5 @@
     <input name="beneficiaryId" type="hidden" value="${model["project"].getCharityId()}"/>
     <input name="apiKey" type="hidden" value="63B6849B-AF76-483F-8720-07D53BB2FD93"/>
     <input name="sharedSecret" type="hidden" value="KDcI89v2gdlpXjB"/>
-    <input name="onSuccess" type="hidden" value="https://www.google.co.in/"/>
+    <input name="onSuccess" type="hidden" value="http://www.donorsconnect.com:8080/Donor-Connect-App/onSuccess.ftl"/>
 </form>
