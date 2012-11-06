@@ -3,7 +3,9 @@ package models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "Project")
@@ -24,7 +26,7 @@ public class Project {
     private Date endDate;
 
     @Column(nullable = true)
-    private Double totalAmount;
+    private Double targetAmount;
 
     @Column (nullable = false ,columnDefinition = "LONGTEXT" ) 
     private String description;
@@ -42,21 +44,25 @@ public class Project {
     @Column(nullable = false)
     private String summary;
 
-    public Project(long id, String name, Date creationDate, Date endDate, Double totalAmount, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+    @OneToMany(mappedBy = "project")
+    private List<Donation> donations;
+
+    public Project(long id, String name, Date creationDate, Date endDate, Double targetAmount, ProjectStatus status, String summary, String description, String image, String thumbnail) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
         this.endDate = endDate;
-        this.totalAmount = totalAmount;
+        this.targetAmount = targetAmount;
         this.description = description;
         this.image = image;
         this.status = status;
         this.thumbnail = thumbnail;
         this.summary = summary;
+        this.donations = new ArrayList<Donation>();
     }
 
-    public Project(String name, String description, String image, Date creationDate, Date endDate, Double totalAmount) {
-        this(0, name, creationDate, endDate, totalAmount, description, image, ProjectStatus.CURRENT ,"","");
+    public Project(String name, String description, String image, Date creationDate, Date endDate, Double targetAmount) {
+        this(0, name, creationDate, endDate, targetAmount, ProjectStatus.CURRENT, "", description, image, "");
     }
 
     public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
@@ -66,10 +72,20 @@ public class Project {
         this.status = status;
         this.thumbnail = thumbnail;
         this.summary = summary;
+        this.donations = new ArrayList<Donation>();
     }
 
 
     public Project() {
+        this.donations = new ArrayList<Donation>();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -84,8 +100,8 @@ public class Project {
         return endDate;
     }
 
-    public Double getTotalAmount() {
-        return totalAmount;
+    public Double getTargetAmount() {
+        return targetAmount;
     }
 
     public String getDescription() {
@@ -124,11 +140,17 @@ public class Project {
         return result;
     }
 
-    public long getId() {
-        return id;
+    public Double totalDonations() {
+        Double totalAmount = 0.0;
+
+        for (Donation donation : donations) {
+            totalAmount += donation.getAmount();
+        }
+
+        return totalAmount;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void addDonation(Donation donation) {
+        this.donations.add(donation);
     }
 }

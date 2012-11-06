@@ -35,7 +35,7 @@ public class ProjectTestDataControllerTest {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 10);
         Date endDate = calendar.getTime();
-        dummyProject = new Project(100,"project_name", creationDate, endDate, 500.0, "project_desc", "img", ProjectStatus.CURRENT,"image/path","summary");
+        dummyProject = new Project(100,"project_name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "project_desc", "img", "image/path");
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");

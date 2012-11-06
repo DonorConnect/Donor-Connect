@@ -43,8 +43,8 @@ public class AllProjectsControllerTest {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 10);
         Date endDate = calendar.getTime();
-        dummyProject1 = new Project(0, "name", creationDate, endDate, 500.0, "description", "image/path", ProjectStatus.CURRENT,"image/path","summary");
-        dummyProject2 = new Project(0, "name2", creationDate, endDate, 500.0, "description2", "image/path2",ProjectStatus.CURRENT,"image/path","summary");
+        dummyProject1 = new Project(0, "name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description", "image/path", "image/path");
+        dummyProject2 = new Project(0, "name2", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description2", "image/path2", "image/path");
 
         request.setRequestURI("/all_projects.ftl");
         request.setMethod("GET");
