@@ -161,4 +161,8 @@ public class Project {
     public void addDonation(Donation donation) {
         donations.add(donation);
     }
+
+    public int leftDays() {
+        return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
+    }
 }

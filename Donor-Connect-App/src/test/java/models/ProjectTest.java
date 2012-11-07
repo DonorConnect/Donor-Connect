@@ -2,9 +2,13 @@ package models;
 
 import org.junit.Test;
 
+import javax.print.attribute.standard.DateTimeAtCompleted;
+import java.text.DateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
 public class ProjectTest {
@@ -35,5 +39,19 @@ public class ProjectTest {
         Double currentAmount = project1.totalDonations();
         assertThat(currentAmount, is(1500.0));
     }
+
+    @Test
+    public void shouldCalculateDaysLeft() {
+        Calendar creationDate = Calendar.getInstance();
+        creationDate.set(2012, 11, 2);
+        Calendar endDateCalendar = Calendar.getInstance();
+        endDateCalendar.set(2012, 12, 1);
+
+        Project project = new Project(0,"DummyProject", creationDate.getTime(), endDateCalendar.getTime(), 0.0,
+                ProjectStatus.CURRENT, "this is a dummy project", "description", "image/children.jpg", "image/children.jpg", (long)1 );
+        assertThat(project.leftDays(), is(30));
+
+    }
+
 
 }
