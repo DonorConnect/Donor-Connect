@@ -15,7 +15,7 @@
                 </div>
 
                 <!-- AddThis Button BEGIN -->
-                <div class="project-share addthis_toolbox addthis_default_style " addthis:url="http://donorsconnect.com" addthis:title=${model["project"].getName()}>
+                <div class="project-share addthis_toolbox addthis_default_style " addthis:url="http://donorsconnect.com:8080/Donor-Connect-App/project_details.ftl?project_id=${model["project"].getId()}" addthis:title=${model["project"].getName()}>
                     <a class="project-share addthis_button_preferred_1"></a>
                     <a class="project-share addthis_button_preferred_2"></a>
                 </div>
