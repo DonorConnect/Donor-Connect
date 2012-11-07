@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
-public class HomePage {
+public class HomePageTest {
     WebDriver wd;
     WebElement logo;
     WebElement welcomeText;
