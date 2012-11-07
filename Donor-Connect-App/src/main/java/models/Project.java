@@ -149,17 +149,16 @@ public class Project {
         return result;
     }
 
+
     public Double totalDonations() {
         Double totalAmount = 0.0;
-
         for (Donation donation : donations) {
-            totalAmount += donation.getAmount();
+                totalAmount += donation.getAmount();
         }
-
-        return totalAmount;
+            return totalAmount;
     }
 
     public void addDonation(Donation donation) {
-        this.donations.add(donation);
+        donations.add(donation);
     }
 }
