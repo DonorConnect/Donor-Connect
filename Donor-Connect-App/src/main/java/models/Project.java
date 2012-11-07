@@ -34,8 +34,7 @@ public class Project {
 
     @Column(nullable = false)
     private long charityId;
-
-
+    private long defaultCharityId = 655;
 
     public Project(long id, String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId) {
         this.id = id;
@@ -87,6 +86,9 @@ public class Project {
     }
 
     public long getCharityId() {
+        if (charityId == 0) {
+            return defaultCharityId;
+        }
         return charityId;
     }
 
