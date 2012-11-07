@@ -1,9 +1,14 @@
-<#macro defaultLayout>
+<#macro defaultLayout title="Donors Connect" desc="Donors Connect Website" img="image/children_thumbnail.png">
 <html>
 <head>
     <meta http-equiv="Content-Type"
           content="text/html;charset=ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+
+    <meta property="og:title" content="${title}"/>
+    <meta property="og:image" content="${img}"/>
+    <meta property="og:description" content="${desc}"/>
+
     <link rel="stylesheet" href="css/project.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/layout.css">

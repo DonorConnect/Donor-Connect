@@ -1,5 +1,5 @@
 <#import "DefaultLayout.ftl" as layout>
-<@layout.defaultLayout>
+<@layout.defaultLayout title="${model['project'].getName()}" desc="${model['project'].getSummary()}" img="${model['project'].getThumbnail()}">
 
 <div class="row">
     <div class="project">
@@ -14,11 +14,14 @@
                     <img src="${model["project"].getImage()}" alt="children">
                 </div>
 
-                <div class="project-share">
-                    <img src="image/twitter.png" alt="twitter">
-                    <img src="image/facebook.png" alt="facebook">
-
+                <!-- AddThis Button BEGIN -->
+                <div class="project-share addthis_toolbox addthis_default_style " addthis:url="http://donorsconnect.com" addthis:title=${model["project"].getName()}>
+                    <a class="project-share addthis_button_preferred_1"></a>
+                    <a class="project-share addthis_button_preferred_2"></a>
                 </div>
+                <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-509a39d35b8e8a39"></script>
+                <!-- AddThis Button END -->
+
                 <div class="project-detail">
                     <p> ${model["project"].getDescription()} </p>
                 </div>
