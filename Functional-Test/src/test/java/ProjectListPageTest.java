@@ -8,6 +8,7 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -23,7 +24,7 @@ public class ProjectListPageTest {
 
     @Before
     public void setUp() {
-        webDriver = new FirefoxDriver();
+        webDriver = new HtmlUnitDriver();
 
         clearProjects();
 
@@ -55,12 +56,11 @@ public class ProjectListPageTest {
 
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         WebElement thumbnail = webDriver.findElement(By.xpath(String.format("//div[@class='projectThumbnail']/a[@href='project_detail.ftl?project_id=%s']", projectId)));
-        assertThat(thumbnail.isDisplayed(), is(true));
 
+        assertThat(thumbnail.isDisplayed(), is(true));
         thumbnail.click();
 
         waitForElementToLoad(webDriver, By.xpath("//h2[@class='project-name']"));
-
         assertThat(webDriver.findElement(By.xpath("//h2[@class='project-name']")).getText(), is("Project Check Clickable Thumbnail"));
     }
 
@@ -72,7 +72,6 @@ public class ProjectListPageTest {
         webDriver.findElement(By.xpath("//h4/a[contains(text(), 'Project Check Clickable Thumbnail')]")).click();
 
         waitForElementToLoad(webDriver, By.xpath("//h2[@class='project-name']"));
-
         assertThat(webDriver.getCurrentUrl(), is(String.format("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=%s", projectId)));
     }
 
@@ -123,13 +122,13 @@ public class ProjectListPageTest {
     }
 
     @Test
-    public void VerifyCurrentProject() {
+    public void verifyCurrentProject() {
         insertDataAndCheck("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary", "Current");
         verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
     }
 
     @Test
-    public void VerifyCompleteProject() {
+    public void verifyCompleteProject() {
         insertDataAndCheck("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary", "Complete");
         verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
     }
