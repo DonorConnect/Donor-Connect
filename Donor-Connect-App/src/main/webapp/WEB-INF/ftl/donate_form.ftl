@@ -3,12 +3,12 @@
         <div>
             <label>Rs:</label>
             <input id="customAmount" max="1000000000000000000000" min="220" name="donationAmount" type="number"/> <br /><br />
-            <button type="submit">Donate</button>
+            <button id="donateButton" type="submit">Donate</button>
         </div>
     </fieldset>
-    <input name="currencyCode" type="hidden" value="INR"/>
-    <input name="beneficiaryId" type="hidden" value="${model["project"].getCharityId()}"/>
-    <input name="apiKey" type="hidden" value="63B6849B-AF76-483F-8720-07D53BB2FD93"/>
-    <input name="sharedSecret" type="hidden" value="KDcI89v2gdlpXjB"/>
-    <input name="onSuccess" type="hidden" value="https://www.google.co.in/"/>
+    <input id="currencyCode" name="currencyCode" type="hidden" value="INR"/>
+    <input id="beneficiaryId" name="beneficiaryId" type="hidden" value="${model["project"].getCharityId()}"/>
+    <input id="apiKey" name="apiKey" type="hidden" value="63B6849B-AF76-483F-8720-07D53BB2FD93"/>
+    <input id="sharedSecret" name="sharedSecret" type="hidden" value="KDcI89v2gdlpXjB"/>
+    <input id="onSuccess" name="onSuccess" type="hidden" value="https://www.google.co.in/"/>
 </form>
