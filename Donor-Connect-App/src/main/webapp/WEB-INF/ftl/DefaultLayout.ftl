@@ -1,8 +1,7 @@
 <#macro defaultLayout>
 <html>
 <head>
-    <meta http-equiv="Content-Type"
-          content="text/html;charset=ISO-8859-1">
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <link rel="stylesheet" href="css/project.css">
     <link rel="stylesheet" href="css/main.css">
