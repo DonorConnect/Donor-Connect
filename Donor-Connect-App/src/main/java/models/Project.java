@@ -43,7 +43,7 @@ public class Project {
 
     @Column(nullable = false)
     private String summary;
-
+    
     @OneToMany(mappedBy = "project")
     private List<Donation> donations;
 
