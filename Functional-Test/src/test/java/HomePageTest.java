@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -6,9 +5,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class HomePageTest {
     WebDriver wd;
-    WebElement logo;
     WebElement welcomeText;
     WebElement welcomeImage;
 
@@ -20,13 +21,11 @@ public class HomePageTest {
 
     @Test
     public void HomePageHasAllElements() {
-        System.out.println(wd.getPageSource());
-        logo = wd.findElement(By.xpath("(//img)[1]"));
         welcomeText = wd.findElement(By.xpath("//h1"));
         welcomeImage = wd.findElement(By.xpath("//img[@src='image/children.jpg']"));
 
-        Assert.assertEquals(welcomeText.getText(), "welcome...");
-        welcomeImage.isDisplayed();
+        assertEquals("welcome...", welcomeText.getText());
+        assertTrue(welcomeImage.isDisplayed());
     }
 }
 
