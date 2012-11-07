@@ -40,7 +40,7 @@ public class ProjectControllerTest {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 10);
         Date endDate = calendar.getTime();
-        dummyProject = new Project(0, "name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description", "image/path", "image/path");
+        dummyProject = new Project(0, "name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description", "image/path", "image/path", 655);
 
         request.setRequestURI("/project_detail.ftl");
         request.setMethod("GET");

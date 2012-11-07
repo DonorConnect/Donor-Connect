@@ -26,8 +26,8 @@ public class ProjectTestDataController {
 
     @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.POST)
     public ModelAndView injectProject(@RequestParam("name") String name, @RequestParam("description") String desc, @RequestParam("img") String img, @RequestParam("status") ProjectStatus status,
-                                      @RequestParam("thumbnail") String thumbnail, @RequestParam("summary") String summary) {
-        final Project project = dao.save(new Project(name, desc, img,status,thumbnail,summary));
+                                      @RequestParam("thumbnail") String thumbnail, @RequestParam("summary") String summary, @RequestParam("charityId") String charityId ) {
+        final Project project = dao.save(new Project(name, desc, img,status,thumbnail,summary, Long.valueOf(charityId)));
 
         HashMap<String, String> model = new HashMap<String, String>() {{
             put("created_project_id", String.valueOf(project.getId()));

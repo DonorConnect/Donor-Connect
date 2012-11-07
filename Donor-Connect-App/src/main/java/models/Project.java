@@ -47,7 +47,10 @@ public class Project {
     @OneToMany(mappedBy = "project")
     private List<Donation> donations;
 
-    public Project(long id, String name, Date creationDate, Date endDate, Double targetAmount, ProjectStatus status, String summary, String description, String image, String thumbnail) {
+    @Column(nullable = false)
+    private long charityId;
+
+    public Project(long id, String name, Date creationDate, Date endDate, Double targetAmount, ProjectStatus status, String summary, String description, String image, String thumbnail, long charityId) {
         this.id = id;
         this.name = name;
         this.creationDate = creationDate;
@@ -59,13 +62,14 @@ public class Project {
         this.thumbnail = thumbnail;
         this.summary = summary;
         this.donations = new ArrayList<Donation>();
+        this.charityId = charityId;
     }
 
     public Project(String name, String description, String image, Date creationDate, Date endDate, Double targetAmount) {
-        this(0, name, creationDate, endDate, targetAmount, ProjectStatus.CURRENT, "", description, image, "");
+        this(0, name, creationDate, endDate, targetAmount, ProjectStatus.CURRENT, "", description, image, "", 655);
     }
 
-    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary) {
+    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId) {
         this.name=name;
         this.description = description;
         this.image = image;
@@ -73,6 +77,7 @@ public class Project {
         this.thumbnail = thumbnail;
         this.summary = summary;
         this.donations = new ArrayList<Donation>();
+        this.charityId = charityId;
     }
 
 
@@ -118,6 +123,10 @@ public class Project {
 
     public String getSummary() {
         return summary;
+    }
+
+    public long getCharityId() {
+        return charityId;
     }
 
     @Override

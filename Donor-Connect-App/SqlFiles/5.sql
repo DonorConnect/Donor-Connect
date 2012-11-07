@@ -1,0 +1,1 @@
+ALTER TABLE Project ADD charityId bigint(20) not null;

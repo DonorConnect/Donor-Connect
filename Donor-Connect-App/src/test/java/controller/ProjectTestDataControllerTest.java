@@ -16,7 +16,9 @@ import java.util.Date;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class ProjectTestDataControllerTest {
     private MockHttpServletResponse response;
@@ -35,7 +37,7 @@ public class ProjectTestDataControllerTest {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.DATE, 10);
         Date endDate = calendar.getTime();
-        dummyProject = new Project(100,"project_name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "project_desc", "img", "image/path");
+        dummyProject = new Project(100,"project_name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "project_desc", "img", "image/path", 655);
 
         request.setRequestURI("/inject_project.ftl");
         request.setMethod("POST");
@@ -45,6 +47,7 @@ public class ProjectTestDataControllerTest {
         request.setParameter("status","CURRENT");
         request.setParameter("thumbnail","thumbnail");
         request.setParameter("summary","summary");
+        request.setParameter("charityId", "655");
 
         testDataController = new ProjectTestDataController();
         projectDAO = mock(ProjectDAOImpl.class);

@@ -26,6 +26,9 @@
         </div>
         <div class="col4">
             #TODO Contact Information
+            <div id="donate-form">
+                <#include "donate_form.ftl"/>
+            </div>
         </div>
         <div style="clear:both"></div>
     </div>
