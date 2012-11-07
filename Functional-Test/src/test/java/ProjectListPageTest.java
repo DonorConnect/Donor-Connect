@@ -10,11 +10,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class ViewProjectListPage {
+public class ProjectListPageTest {
     WebDriver wd = new HtmlUnitDriver();
 
     @Test
-    public void clickAbleSeeAll() {
+    public void clickableSeeAll() {
         wd.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
         wd.findElement(By.xpath("//a[@href='all_projects.ftl']")).isEnabled();
         wd.findElement(By.xpath("//a[@href='all_projects.ftl']")).click();
