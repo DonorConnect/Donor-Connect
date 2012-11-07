@@ -15,7 +15,7 @@
                     <ul>
                         <li><a href="home.ftl">Home</a></li>
                         <li>|</li>
-                        <li><a href="all_projects.ftl">Project</a></li>
+                        <li><a href="all_projects.ftl">Projects</a></li>
                         <li>|</li>
                         <li><a href="">About</a></li>
                     </ul>
