@@ -45,4 +45,8 @@ public class Donation {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
 }

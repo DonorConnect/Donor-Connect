@@ -56,6 +56,16 @@ public class ProjectDAOImplTest {
         assertThat(projects.size(), is(0));
     }
 
+    @Test
+    public void shouldSaveADonation() {
+        Project project = projectDAO.save(createProject());
+
+        Project updatedProject = projectDAO.addDonationToProject(project.getId(), new Donation(project, 300.0));
+
+        assertThat(updatedProject.getDonations().size(), is(1));
+        assertThat(updatedProject.getDonations().get(0).getAmount(), is(300.0));
+    }
+
     private Project createProject() {
         Calendar cal = Calendar.getInstance();
         cal.add(Calendar.DATE, 10); // add 10 days

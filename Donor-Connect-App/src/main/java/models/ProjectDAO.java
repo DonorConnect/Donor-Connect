@@ -10,5 +10,6 @@ public interface ProjectDAO {
     List<Project> fetchAllCurrent();
 
     void deleteAll();
+    Project addDonationToProject(long id, Donation donation);
 
 }

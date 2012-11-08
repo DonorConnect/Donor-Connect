@@ -4,10 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Table(name = "Project")
@@ -187,5 +184,9 @@ public class Project {
         double donationPercent = (this.totalDonations())*100/targetAmount;
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(donationPercent));
+    }
+
+    public List<Donation> getDonations() {
+        return Collections.unmodifiableList(donations);
     }
 }

@@ -42,4 +42,5 @@ http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
     <tx:annotation-driven/>
 
     <bean id="projectDAO" class="models.ProjectDAOImpl"/>
+
 </beans>

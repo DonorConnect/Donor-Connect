@@ -30,8 +30,19 @@ public class ProjectDAOImpl implements ProjectDAO {
         return entityManager.createQuery("From Project where status = 'CURRENT'").getResultList();
     }
 
+
     public void deleteAll() {
         Query deleteQuery = entityManager.createQuery("Delete From Project");
         deleteQuery.executeUpdate();
+    }
+
+    @Override
+    public Project addDonationToProject(long id, Donation donation) {
+        Project project = fetch(id);
+        project.addDonation(donation);
+        entityManager.persist(project);
+        entityManager.flush();
+
+        return fetch(id);
     }
 }
