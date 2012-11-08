@@ -14,7 +14,7 @@ public class BaseClass {
 
     @Before
     public void setUp() {
-        webDriver = new FirefoxDriver();
+        webDriver = new HtmlUnitDriver();
         clearProjects();
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
     }
