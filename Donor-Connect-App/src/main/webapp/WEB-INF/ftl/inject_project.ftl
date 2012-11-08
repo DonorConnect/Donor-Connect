@@ -5,9 +5,12 @@
 </#if>
 <div class="row">
     <form action="inject_project.ftl" method="POST">
-        <div id="project_name">Project Name:<input type="text" name="name" /><br /></div>
-        <div id="project_description">Project Description:<input type="text" name="description" /><br /></div>
-        <div id="project_image">Project Image:<input type="text" name="img" /><br /></div>
+        <div id="project_name">Project Name:<input type="text" name="name" /></div>
+        <div id="project_description">Project Description:<input type="text" name="description" /></div>
+        <div>Project EndDate:<input type="date" name="endDate" /></div>
+        <div>Project Target Amount:<input type="text" name="targetAmount" /></div>
+
+        <div id="project_image">Project Image:<input type="text" name="img" /></div>
         <div>Project Status:
             <select name="status">
                 <option value="CURRENT" >CURRENT</option>

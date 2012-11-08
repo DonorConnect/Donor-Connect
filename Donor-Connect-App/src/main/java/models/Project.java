@@ -4,6 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public class Project {
         this(0, name, creationDate, endDate, targetAmount, ProjectStatus.CURRENT, "", description, image, "", 655);
     }
 
-    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId) {
+    public Project(String name, String description, String image, ProjectStatus status, String thumbnail, String summary, long charityId, Date endDate, Double targetAmount) {
         this.name=name;
         this.description = description;
         this.image = image;
@@ -78,6 +79,21 @@ public class Project {
         this.summary = summary;
         this.donations = new ArrayList<Donation>();
         this.charityId = charityId;
+        this.endDate = endDate;
+        this.targetAmount = targetAmount;
+        Calendar cal = initCurrentTime();
+        this.creationDate = cal.getTime();
+
+
+    }
+
+    private Calendar initCurrentTime() {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.HOUR_OF_DAY, 0);
+        cal.set(Calendar.MINUTE, 0);
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        return cal;
     }
 
 

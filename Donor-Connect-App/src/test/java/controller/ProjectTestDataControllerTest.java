@@ -48,6 +48,8 @@ public class ProjectTestDataControllerTest {
         request.setParameter("thumbnail","thumbnail");
         request.setParameter("summary","summary");
         request.setParameter("charityId", "655");
+        request.setParameter("endDate", "2012-11-21");
+        request.setParameter("targetAmount", "200.0");
 
         testDataController = new ProjectTestDataController();
         projectDAO = mock(ProjectDAOImpl.class);
