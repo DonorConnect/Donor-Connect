@@ -3,6 +3,7 @@ package models;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -180,5 +181,11 @@ public class Project {
 
     public int leftDays() {
         return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
+    }
+
+    public double donationPercentage() {
+        double donationPercent = (this.totalDonations())*100/targetAmount;
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(donationPercent));
     }
 }

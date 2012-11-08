@@ -1,5 +1,6 @@
 package controller;
 
+import models.Donation;
 import models.Project;
 import models.ProjectDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Calendar;
 
 @Controller
 public class ProjectController {
@@ -23,6 +26,7 @@ public class ProjectController {
 
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", project_id);
+        modelMap.addAttribute("donationPercentage", project.donationPercentage());
 
         return "project_detail";
     }

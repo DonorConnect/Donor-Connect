@@ -2,10 +2,7 @@ package models;
 
 import org.junit.Test;
 
-import javax.print.attribute.standard.DateTimeAtCompleted;
-import java.text.DateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
@@ -49,6 +46,27 @@ public class ProjectTest {
         Project project = new Project(0,"DummyProject", creationDate.getTime(), endDateCalendar.getTime(), 0.0,
                 ProjectStatus.CURRENT, "this is a dummy project", "description", "image/children.jpg", "image/children.jpg", (long)1 );
         assertThat(project.leftDays(), is(40));
+    }
+
+    @Test
+    public void shouldCaculateDonationPercentage() {
+        double targetAmount = 2000.0;
+        Project project = new Project(0,"DummyProject", Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), targetAmount,
+                ProjectStatus.CURRENT, "this is a dummy project", "description", "image/children.jpg", "image/children.jpg", (long)1 );
+        Donation donation = new Donation(project, 1000.0, Calendar.getInstance().getTime());
+        project.addDonation(donation);
+        assertThat(project.donationPercentage(), is(50.0));
+
+    }
+
+    @Test
+    public void shouldCaculateDonationPercentageDouble() {
+        double targetAmount = 2040.0;
+        Project project = new Project(0,"DummyProject", Calendar.getInstance().getTime(), Calendar.getInstance().getTime(), targetAmount,
+                ProjectStatus.CURRENT, "this is a dummy project", "description", "image/children.jpg", "image/children.jpg", (long)1 );
+        Donation donation = new Donation(project, 456.0, Calendar.getInstance().getTime());
+        project.addDonation(donation);
+        assertThat(project.donationPercentage(), is(22.35));
     }
 
 }

@@ -39,15 +39,15 @@ public class ProjectTestDataController {
                                       @RequestParam("charityId") String charityId,
                                       @RequestParam("endDate") String endDate,
                                       @RequestParam("targetAmount") Double targetAmount) throws ParseException {
-        System.out.println(Calendar.getInstance().getTime());
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         Date date = formatter.parse(endDate);
-        System.out.println(date);
         final Project project = dao.save(new Project(name, desc, img,status,thumbnail,summary, Long.valueOf(charityId), date, targetAmount));
 
         HashMap<String, String> model = new HashMap<String, String>() {{
             put("created_project_id", String.valueOf(project.getId()));
         }};
+
+
         return new ModelAndView("inject_project", model);
     }
 

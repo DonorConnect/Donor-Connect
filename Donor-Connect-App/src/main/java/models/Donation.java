@@ -15,6 +15,7 @@ public class Donation {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name="project_id")
     private Project project;
 
     @Column
