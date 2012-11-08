@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/jquery.validate.css">
-    <title>Donors-Connect-Project</title></head>
+    <title>Donors-Connect-Project</title>
     <script type="text/javascript" src="javascript/jquery-1.3.2.js"></script>
     <script type="text/javascript" src="javascript/jquery.validate.js"></script>
+    <script type="text/javascript" src="javascript/ammado.js"></script>
+</head>
+
 <body>
 <div style="background: #BFD9DA"><#include "header.ftl" /></div>
 <div style="height: 20px; clear: both;">
@@ -25,7 +28,6 @@
 <div class="body">
     <#nested />
 </div>
-<script type="text/javascript" src="javascript/ammado.js"></script>
 </body>
 </html>
 </#macro>

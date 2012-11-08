@@ -17,7 +17,9 @@ buildscript {
 }
 
 task testJavascript {
-    def process = "./testJavascript.sh".execute()
+    def systemType = System.properties["os.name"].toString().toLowerCase().contains("mac")
+    def cmdLine = "./testJavascript.sh " + (systemType?"mac":"linux")
+    def process = cmdLine.execute()
     process.text.eachLine {println it}
     if (process.exitValue() != 0)
         assert fail: "javascript tests are failing!"
