@@ -20,8 +20,8 @@ public class InsertClass extends BaseClass{
         webDriver.findElement(By.name("name")).sendKeys(name);
         webDriver.findElement(By.name("description")).sendKeys(description);
         webDriver.findElement(By.name("img")).sendKeys(image);
-        Select foo = new Select(webDriver.findElement(By.name("status")));
-        foo.selectByValue("COMPLETED");
+        Select status = new Select(webDriver.findElement(By.name("status")));
+        status.selectByValue("COMPLETED");
         webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
         webDriver.findElement(By.name("summary")).sendKeys(summary);
         webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
