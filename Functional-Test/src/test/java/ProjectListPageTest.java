@@ -20,13 +20,12 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.core.IsNot.not;
 
+
 public class ProjectListPageTest extends InsertClass{
 
     String project_id;
-
     @Test
     public void clickableSeeAll() {
-        //assertThat(webDriver.findElement(By.xpath("//div[@class='activeProject']/a[@href='all_projects.ftl']")),is(true));
         assertThat(webDriver.findElement(By.xpath("//div[@class='activeProject']/a[@href='all_projects.ftl']")).isDisplayed(),is(true));
         webDriver.findElement(By.xpath("//div[@class='activeProject']/a[@href='all_projects.ftl']")).click();
         waitForElementToLoad(webDriver,By.xpath("//div[@class='projectHeader']/h3"))  ;

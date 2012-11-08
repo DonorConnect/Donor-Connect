@@ -10,14 +10,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.annotation.Nullable;
 
 public class BaseClass {
+    public WebDriver webDriver;
 
-    WebDriver webDriver;
     @Before
     public void setUp() {
-        webDriver = new FirefoxDriver();
+        webDriver = new HtmlUnitDriver();
         clearProjects();
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
     }
+
     @After
     public void tearDown() {
         webDriver.close();
