@@ -18,22 +18,19 @@ import javax.annotation.Nullable;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.hamcrest.core.IsNot.not;
 
-public class ProjectListPageTest {
+public class ProjectListPageTest extends BaseClass{
     WebDriver webDriver;
 
     @Before
-    public void setUp() {
-        webDriver = new HtmlUnitDriver();
-
-        clearProjects();
-
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/");
+    public void begin() {
+        setUp();
     }
 
     @After
-    public void tearDown() {
-        webDriver.close();
+    public void end() {
+        tearDown();
     }
 
     @Test
@@ -75,6 +72,19 @@ public class ProjectListPageTest {
         assertThat(webDriver.getCurrentUrl(), is(String.format("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=%s", projectId)));
     }
 
+    @Test
+    public void verifyCurrentProject() {
+        insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
+        verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
+    }
+
+    @Test
+    public void verifyCompleteProject() {
+        insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
+        insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary");
+        verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
+    }
+
     public String insertDataForCurrentProject(String name, String description, String image, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
         webDriver.findElement(By.name("name")).sendKeys(name);
@@ -108,49 +118,11 @@ public class ProjectListPageTest {
         assertTrue(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/a/img[@src='" + thumbnail + "']")).isDisplayed());
     }
 
-
-    public boolean isElementPresent(By by) {
-        try {
-            webDriver.findElement(by);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
-    }
-
     public void verifyNegative(String name, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        boolean x = isElementPresent(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']"));
-        if (!x) {
-            System.out.println("Test Successful");
-        }
+        assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText(),is(not(name)));
     }
 
-    @Test
-    public void verifyCurrentProject() {
-        insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
-        verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
-    }
 
-    @Test
-    public void verifyCompleteProject() {
-        insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary");
-        verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
-    }
 
-    private void waitForElementToLoad(WebDriver webDriver, final By xpath) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 1000);
-        wait.until(new Predicate<WebDriver>() {
-            @Override
-            public boolean apply(@Nullable WebDriver input) {
-                return input.findElement(xpath).isDisplayed();
-            }
-        });
-    }
-
-    private void clearProjects() {
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
-        webDriver.findElement(By.xpath("//div[@id='delete_projects']/a")).click();
-        waitForElementToLoad(webDriver, By.xpath("//div[@id='delete_projects']/a"));
-    }
 }
