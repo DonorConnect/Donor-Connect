@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Jasmine Spec Runner</title>
+    <!-- Jasmine boilerplate -->
+    <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
+    <script type="text/javascript" language="javascript" src="lib/jasmine.js"></script>
+    <script type="text/javascript" language="javascript" src="lib/jasmine-html.js"></script>
+
+    <script type="text/javascript" src="lib/console-runner.js"></script>
+
+    <!--source js files-->
+    <script type="text/javascript" language="javascript" src="../../main/webapp/javascript/jquery-1.3.2.js"></script>
+    <script type="text/javascript" language="javascript" src="../../main/webapp/javascript/jquery.validate.js"></script>
+    <script type="text/javascript" language="javascript" src="../../main/webapp/javascript/ammado.js"></script>
+
+    <!--test js files-->
+    <script type="text/javascript" language="javascript" src="AmmadoSpec.js"></script>
+
+</head>
+<body>
+
+<script type="text/javascript" language="javascript">
+    var console_reporter = new jasmine.ConsoleReporter()
+    jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+    jasmine.getEnv().addReporter(console_reporter);
+    jasmine.getEnv().execute();
+</script>
+
+
+</body>
+</html>
+
+

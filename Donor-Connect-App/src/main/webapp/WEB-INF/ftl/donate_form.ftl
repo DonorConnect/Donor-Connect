@@ -1,8 +1,9 @@
+<script type="text/javascript" src="javascript/project_details_bindings.js"></script>
 <form accept-charset="utf-8" action="https://api.ammadodemo.com/v1/donate" method="post">
     <fieldset>
         <div>
             <label>Rs:</label>
-            <input id="customAmount" max="1000000000000000000000" min="220" name="donationAmount" type="number"/> <br /><br />
+            <input id="customAmount" max="570000.00" min="220" name="donationAmount" type="text"/> <br/><br/>
             <button id="donateButton" type="submit">Donate</button>
         </div>
     </fieldset>

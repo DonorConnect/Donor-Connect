@@ -16,6 +16,16 @@ buildscript {
     }
 }
 
+
+task testJavascript {
+    def process = "./testJavascript.sh".execute()
+    process.text.eachLine {println it}
+    if (process.exitValue() != 0)
+        assert fail: "javascript tests are failing!"
+}
+test.dependsOn (testJavascript)
+
+
 sourceSets {
     main {
         resources {
