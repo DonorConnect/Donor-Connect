@@ -181,7 +181,7 @@ public class Project {
     }
 
     public double donationPercentage() {
-        double donationPercent = (this.totalDonations())*100/targetAmount;
+        double donationPercent = totalDonations()*100/targetAmount;
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(donationPercent));
     }

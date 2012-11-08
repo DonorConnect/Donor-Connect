@@ -20,8 +20,6 @@ public class ProjectController {
     @RequestMapping(value = "/project", method = RequestMethod.GET)
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id){
         Project project = dao.fetch(id);
-        //@PathVariable int id
-                                 //value="/{id}"
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", id);
 //        modelMap.addAttribute("donationPercentage", project.donationPercentage());
