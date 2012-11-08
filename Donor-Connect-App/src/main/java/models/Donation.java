@@ -21,16 +21,12 @@ public class Donation {
     @Column
     private double amount;
 
-    @Column
-    private Date date;
-
     public Donation() {
     }
 
-    public Donation(Project project, double amount, Date date) {
+    public Donation(Project project, double amount) {
         this.project = project;
         this.amount = amount;
-        this.date = date;
     }
 
     public Project getProject() {
@@ -41,7 +37,12 @@ public class Donation {
         return amount;
     }
 
-    public Date getDate() {
-        return date;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
