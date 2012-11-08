@@ -61,13 +61,13 @@ public class NavigationBarTest extends InsertClass{
         assertThat(webDriver.getCurrentUrl(),is(URLprojectpage));
     }
 
-    @Test
+    /*@Test
     public void homeLinkOnProjectPageRedirectstoHomePage() {
         String project_id = insertDataForCurrentProject("Books for children","This is project for children who want to study.So please help by donating for their books","image/children.jpg","image/children_thumbnail.png","Donate for kids","2012-12-12","20000.00");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=" + project_id);
         webDriver.findElement(By.xpath("//nav[@class='menubar']/ul/li/a[@href='home.ftl']")).click();
         waitForElementToLoad(webDriver,By.xpath("//div[@class='col6']/a/img[@class='logopic']"));
         assertThat(webDriver.getCurrentUrl(),is(URLhomepage));
-    }
+    }*/
 
 }
