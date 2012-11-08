@@ -52,7 +52,7 @@ public class ProjectListPageTest {
 
     @Test
     public void clickableThumbnail() {
-        String projectId = insertDataAndCheck("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary", "Current");
+        String projectId = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary");
 
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         WebElement thumbnail = webDriver.findElement(By.xpath(String.format("//div[@class='projectThumbnail']/a[@href='project_detail.ftl?project_id=%s']", projectId)));
@@ -66,7 +66,7 @@ public class ProjectListPageTest {
 
     @Test
     public void clickableProjectName() {
-        String projectId = insertDataAndCheck("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary", "Current");
+        String projectId = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary");
 
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         webDriver.findElement(By.xpath("//h4/a[contains(text(), 'Project Check Clickable Thumbnail')]")).click();
@@ -75,30 +75,35 @@ public class ProjectListPageTest {
         assertThat(webDriver.getCurrentUrl(), is(String.format("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=%s", projectId)));
     }
 
-    public String insertDataAndCheck(String name, String description, String image, String thumbnail, String summary, String status) {
+    public String insertDataForCurrentProject(String name, String description, String image, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
         webDriver.findElement(By.name("name")).sendKeys(name);
         webDriver.findElement(By.name("description")).sendKeys(description);
         webDriver.findElement(By.name("img")).sendKeys(image);
-        if (status.equalsIgnoreCase("Complete")) {
-            Select foo = new Select(webDriver.findElement(By.name("status")));
-            foo.selectByValue("COMPLETED");
-            // webDriver.findElement(By.name("status")).sendKeys(Keys.ARROW_DOWN);
-        }
         webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
         webDriver.findElement(By.name("summary")).sendKeys(summary);
         webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
+        waitForElementToLoad(webDriver , By.id("project_id"));
+        return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
+    }
 
-        WebElement element = (new WebDriverWait(webDriver, 4)).until(ExpectedConditions.visibilityOfElementLocated(By.id("project_id")));
-        if (!element.isDisplayed()) {
-            System.exit(0);
-        }
+    public String insertDataForCompleteProject(String name, String description, String image, String thumbnail, String summary) {
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
+        webDriver.findElement(By.name("name")).sendKeys(name);
+        webDriver.findElement(By.name("description")).sendKeys(description);
+        webDriver.findElement(By.name("img")).sendKeys(image);
+        Select foo = new Select(webDriver.findElement(By.name("status")));
+        foo.selectByValue("COMPLETED");
+        webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
+        webDriver.findElement(By.name("summary")).sendKeys(summary);
+        webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
+        waitForElementToLoad(webDriver , By.id("project_id"));
         return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
     }
 
     public void verifyPositive(String name, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
-        Assert.assertEquals((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText()), name);
+        assertThat((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText()), is(name));
         Assert.assertEquals((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/p[@class='projectBrief']")).getText()), summary);
         assertTrue(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/a/img[@src='" + thumbnail + "']")).isDisplayed());
     }
@@ -123,13 +128,13 @@ public class ProjectListPageTest {
 
     @Test
     public void verifyCurrentProject() {
-        insertDataAndCheck("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary", "Current");
+        insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
         verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
     }
 
     @Test
     public void verifyCompleteProject() {
-        insertDataAndCheck("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary", "Complete");
+        insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary");
         verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
     }
 
