@@ -1,6 +1,9 @@
 import com.google.common.base.Predicate;
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -9,13 +12,13 @@ import javax.annotation.Nullable;
 public class BaseClass {
 
     WebDriver webDriver;
-
+    @Before
     public void setUp() {
-        webDriver = new HtmlUnitDriver();
+        webDriver = new FirefoxDriver();
         clearProjects();
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
     }
-
+    @After
     public void tearDown() {
         webDriver.close();
     }

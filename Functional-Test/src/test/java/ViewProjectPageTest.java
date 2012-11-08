@@ -13,16 +13,6 @@ import static org.junit.Assert.*;
 public class ViewProjectPageTest extends InsertClass {
     String project_id;
 
-    @Before
-    public void begin() {
-        setUp();
-    }
-
-    @After
-    public void end() {
-        tearDown();
-    }
-
     @Test
     public void verifyPageWithHappyPath(){
        project_id = insertDataForCurrentProject ("Sailee", "TWU29", "image/images.jpeg","image/children_thumbnail.png","Summary") ;
