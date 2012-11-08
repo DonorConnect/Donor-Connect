@@ -20,7 +20,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.hamcrest.core.IsNot.not;
 
-public class ProjectListPageTest extends BaseClass{
+public class ProjectListPageTest extends InsertClass{
     WebDriver webDriver;
 
     @Before
@@ -85,31 +85,7 @@ public class ProjectListPageTest extends BaseClass{
         verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
     }
 
-    public String insertDataForCurrentProject(String name, String description, String image, String thumbnail, String summary) {
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
-        webDriver.findElement(By.name("name")).sendKeys(name);
-        webDriver.findElement(By.name("description")).sendKeys(description);
-        webDriver.findElement(By.name("img")).sendKeys(image);
-        webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
-        webDriver.findElement(By.name("summary")).sendKeys(summary);
-        webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
-        waitForElementToLoad(webDriver , By.id("project_id"));
-        return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
-    }
 
-    public String insertDataForCompleteProject(String name, String description, String image, String thumbnail, String summary) {
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
-        webDriver.findElement(By.name("name")).sendKeys(name);
-        webDriver.findElement(By.name("description")).sendKeys(description);
-        webDriver.findElement(By.name("img")).sendKeys(image);
-        Select foo = new Select(webDriver.findElement(By.name("status")));
-        foo.selectByValue("COMPLETED");
-        webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
-        webDriver.findElement(By.name("summary")).sendKeys(summary);
-        webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
-        waitForElementToLoad(webDriver , By.id("project_id"));
-        return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
-    }
 
     public void verifyPositive(String name, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");

@@ -60,9 +60,9 @@ public class ViewProjectPageTest extends InsertClass {
     public void assertPositive(String project_id,String name, String description, String image){
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=" + project_id);
         waitForElementToLoad(webDriver,By.className("project-name")   )  ;
-        assertEquals(name, webDriver.findElement(By.className("project-name")).getText());
-        assertEquals(webDriver.findElement(By.className("project-detail")).getText(), description);
-        assertTrue(webDriver.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed());
+        assertThat(webDriver.findElement(By.className("project-name")).getText(),is(name));
+        assertThat(webDriver.findElement(By.className("project-detail")).getText(), is(description));
+        assertThat(webDriver.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed(),is(true));
     }
 
 
@@ -70,8 +70,8 @@ public class ViewProjectPageTest extends InsertClass {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project_detail.ftl?project_id=" + project_id);
         waitForElementToLoad(webDriver,By.className("project-name")   )  ;
         assertThat(webDriver.findElement(By.className("project-name")).getText(), not( is(name) ));
-        assertEquals(webDriver.findElement(By.className("project-detail")).getText(), description);
-        assertTrue(webDriver.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed());
+        assertThat(webDriver.findElement(By.className("project-detail")).getText(),is( description));
+        assertThat(webDriver.findElement(By.xpath("//img[@alt='children' and @src='" + image + "']")).isDisplayed(),is(true));
     }
 
 }
