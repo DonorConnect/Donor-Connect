@@ -41,7 +41,7 @@ public class ProjectListPageTest extends InsertClass{
 
     @Test
     public void clickableThumbnail() {
-        project_id = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary");
+        project_id = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary","2012-12-12","20000.00");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         WebElement thumbnail = webDriver.findElement(By.xpath(String.format("//div[@class='projectThumbnail']/a[@href='project_detail.ftl?project_id=%s']", project_id)));
 
@@ -54,7 +54,7 @@ public class ProjectListPageTest extends InsertClass{
 
     @Test
     public void clickableProjectName() {
-        project_id = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary");
+        project_id = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary","2012-12-12","20000.00");
 
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/all_projects.ftl");
         webDriver.findElement(By.xpath("//h4/a[contains(text(), 'Project Check Clickable Thumbnail')]")).click();
@@ -65,14 +65,14 @@ public class ProjectListPageTest extends InsertClass{
 
     @Test
     public void verifyCurrentProject() {
-        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
+        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000.00");
         verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
     }
 
     @Test
     public void verifyCompleteProject() {
-        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary");
-        project_id =insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary");
+        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000.00");
+        project_id =insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary","2012-12-12","20000.00");
         verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
     }
 

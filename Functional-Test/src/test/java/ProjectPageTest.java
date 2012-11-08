@@ -10,7 +10,7 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
-public class ViewProjectPageTest extends InsertClass {
+public class ProjectPageTest extends InsertClass {
     String project_id;
 
 
@@ -25,7 +25,7 @@ public class ViewProjectPageTest extends InsertClass {
     public void verifyPageWithSpecialCharAndNo(){
         project_id =insertDataForCurrentProject("###############@@@@@@@@@%%%%%%%%%%", "gdfg", "ghfbhgb","image/children_thumbnail.png","Summary","2012-12-12","20000.00");
         assertPositive(project_id,"###############@@@@@@@@@%%%%%%%%%%", "gdfg", "ghfbhgb");
-        project_id =insertDataForCurrentProject ("456666666666666667", "7658777777777", "6788888888888888888888","image/children.png","Summary","2012-12-12","20000.00") ;
+        project_id =insertDataForCurrentProject ("456666666666666667", "7658777777777", "6788888888888888888888","image/children.png","Summary","2012-12-12","20000.00");
         assertPositive(project_id,"456666666666666667", "7658777777777", "6788888888888888888888");
     }
 

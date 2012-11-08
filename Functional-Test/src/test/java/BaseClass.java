@@ -13,8 +13,8 @@ public class BaseClass {
     public WebDriver webDriver;
 
     @Before
-    public void setUp() {
-        webDriver = new HtmlUnitDriver();
+    public void setUp(){
+        webDriver = new FirefoxDriver();
         clearProjects();
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
     }
@@ -31,7 +31,7 @@ public class BaseClass {
     }
 
     public void waitForElementToLoad(WebDriver webDriver, final By xpath) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 1000);
+        WebDriverWait wait = new WebDriverWait(webDriver, 20);
         wait.until(new Predicate<WebDriver>() {
             @Override
             public boolean apply(@Nullable WebDriver input) {
