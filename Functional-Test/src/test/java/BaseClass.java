@@ -12,25 +12,28 @@ public WebDriver webDriver;
     @Before
     public void setUp(){
         webDriver = new FirefoxDriver();
-
         clearProjects();
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home");
     }
+
     @After
     public void tearDown() {
         webDriver.close();
     }
+
     private void clearProjects() {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
         webDriver.findElement(By.xpath("//div[@id='delete_projects']/a")).click();
         waitForElementToLoad(webDriver, By.xpath("//div[@id='delete_projects']/a"));
     }
+
     public void waitForElementToLoad(WebDriver webDriver, final By xpath) {
         WebDriverWait wait = new WebDriverWait(webDriver, 30);
         wait.until(new Predicate<WebDriver>() {
             @Override
             public boolean apply(@Nullable WebDriver input) {
                 return input.findElement(xpath).isDisplayed();
+
             }        });
     }
 }
