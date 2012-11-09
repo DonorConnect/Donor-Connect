@@ -14,9 +14,9 @@ public class HomePageTest extends InsertClass{
 
     @Test
     public void homePageHasAllElements() {
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home");
         assertThat(webDriver.findElement(By.xpath("//h1")).getText(), is("welcome..."));
-        assertThat(webDriver.findElement(By.xpath("//img[@src='image/children.jpg']")).isDisplayed(),is(true));
+        assertThat(webDriver.findElement(By.xpath("//img[@src='static/image/children.jpg']")).isDisplayed(),is(true));
     }
 }
 
