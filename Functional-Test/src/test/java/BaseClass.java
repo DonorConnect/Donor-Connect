@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -14,9 +15,12 @@ public class BaseClass {
 
     @Before
     public void setUp(){
+
+
         webDriver = new HtmlUnitDriver();
+
         clearProjects();
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home.ftl");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home");
     }
 
     @After
@@ -31,7 +35,7 @@ public class BaseClass {
     }
 
     public void waitForElementToLoad(WebDriver webDriver, final By xpath) {
-        WebDriverWait wait = new WebDriverWait(webDriver, 20);
+        WebDriverWait wait = new WebDriverWait(webDriver, 30);
         wait.until(new Predicate<WebDriver>() {
             @Override
             public boolean apply(@Nullable WebDriver input) {
