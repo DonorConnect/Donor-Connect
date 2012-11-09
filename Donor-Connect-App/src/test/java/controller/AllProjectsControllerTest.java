@@ -46,7 +46,7 @@ public class AllProjectsControllerTest {
         dummyProject1 = new Project(0, "name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description", "image/path", "image/path", 655);
         dummyProject2 = new Project(0, "name2", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description2", "image/path2", "image/path", 655);
 
-        request.setRequestURI("/all_projects.ftl");
+        request.setRequestURI("/projects.ftl");
         request.setMethod("GET");
 
         controller = new AllProjectsController();

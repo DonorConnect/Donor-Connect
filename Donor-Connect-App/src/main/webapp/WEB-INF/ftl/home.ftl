@@ -25,7 +25,7 @@
 
 <div class="row">
     <div class="activeProject">
-        <a href="all_projects" style="float: right">see all..</a>
+        <a href="projects" style="float: right">see all..</a>
     </div>
 </div>
 </@layout.defaultLayout>
