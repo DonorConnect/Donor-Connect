@@ -14,8 +14,8 @@ public class Donation {
     @GenericGenerator(name = "donationId", strategy = "increment")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name="project_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="project_id", nullable = false)
     private Project project;
 
     @Column

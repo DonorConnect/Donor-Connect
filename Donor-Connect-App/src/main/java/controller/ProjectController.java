@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Calendar;
-
 @Controller
 public class ProjectController {
     @Autowired
@@ -22,10 +20,12 @@ public class ProjectController {
         Project project = dao.fetch(id);
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", id);
-//        modelMap.addAttribute("donationPercentage", project.donationPercentage());
-
-
+        modelMap.addAttribute("donationPercentage", donationPercentage(project));
         return "project";
+    }
+
+    private double donationPercentage(Project project) {
+        return dao.getDonationsAmount(project)*100/project.getTargetAmount();
     }
 
     public void setDao(ProjectDAO dao) {

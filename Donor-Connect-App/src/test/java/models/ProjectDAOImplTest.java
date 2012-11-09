@@ -57,13 +57,10 @@ public class ProjectDAOImplTest {
     }
 
     @Test
-    public void shouldSaveADonation() {
+    public void shouldGetDonationAmountFromProject() {
         Project project = projectDAO.save(createProject());
-
-        Project updatedProject = projectDAO.addDonationToProject(project.getId(), new Donation(project, 300.0));
-
-        assertThat(updatedProject.getDonations().size(), is(1));
-        assertThat(updatedProject.getDonations().get(0).getAmount(), is(300.0));
+        projectDAO.saveDonationToProject(new Donation(project, 300.0));
+        assertThat(projectDAO.getDonationsAmount(project), is(300.0));
     }
 
     private Project createProject() {

@@ -27,7 +27,7 @@ public class Project {
     @Column(nullable = true)
     private Double targetAmount;
 
-    @Column (nullable = false ,columnDefinition = "LONGTEXT" ) 
+    @Column (nullable = false ,columnDefinition = "LONGTEXT" )
     private String description;
 
     @Column(nullable = false)
@@ -42,7 +42,7 @@ public class Project {
 
     @Column(nullable = false)
     private String summary;
-    
+
     @OneToMany(mappedBy = "project")
     private List<Donation> donations;
 
@@ -81,8 +81,6 @@ public class Project {
         this.targetAmount = targetAmount;
         Calendar cal = initCurrentTime();
         this.creationDate = cal.getTime();
-
-
     }
 
     private Calendar initCurrentTime() {
@@ -164,29 +162,8 @@ public class Project {
     }
 
 
-    public Double totalDonations() {
-        Double totalAmount = 0.0;
-        for (Donation donation : donations) {
-                totalAmount += donation.getAmount();
-        }
-            return totalAmount;
-    }
-
-    public void addDonation(Donation donation) {
-        donations.add(donation);
-    }
-
     public int leftDays() {
         return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
     }
 
-    public double donationPercentage() {
-        double donationPercent = totalDonations()*100/targetAmount;
-        DecimalFormat twoDForm = new DecimalFormat("#.##");
-        return Double.valueOf(twoDForm.format(donationPercent));
-    }
-
-    public List<Donation> getDonations() {
-        return Collections.unmodifiableList(donations);
-    }
 }

@@ -32,12 +32,15 @@
             <div id="donate-form">
                 <#include "donate_form.ftl"/>
             </div>
+            <div>
+                donationPercentage:${model["donationPercentage"]}
+                <progress value="${model["donationPercentage"]}" max="100" />
+            </div>
         </div>
         <div style="clear:both"></div>
-    </div>
-    <#--<progress value="${model["donationPercentage"]}" max="100">-->
 
-    <#--</progress>-->
+    </div>
+
 
 </div>
 
