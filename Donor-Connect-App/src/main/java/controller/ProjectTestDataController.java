@@ -24,12 +24,12 @@ public class ProjectTestDataController {
     @Qualifier("projectDAO")
     private ProjectDAO dao;
 
-    @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.GET)
+    @RequestMapping(value = "/inject_project", method = RequestMethod.GET)
     public String renderInjectProject() {
         return "inject_project";
     }
 
-    @RequestMapping(value = "/inject_project.ftl", method = RequestMethod.POST)
+    @RequestMapping(value = "/inject_project", method = RequestMethod.POST)
     public ModelAndView injectProject(@RequestParam("name") String name,
                                       @RequestParam("description") String desc,
                                       @RequestParam("img") String img,
@@ -51,7 +51,7 @@ public class ProjectTestDataController {
         return new ModelAndView("inject_project", model);
     }
 
-    @RequestMapping(value = "/delete_project.ftl", method = RequestMethod.GET)
+    @RequestMapping(value = "/delete_project", method = RequestMethod.GET)
     public String deleteAllProjects() {
         dao.deleteAll();
         return "inject_project";

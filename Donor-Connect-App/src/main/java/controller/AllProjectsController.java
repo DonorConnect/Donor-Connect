@@ -19,7 +19,7 @@ public class AllProjectsController {
     @Qualifier("projectDAO")
     private ProjectDAO dao;
 
-    @RequestMapping(value="/all_projects.ftl", method = RequestMethod.GET)
+    @RequestMapping(value="/all_projects", method = RequestMethod.GET)
     public String showAllProjects(@ModelAttribute("model") ModelMap modelMap){
         List<Project> allProjects = dao.fetchAllCurrent();
 

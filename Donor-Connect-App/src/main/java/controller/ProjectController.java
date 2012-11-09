@@ -20,13 +20,14 @@ public class ProjectController {
     @Qualifier("projectDAO")
     private ProjectDAO dao;
 
-    @RequestMapping(value="/project_detail.ftl", method = RequestMethod.GET)
+    @RequestMapping(value="/project_detail", method = RequestMethod.GET)
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int project_id){
         Project project = dao.fetch(project_id);
 
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", project_id);
 //        modelMap.addAttribute("donationPercentage", project.donationPercentage());
+
 
         return "project_detail";
     }
