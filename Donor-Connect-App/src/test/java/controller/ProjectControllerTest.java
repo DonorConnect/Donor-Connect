@@ -42,9 +42,9 @@ public class ProjectControllerTest {
         Date endDate = calendar.getTime();
         dummyProject = new Project(0, "name", creationDate, endDate, 500.0, ProjectStatus.CURRENT, "summary", "description", "image/path", "image/path", 655);
 
-        request.setRequestURI("/project.ftl");
+        request.setRequestURI("/project");
         request.setMethod("GET");
-        request.setParameter("project_id", "1");
+        request.setParameter("id", "1");
 
         controller = new ProjectController();
         projectDAO = mock(ProjectDAOImpl.class);
@@ -56,7 +56,7 @@ public class ProjectControllerTest {
     @Test
     public void shouldRenderTheProjectDetailsView() throws Exception {
         ModelAndView modelView = adapter.handle(request, response, controller);
-        assertThat(modelView.getViewName(), is("project_detail"));
+        assertThat(modelView.getViewName(), is("project"));
     }
 
     @Test

@@ -62,7 +62,7 @@ public class AllProjectsControllerTest {
     @Test
     public void shouldRenderAllProjectsView() throws Exception {
         ModelAndView modelView = adapter.handle(request, response, controller);
-        assertThat(modelView.getViewName(), is("all_projects"));
+        assertThat(modelView.getViewName(), is("projects"));
     }
 
     @Test
