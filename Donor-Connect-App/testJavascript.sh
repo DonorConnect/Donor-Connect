@@ -7,5 +7,5 @@ elif [ "$1" == "mac" ]
 then
     phantomjs src/test/javascript/lib/run_jasmine_test.coffee src/test/javascript/TestRunner.html
 else
-	echo "Cannot run phantomjs"
+	echo "Cannot find phantomjs installation. If you have a Mac please install the version 1.7.0"
 fi
