@@ -65,13 +65,13 @@ public class ProjectListPageTest extends InsertClass{
 
     @Test
     public void verifyCurrentProject() {
-        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000.00");
+        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000");
         verifyPositive("Project_name", "image/children_thumbnail.png", "Project_summary");
     }
 
     @Test
     public void verifyCompleteProject() {
-        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000.00");
+        project_id =insertDataForCurrentProject("Project_name", "Project_description", "image/children.jpg", "image/children_thumbnail.png", "Project_summary","2012-12-12","20000");
         project_id =insertDataForCompleteProject("Children", "hjvbcv", "image/images.jpeg", "image/abc.jpeg", "Sailee wants dhang ka summary","2012-12-12","20000.00");
         verifyNegative("Children", "image/abc.jpeg", "Sailee wants dhang ka summary");
     }

@@ -8,11 +8,11 @@ public class InsertClass extends BaseClass{
         waitForElementToLoad(webDriver,By.name("name"));
         webDriver.findElement(By.name("name")).sendKeys(name);
         webDriver.findElement(By.name("description")).sendKeys(description);
+        webDriver.findElement(By.name("endDate")).sendKeys(date);
+        webDriver.findElement(By.name("targetAmount")).sendKeys(amount);
         webDriver.findElement(By.name("img")).sendKeys(image);
         webDriver.findElement(By.name("thumbnail")).sendKeys(thumbnail);
         webDriver.findElement(By.name("summary")).sendKeys(summary);
-        webDriver.findElement(By.name("endDate")).sendKeys(date);
-        webDriver.findElement(By.name("targetAmount")).sendKeys(amount);
         webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
         waitForElementToLoad(webDriver , By.id("project_id"));
         return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
