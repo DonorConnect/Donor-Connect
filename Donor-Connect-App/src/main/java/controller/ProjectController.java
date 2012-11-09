@@ -12,22 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Calendar;
 
 @Controller
-@RequestMapping(value = "/projects")
+@RequestMapping(value = "/project")
 public class ProjectController {
     @Autowired
     @Qualifier("projectDAO")
     private ProjectDAO dao;
 
-    @RequestMapping(value="/{id}", method = RequestMethod.GET)
-    public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @PathVariable int id){
+    @RequestMapping(method = RequestMethod.GET)
+    public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id){
         Project project = dao.fetch(id);
-
+        //@PathVariable int id
+                                 //value="/{id}"
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", id);
 //        modelMap.addAttribute("donationPercentage", project.donationPercentage());
 
 
-        return "project_detail";
+        return "project";
     }
 
     public void setDao(ProjectDAO dao) {

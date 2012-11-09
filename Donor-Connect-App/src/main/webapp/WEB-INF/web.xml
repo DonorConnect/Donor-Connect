@@ -21,6 +21,20 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
+
+    <!-- Servlet for static resource -->
+    <servlet>
+        <servlet-name>static</servlet-name>
+        <servlet-class>config.StaticServlet</servlet-class>
+    </servlet>
+
+    <!-- Mapper for static resource -->
+    <servlet-mapping>
+        <servlet-name>static</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>
+
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/applicationContext.xml</param-value>

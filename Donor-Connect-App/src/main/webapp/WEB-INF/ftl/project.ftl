@@ -1,5 +1,5 @@
 <#import "DefaultLayout.ftl" as layout>
-<@layout.defaultLayout title="${model['project'].getName()}" desc="${model['project'].getSummary()}" img="${model['project'].getThumbnail()}">
+<@layout.defaultLayout title="${model['project'].getName()}" desc="${model['project'].getSummary()}" img="static/${model['project'].getThumbnail()}">
 
 <div class="row">
     <div class="project">
@@ -11,7 +11,7 @@
                 </h2>
 
                 <div class="project-image">
-                    <img src="${model["project"].getImage()}" alt="children">
+                    <img src="static/${model["project"].getImage()}" alt="children">
                 </div>
 
                 <!-- AddThis Button BEGIN -->

@@ -15,7 +15,7 @@
         </div>
         <div class="col8">
             <div class="keyProjectsImage">
-                <img src="image/children.jpg" height="350px" width="500px" class="projectPic"/>
+                <img src="static/image/children.jpg" height="350px" width="500px" class="projectPic"/>
             </div>
         </div>
         <div style="clear:both"></div>

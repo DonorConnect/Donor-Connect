@@ -3,7 +3,7 @@
         <div class="header">
             <div class="col6">
                 <a href="/Donor-Connect-App/home">
-                    <img src="image/logo.png" alt="logo.png" width="80px" height="70px" class="logopic">
+                    <img src="static/image/logo.png" alt="logo.png" width="80px" height="70px" class="logopic">
                 </a>
 
                 <a href="/Donor-Connect-App/home">

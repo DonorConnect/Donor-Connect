@@ -1,4 +1,4 @@
-<#macro defaultLayout title="Donors Connect" desc="Donors Connect Website" img="image/children_thumbnail.png">
+<#macro defaultLayout title="Donors Connect" desc="Donors Connect Website" img="static/image/children_thumbnail.png">
 <html>
 <head>
     <meta http-equiv="Content-Type"
@@ -9,12 +9,12 @@
     <meta property="og:image" content="${img}"/>
     <meta property="og:description" content="${desc}"/>
 
-    <link rel="stylesheet" href="css/project.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/jquery.validate.css">
+    <link rel="stylesheet" href="static/css/project.css">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="static/css/layout.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="static/css/header.css">
+    <link rel="stylesheet" href="static/css/jquery.validate.css">
     <title>Donors-Connect-Project</title>
     <script type="text/javascript" src="javascript/jquery-1.3.2.js"></script>
     <script type="text/javascript" src="javascript/jquery.validate.js"></script>
