@@ -26,7 +26,7 @@ public class ProjectController {
 
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("anotherVar", project_id);
-        modelMap.addAttribute("donationPercentage", project.donationPercentage());
+//        modelMap.addAttribute("donationPercentage", project.donationPercentage());
 
         return "project_detail";
     }

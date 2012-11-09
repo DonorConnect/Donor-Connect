@@ -35,9 +35,9 @@
         </div>
         <div style="clear:both"></div>
     </div>
-    <progress value="${model["donationPercentage"]}" max="100">
+    <#--<progress value="${model["donationPercentage"]}" max="100">-->
 
-    </progress>
+    <#--</progress>-->
 
 </div>
 
