@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="static/css/header.css">
     <link rel="stylesheet" href="static/css/jquery.validate.css">
     <title>Donors-Connect-Project</title>
-    <script type="text/javascript" src="javascript/jquery-1.3.2.js"></script>
-    <script type="text/javascript" src="javascript/jquery.validate.js"></script>
-    <script type="text/javascript" src="javascript/ammado.js"></script>
+    <script type="text/javascript" src="static/javascript/jquery-1.3.2.js"></script>
+    <script type="text/javascript" src="static/javascript/jquery.validate.js"></script>
+    <script type="text/javascript" src="static/javascript/ammado.js"></script>
 </head>
 
 <body>

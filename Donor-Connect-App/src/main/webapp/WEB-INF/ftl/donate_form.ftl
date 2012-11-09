@@ -1,4 +1,4 @@
-<script type="text/javascript" src="javascript/project_details_bindings.js"></script>
+<script type="text/javascript" src="static/javascript/project_details_bindings.js"></script>
 <form accept-charset="utf-8" action="https://api.ammadodemo.com/v1/donate" method="post">
     <fieldset>
         <div>
