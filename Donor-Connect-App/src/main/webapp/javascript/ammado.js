@@ -13,19 +13,13 @@ function AmmadoValidations() {
         expression: "if (VAL.match(/^\\d+(\\.\\d{1,2}){0,1}$/)) return true; else return false;",
         message: "Should be a number"
     };
-
-    this.amountValidations = [
-        "amountMustBeNumberValidation",
-        "minimumCustomAmountValidation",
-        "maximumCustomAmountValidation"
-    ];
 }
 
 function Ammado() {
     this.usesAmountField = function (domElement) {
         var validations = new AmmadoValidations();
-        $(validations.amountValidations).each(function (index, item) {
-            $(domElement).validate(item);
-        });
+        $(domElement).validate(validations.amountMustBeNumberValidation);
+        $(domElement).validate(validations.minimumCustomAmountValidation);
+        $(domElement).validate(validations.maximumCustomAmountValidation);
     };
 }

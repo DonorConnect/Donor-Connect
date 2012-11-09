@@ -3,7 +3,7 @@
     <fieldset>
         <div>
             <label>Rs:</label>
-            <input id="customAmount" max="570000.00" min="220" name="donationAmount" type="text"/> <br/><br/>
+            <input id="donationAmount" name="donationAmount" type="text"/> <br/><br/>
             <button id="donateButton" type="submit">Donate</button>
         </div>
     </fieldset>
