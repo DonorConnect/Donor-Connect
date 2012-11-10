@@ -1,7 +1,5 @@
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.WebDriver;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -15,7 +13,7 @@ public class MakeDonationTest extends InsertClass {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
         waitForElementToLoad(webDriver,By.className("project-name")   )  ;
 
-        webDriver.findElement(By.id("customAmount")).sendKeys("1000");
+        webDriver.findElement(By.id("donationAmount")).sendKeys("1000");
 
         webDriver.findElement(By.id("donateButton")).click();
         waitForElementToLoad(webDriver,By.className("total")    );
