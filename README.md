@@ -1,8 +1,14 @@
-Donor-Connect
+Donor-Connect Repository Structure: 
 
-Donor-Connect-App is used for the web application
+1. Donor-Connect-App is the folder for the source files required for the Donors-Connect web Application 
+2. Functional-Test contains the functional tests
+3. tools
 
-Functional-Test is used for the functional tests
+Set up Instructions: 
+
+1. Clone the project 
+
+2. Set up the project in to the IDE using these instructions: 
 
 Intellij Setup
 ==============
