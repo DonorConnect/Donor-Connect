@@ -4,8 +4,8 @@
         <a href="project?id=${project.getId()}"><img class="thumbnailImage" src=static/${project.getThumbnail()}></a>
 
         <div class="thumbnailProgress">
-            <progress value="${project.getDonationPercentage()}" max="100"></progress>
-            <span style="font-size: 12px">${project.getDonationPercentage()}%</span>
+            <progress value="${project.donationPercentage()}" max="100"></progress>
+            <span style="font-size: 12px">${project.donationPercentage()}%</span>
             <table>
                 <th>${project.targetAmount}<br><span class="progressTitle">Target</span></th>
                 <th>${project.totalDonation()}<br><span class="progressTitle">Pledged</span> </th>

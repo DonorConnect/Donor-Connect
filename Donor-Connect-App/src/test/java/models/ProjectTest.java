@@ -21,7 +21,7 @@ public class ProjectTest {
     @Test
     public void shouldCalculateCurrentProjectAmount() throws Exception {
         Project project1 = new Project();
-        Double currentAmount = project1.totalDonations();
+        Double currentAmount = project1.totalDonation();
         assertThat(currentAmount, is(0.0));
     }
 
@@ -30,7 +30,7 @@ public class ProjectTest {
         Project project1 = new Project();
         Donation donation = new Donation(project1, 1000.0);
         project1.addDonation(donation);
-        Double currentAmount = project1.totalDonations();
+        Double currentAmount = project1.totalDonation();
         assertThat(currentAmount, is(1000.0));
     }
 
@@ -41,7 +41,7 @@ public class ProjectTest {
         Donation donation2 = new Donation(project1, 500.0);
         project1.addDonation(donation1);
         project1.addDonation(donation2);
-        Double currentAmount = project1.totalDonations();
+        Double currentAmount = project1.totalDonation();
         assertThat(currentAmount, is(1500.0));
     }
 

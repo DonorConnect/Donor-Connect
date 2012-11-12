@@ -160,7 +160,7 @@ public class  Project {
         return result;
     }
 
-    public Double totalDonations() {
+    public Double totalDonation() {
         Double totalAmount = 0.0;
         for (Donation donation : donations) {
             totalAmount += donation.getAmount();
@@ -177,7 +177,7 @@ public class  Project {
     }
 
     public double donationPercentage() {
-        double donationPercent = (this.totalDonations())*100/targetAmount;
+        double donationPercent = (this.totalDonation())*100/targetAmount;
         DecimalFormat twoDForm = new DecimalFormat("#.##");
         return Double.valueOf(twoDForm.format(donationPercent));
     }
