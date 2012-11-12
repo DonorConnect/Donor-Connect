@@ -2,9 +2,11 @@ apply plugin: 'tomcat'
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'jetty'
+apply plugin: 'cobertura'
 
 buildscript {
     repositories {
+        mavenCentral()
         add(new org.apache.ivy.plugins.resolver.URLResolver()) {
             name = 'GitHub'
             addArtifactPattern 'http://cloud.github.com/downloads/[organisation]/[module]/[module]-[revision].[ext]'
@@ -13,6 +15,7 @@ buildscript {
 
     dependencies {
         classpath 'bmuschko:gradle-tomcat-plugin:0.9.5'
+        classpath 'com.mapvine:gradle-cobertura-plugin:1.0'
     }
 }
 
