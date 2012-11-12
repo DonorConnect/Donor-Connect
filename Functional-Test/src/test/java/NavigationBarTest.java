@@ -44,6 +44,7 @@ public class NavigationBarTest extends InsertClass{
     public void projectsLinkOnHomePageRedirectsToAllProjectsPage() {
         webDriver.get(URLhomepage);
         webDriver.findElement(By.xpath("//nav[@class='menubar']/ul/li/a[@href='/Donor-Connect-App/projects']")).click();
+        waitForElementToLoad(webDriver, By.xpath("//div[@class='projectHeader']/h3"));
         assertThat(webDriver.getCurrentUrl(),is(URLprojectpage));
     }
 
@@ -66,7 +67,7 @@ public class NavigationBarTest extends InsertClass{
         String project_id = insertDataForCurrentProject("Books for children","This is project for children who want to study.So please help by donating for their books","image/children.jpg","image/children_thumbnail.png","Donate for kids","2012-12-12","20000");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
         webDriver.findElement(By.xpath("//nav[@class='menubar']/ul/li/a[@href='/Donor-Connect-App/home']")).click();
-        waitForElementToLoad(webDriver,By.className("welcomeText") );
+        waitForElementToLoad(webDriver , By.xpath("//h1"));
         assertThat(webDriver.getCurrentUrl(),is(URLhomepage));
     }
 

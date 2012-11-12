@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import javax.annotation.Nullable;
 public class BaseClass {
 public WebDriver webDriver;
+
     @Before
     public void setUp(){
         webDriver = new FirefoxDriver();
