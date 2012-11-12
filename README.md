@@ -25,7 +25,7 @@ You will need to setup the CLASSPATH variable to phantomjs with the directory of
 
 Add the following lines to your .bash_profile file in your user home directory (~/.bash_profile).
 
-PHANTOMJS_HOME=/Users/scahill/Projects/Team-Connect/phantomjs-1.7.0-macosx;
+PHANTOMJS_HOME=[your installation path here]/phantomjs-1.7.0-macosx;
 export PHANTOMJS_HOME
 export PATH=$PATH:$PHANTOMJS_HOME/bin
 
