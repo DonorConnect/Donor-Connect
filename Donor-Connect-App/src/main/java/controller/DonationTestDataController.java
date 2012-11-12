@@ -3,7 +3,6 @@ package controller;
 import models.Donation;
 import models.Project;
 import models.ProjectDAO;
-import models.ProjectDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;

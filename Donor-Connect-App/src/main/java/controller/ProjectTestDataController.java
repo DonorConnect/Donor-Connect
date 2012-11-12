@@ -10,11 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -46,7 +43,6 @@ public class ProjectTestDataController {
         HashMap<String, String> model = new HashMap<String, String>() {{
             put("created_project_id", String.valueOf(project.getId()));
         }};
-
 
         return new ModelAndView("inject_project", model);
     }

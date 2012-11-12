@@ -46,12 +46,10 @@ public class DonationTestDataControllerTest {
         request.setParameter("donationAmount", "100");
         request.setParameter("projectId", String.valueOf(project_id));
 
-
         testDataController = new DonationTestDataController();
 
         projectDAO = mock(ProjectDAOImpl.class);
         testDataController.setDao(projectDAO);
-
     }
 
     @Test

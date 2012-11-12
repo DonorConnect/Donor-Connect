@@ -2,7 +2,6 @@ package models;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -30,7 +29,6 @@ public class ProjectDAOImpl implements ProjectDAO {
         return entityManager.createQuery("From Project where status = 'CURRENT'").getResultList();
     }
 
-
     public void deleteAll() {
         Query deleteQuery = entityManager.createQuery("Delete From Project");
         deleteQuery.executeUpdate();
@@ -42,5 +40,4 @@ public class ProjectDAOImpl implements ProjectDAO {
         entityManager.flush();
         return donation1;
     }
-
 }
