@@ -1,5 +1,6 @@
-<div class="row">
-    <header style="background: #BFD9DA">
+
+    <header>
+        <div class="row">
         <div class="header">
             <div class="col6">
                 <a href="/Donor-Connect-App/home">
@@ -26,6 +27,7 @@
 
         </div>
         <div style="clear:both"></div>
+        </div>
     </header>
 
-</div>
+

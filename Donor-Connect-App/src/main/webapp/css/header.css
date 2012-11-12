@@ -1,6 +1,8 @@
 
 header {
     padding: 10px 0;
+    background: #BFD9DA;
+    margin-bottom: 30px;
 }
 header a {
     text-decoration: none;
@@ -40,4 +42,31 @@ header a {
 .menu{
     padding:20px 10px 5px 0px;
     float:right;
+}
+
+/*------------footer css----*/
+footer{
+    margin-top: 70px;
+    padding: 20px;
+    height: 100px;
+    text-align: center;
+}
+footer ul {
+    list-style-type: none;
+}
+footer ul li {
+    color: #666;
+    font-size: 14px;
+    float: left;
+    padding: 2px;
+}
+.footerbar {
+    position: relative;
+    margin: 0 auto;
+    width: 25%;
+}
+.copyRight {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
 }
