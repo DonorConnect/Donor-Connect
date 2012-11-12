@@ -49,4 +49,27 @@ public class Donation {
     public void setProject(Project project) {
         this.project = project;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Donation donation = (Donation) o;
+
+        if (Double.compare(donation.amount, amount) != 0) return false;
+        if (project != null ? !project.equals(donation.project) : donation.project != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = project != null ? project.hashCode() : 0;
+        temp = amount != +0.0d ? Double.doubleToLongBits(amount) : 0L;
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }
