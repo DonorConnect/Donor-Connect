@@ -33,5 +33,6 @@ public class FacebookShareTest extends InsertClass {
        }
        waitForElementToLoad(webDriver, By.id("email"));
        assertThat(webDriver.getCurrentUrl().contains("www.facebook.com"), is(true));
+
     }
 }
