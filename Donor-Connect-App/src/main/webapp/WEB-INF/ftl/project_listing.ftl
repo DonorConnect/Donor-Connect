@@ -10,8 +10,8 @@
 
         <p class="projectBrief"> ${project.getSummary()}</p>
         <div class="thumbnailProgress">
-            <progress value="${project.getDonationPercentage()}" max="100"></progress>
-            <span style="font-size: 12px">${project.getDonationPercentage()}%</span>
+            <progress value="${project.donationPercentage()}" max="100"></progress>
+            <span style="font-size: 12px">${project.donationPercentage()}%</span>
             <table>
                 <th><span class="progressTitle">Target: </span>${project.targetAmount}</th>
                 <th><span class="progressTitle">Pledged: </span>${project.totalDonation()} </th>
