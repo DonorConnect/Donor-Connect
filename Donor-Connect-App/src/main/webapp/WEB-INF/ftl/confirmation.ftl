@@ -6,6 +6,7 @@
     </div>
     <div>
         <p>Thank you for your donation!</p>
+        <a href="/Donor-Connect-App/project?id=${model["projectId"]}">See my project.</a>
     </div>
 </div>
 </@layout.defaultLayout>

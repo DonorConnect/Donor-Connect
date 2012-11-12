@@ -21,7 +21,7 @@ public class ConfirmationController {
 
     @RequestMapping(value = "/confirmation", method = RequestMethod.GET)
     public ModelAndView persistDonationToProject(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id,@RequestParam double donationAmount) {
-
+        modelMap.addAttribute("projectId", id);
         Project project = projectDao.fetch(id);
         Donation donation = new Donation(project, donationAmount);
         projectDao.saveDonationToProject(donation);
