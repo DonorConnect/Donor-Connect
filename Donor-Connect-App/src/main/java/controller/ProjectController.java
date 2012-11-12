@@ -18,11 +18,9 @@ public class ProjectController {
     public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id){
         Project project = dao.fetch(id);
         modelMap.addAttribute("project", project);
-        modelMap.addAttribute("donationPercentage",project.getDonationPercentage());
-        modelMap.addAttribute("donationAmount", project.totalDonation());
+        modelMap.addAttribute("anotherVar", id);
         return "project";
     }
-
 
     public void setDao(ProjectDAO dao) {
         this.dao = dao;

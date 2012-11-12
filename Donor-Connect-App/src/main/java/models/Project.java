@@ -8,7 +8,7 @@ import java.util.*;
 
 @Entity
 @Table(name = "Project")
-public class Project {
+public class  Project {
 
     @Id
     @GeneratedValue(generator = "projectId")
@@ -92,7 +92,6 @@ public class Project {
         return cal;
     }
 
-
     public Project() {
         this.donations = new ArrayList<Donation>();
     }
@@ -161,17 +160,7 @@ public class Project {
         return result;
     }
 
-
-    public int leftDays() {
-        return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
-    }
-
-    public double getDonationPercentage() {
-        DecimalFormat twoDForm = new DecimalFormat("#.##");
-        return Double.valueOf(twoDForm.format(totalDonation()*100/targetAmount));
-    }
-
-    public double totalDonation(){
+    public Double totalDonations() {
         Double totalAmount = 0.0;
         for (Donation donation : donations) {
             totalAmount += donation.getAmount();
@@ -181,5 +170,19 @@ public class Project {
 
     public void addDonation(Donation donation) {
         donations.add(donation);
+    }
+
+    public int leftDays() {
+        return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
+    }
+
+    public double donationPercentage() {
+        double donationPercent = (this.totalDonations())*100/targetAmount;
+        DecimalFormat twoDForm = new DecimalFormat("#.##");
+        return Double.valueOf(twoDForm.format(donationPercent));
+    }
+
+    public long getDonationAmount(long donationID) {
+        return 0;
     }
 }
