@@ -4,7 +4,14 @@
         <a href="project?id=${project.getId()}"><img class="thumbnailImage" src=static/${project.getThumbnail()}></a>
 
         <div class="thumbnailProgress">
-            sdfd<progress value="${project.getDonationPercentage()}" max="100"></progress>
+            <progress value="${project.getDonationPercentage()}" max="100"></progress>
+            <span style="font-size: 12px">${project.getDonationPercentage()}%</span>
+            <table>
+                <th>${project.targetAmount}<br><span class="progressTitle">Target</span></th>
+                <th>${project.totalDonation()}<br><span class="progressTitle">Pledged</span> </th>
+                <th> ${project.leftDays()}<br><span class="progressTitle">Days</span></th>
+            </table>
+
         </div>
     </div>
 

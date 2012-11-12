@@ -34,17 +34,16 @@ p {
 
 
 #project-summary {
-    height: 80px;
+    float: left;
+    width: 72%;
+    height: 209px;
 }
 
 .project {
     background-color: white;
 }
 .projectHeader {
-    padding-left: 20px;
-}
-.projectHeader h3{
-    margin-bottom: 0px;
+    padding-left: 10px;
 }
 
 .projectContent {
@@ -84,7 +83,8 @@ p {
 }
 
 .eachProject {
-    height: 115px;
+    background: #ffffff;
+    height: 204px;
     padding: 20px 10px;
     margin-bottom: 20px;
 }
@@ -101,7 +101,6 @@ p {
     height: 18px;
     overflow: hidden;
     margin:0px 0px 5px 0px;
-    background-color: #DDECEF;
     padding: 5px 0px ;
 }
 
@@ -128,21 +127,14 @@ p {
     font-size: 14px;
     margin: 0;
     height: 42px;
-    overflow: auto;
-    /*margin: 0;*/
 }
 
-.brief-info {
-    /*float: right;*/
-}
-
-.allProjectsBody{
-
-}
 .projectSummary {
+    width: 470px;
+    padding: 10px;
     border: 1px solid #ccc;
-    background-color: #DDECEF;
-    margin-left: 177px;
+    float: left;
+    height: 189px;
 }
 .projectProgressInfo {
     padding: 20px 36px;
@@ -168,3 +160,23 @@ p {
     padding: 20px;
 
 }
+.thumbnailProgress {
+    margin: 5px;
+    text-align: center;
+}
+.thumbnailProgress table{
+}
+.thumbnailProgress table th{
+    font-weight: normal;
+    font-size: 14px;
+    padding: 4px 10px;
+    text-align: left;
+}
+.thumbnailProgress .progressTitle {
+    color: #666;
+    font-size: 12px;
+}
+.thumbnailProgress progress{
+    width: 65%;
+}
+
