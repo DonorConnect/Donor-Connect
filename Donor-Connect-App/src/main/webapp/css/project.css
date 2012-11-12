@@ -144,3 +144,27 @@ p {
     background-color: #DDECEF;
     margin-left: 177px;
 }
+.projectProgressInfo {
+    padding: 20px 36px;
+}
+.projectProgressInfo .progressTitle {
+    font-size: 14px;
+    color: #666;
+    font-weight: normal;
+
+}
+.projectProgressInfo table {
+
+    width: 100%;
+    background: #EEECE3;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+
+}
+.projectProgressInfo table th{
+    font-weight: normal;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    padding: 20px;
+
+}
