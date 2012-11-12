@@ -1,0 +1,49 @@
+ /*
+       webDriver.findElement(By.id("email")).sendKeys("pragyaj@thoughtworks.com");
+       webDriver.findElement(By.id("pass")).sendKeys("test_user");
+       webDriver.findElement(By.id("loginbutton")).click();
+       set = webDriver.getWindowHandles();
+       windowIterator = set.iterator();
+       while(windowIterator.hasNext()) {
+           String windowHandle = windowIterator.next();
+           webDriver = webDriver.switchTo().window(windowHandle);
+           if (webDriver.getTitle().equals("Facebook")) {
+
+           }
+       }
+   }
+
+   @Test
+   public void facebookShare() {
+       facebookLogin();
+       waitForElementToLoad(webDriver,By.xpath("//div[@id='sharerDialogButtons']/label/input[@name='share']"));
+       webDriver.findElement(By.xpath("//div[@id='sharerDialogButtons']/label/input[@name='share']")).click();
+       webDriver = webDriver.switchTo().window(parentWindowHandle);
+       parentWindowHandle = webDriver.getWindowHandle();
+       URL = webDriver.getCurrentUrl();
+       webDriver.get("http://www.facebook.com/donorconnect.thoughtworks");
+       webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+       webDriver.navigate().refresh();
+       waitForElementToLoad(webDriver, By.xpath("//div[@class='_1x_ fwb' and contains(.,'http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id+"')]"));
+       webDriver.findElement(By.xpath("//div[@class='_1x_ fwb' and contains(.,'http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id+"')]")).click();
+       set = webDriver.getWindowHandles();
+       windowIterator = set.iterator();
+       while(windowIterator.hasNext()) {
+           String windowHandle = windowIterator.next();
+           webDriver = webDriver.switchTo().window(windowHandle);
+           if (webDriver.getTitle().equals("Donors-Connect-Project")) {
+               assertThat(webDriver.getCurrentUrl().contains(URL), is(true));
+           }
+       }
+   }
+
+   @Test
+    public void cancelShare() {
+       facebookLogin();
+       waitForElementToLoad(webDriver,By.xpath("//div[@id='sharerDialogButtons']/label/input[@value='Cancel']"));
+       webDriver.findElement(By.xpath("//div[@id='sharerDialogButtons']/label/input[@value='Cancel']")).click();
+       webDriver = webDriver.switchTo().window(parentWindowHandle);
+       URL = webDriver.getCurrentUrl();
+       assertThat(webDriver.getCurrentUrl().contains(URL), is(true));
+
+   }  */
