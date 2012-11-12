@@ -18,8 +18,4 @@ public class ConfirmationController {
         return "confirmation";
     }
 
-    @RequestMapping(value = "/confirmation", method = RequestMethod.GET)
-    public void persistDonationToProject(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id,@RequestParam double donationAmount) {
-
-    }
 }
