@@ -43,7 +43,7 @@ public class Project {
     @Column(nullable = false)
     private String summary;
 
-    @OneToMany(mappedBy = "project")
+    @OneToMany(mappedBy = "project", fetch = FetchType.EAGER)
     private List<Donation> donations;
 
     @Column(nullable = false)
@@ -164,6 +164,18 @@ public class Project {
 
     public int leftDays() {
         return (int)((endDate.getTime() - creationDate.getTime())/(1000 * 60 * 60 * 24));
+    }
+
+    public double getDonationPercentage() {
+       return  totalDonation()*100/targetAmount;
+    }
+
+    public double totalDonation(){
+        Double totalAmount = 0.0;
+        for (Donation donation : donations) {
+            totalAmount += donation.getAmount();
+        }
+        return totalAmount;
     }
 
 }

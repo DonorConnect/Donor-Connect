@@ -12,5 +12,4 @@ public interface ProjectDAO {
     void deleteAll();
     Donation saveDonationToProject(Donation donation);
 
-    double getDonationsAmount(Project project);
 }

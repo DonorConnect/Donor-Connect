@@ -42,13 +42,5 @@ public class ProjectDAOImpl implements ProjectDAO {
         entityManager.flush();
         return donation1;
     }
-    @Override
-    public double getDonationsAmount(Project project){
-        List<Donation> donations = entityManager.createQuery("From Donation where project_id = :id ").setParameter("id",project.getId()).getResultList();
-        Double totalAmount = 0.0;
-        for (Donation donation : donations) {
-            totalAmount += donation.getAmount();
-        }
-        return totalAmount;
-    }
+
 }

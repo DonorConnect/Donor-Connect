@@ -56,12 +56,6 @@ public class ProjectDAOImplTest {
         assertThat(projects.size(), is(0));
     }
 
-    @Test
-    public void shouldGetDonationAmountFromProject() {
-        Project project = projectDAO.save(createProject());
-        projectDAO.saveDonationToProject(new Donation(project, 300.0));
-        assertThat(projectDAO.getDonationsAmount(project), is(300.0));
-    }
 
     private Project createProject() {
         Calendar cal = Calendar.getInstance();
