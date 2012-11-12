@@ -1,10 +1,15 @@
 <#import "DefaultLayout.ftl" as layout>
 <@layout.defaultLayout>
+
 <div class="row">
-    <div class="projectHeader">
-        <h3> Currently Running Projects </h3>
+    <div class="pageHeader">
+        <h2>
+            Currently Running Projects
+        </h2>
     </div>
+
 </div>
+
 <div class="row">
     <div class="allProjectsBody">
         <div class="col9">

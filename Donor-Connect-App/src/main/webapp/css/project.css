@@ -47,8 +47,11 @@ p {
 .project {
     background-color: white;
 }
-.projectHeader {
+.pageHeader {
     padding-left: 10px;
+}
+.pageHeader h2{
+    margin-bottom: 5px;
 }
 
 .projectContent {
@@ -89,7 +92,7 @@ p {
 
 .eachProject {
     background: #ffffff;
-    height: 204px;
+    height: 173px;
     padding: 20px 10px;
     margin-bottom: 20px;
 }
@@ -123,18 +126,16 @@ p {
 
 .thumbnailImage{
     margin-top: 5px;
-    width: 160px;
-    height: 130px;
+    width: 167px;
+    height: 167px;
 }
-.eachProject .projectName {
-    margin: 0;
-}
+
 
 .eachProject .projectBrief {
     font-size: 14px;
     margin: 0;
     overflow: auto;
-    height: 156px;
+    height: 70px;
 }
 
 .projectSummary {
@@ -142,7 +143,7 @@ p {
     padding: 10px;
     border: 1px solid #ccc;
     float: left;
-    height: 185px;
+    height: 153px;
 }
 .projectProgressInfo {
     padding: 20px 36px;
@@ -154,7 +155,6 @@ p {
 
 }
 .projectProgressInfo table {
-
     width: 100%;
     background: #EEECE3;
     border: 1px solid #ccc;
@@ -169,16 +169,16 @@ p {
 
 }
 .thumbnailProgress {
-    margin: 5px;
-    text-align: center;
+    text-align: left;
+    background: #E9E7DC;
+    padding: 5px;
 }
 .thumbnailProgress table{
 }
 .thumbnailProgress table th{
-    font-weight: normal;
+    font-weight: bold;
     font-size: 14px;
-    padding: 4px 10px;
-    text-align: left;
+    padding-right: 20px;
 }
 .thumbnailProgress .progressTitle {
     color: #666;
