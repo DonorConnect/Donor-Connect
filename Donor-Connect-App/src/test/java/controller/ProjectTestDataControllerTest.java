@@ -5,9 +5,15 @@ import models.ProjectDAOImpl;
 import models.ProjectStatus;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter;
 
@@ -19,7 +25,6 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 public class ProjectTestDataControllerTest {
     private MockHttpServletResponse response;
     private MockHttpServletRequest request;
@@ -27,6 +32,7 @@ public class ProjectTestDataControllerTest {
     private ProjectTestDataController testDataController;
     private Project dummyProject;
     private models.ProjectDAO projectDAO;
+
 
     @Before
     public void setUp() {
@@ -58,13 +64,12 @@ public class ProjectTestDataControllerTest {
 
     @Test
     public void shouldInjectProject() throws Exception {
-        when(projectDAO.save(dummyProject)).thenReturn(dummyProject);
-
         ModelAndView modelAndView = adapter.handle(request, response, testDataController);
 
         verify(projectDAO).save(dummyProject);
         assertThat(modelAndView.getViewName(), is("inject_project"));
-        assertThat((String) modelAndView.getModel().get("created_project_id"), is("100"));
+        String defaultValueOfId = String.valueOf(new Project().getId());
+        assertThat((String) modelAndView.getModel().get("created_project_id"), is(defaultValueOfId));
     }
 
     @Test

@@ -64,4 +64,9 @@ public class ProjectTest {
         project.addDonation(donation);
         assertThat(project.donationPercentage(), is(22.35));
     }
+
+    @Test
+    public void creation_date_should_have_value_after_constructed() {
+        //todo:
+    }
 }

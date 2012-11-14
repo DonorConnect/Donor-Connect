@@ -2,18 +2,20 @@ package controller;
 
 import models.Project;
 import models.ProjectDAO;
-import models.ProjectStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 
 @Controller
 public class ProjectTestDataController {
@@ -27,30 +29,22 @@ public class ProjectTestDataController {
     }
 
     @RequestMapping(value = "/inject_project", method = RequestMethod.POST)
-    public ModelAndView injectProject(@RequestParam("name") String name,
-                                      @RequestParam("description") String desc,
-                                      @RequestParam("img") String img,
-                                      @RequestParam("status") ProjectStatus status,
-                                      @RequestParam("thumbnail") String thumbnail,
-                                      @RequestParam("summary") String summary,
-                                      @RequestParam("charityId") String charityId,
-                                      @RequestParam("endDate") String endDate,
-                                      @RequestParam("targetAmount") Double targetAmount) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = formatter.parse(endDate);
-        final Project project = dao.save(new Project(name, desc, img,status,thumbnail,summary, Long.valueOf(charityId), date, targetAmount));
+    public String injectProject(Project project, Model model) throws ParseException {
+        dao.save(project);
+        model.addAttribute("created_project_id", String.valueOf(project.getId()));
 
-        HashMap<String, String> model = new HashMap<String, String>() {{
-            put("created_project_id", String.valueOf(project.getId()));
-        }};
-
-        return new ModelAndView("inject_project", model);
+        return "inject_project";
     }
 
     @RequestMapping(value = "/delete_project", method = RequestMethod.GET)
     public String deleteAllProjects() {
         dao.deleteAll();
         return "inject_project";
+    }
+
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), false));
     }
 
     public void setDao(ProjectDAO dao) {

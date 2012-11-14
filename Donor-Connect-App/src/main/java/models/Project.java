@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -13,7 +15,7 @@ public class  Project {
     @Id
     @GeneratedValue(generator = "projectId")
     @GenericGenerator(name = "projectId", strategy = "increment")
-    private long id;
+    private long id = 0;
 
     @Column(nullable = false)
     private String name;
@@ -94,6 +96,8 @@ public class  Project {
 
     public Project() {
         this.donations = new ArrayList<Donation>();
+        Calendar cal = initCurrentTime();
+        this.creationDate = cal.getTime();
     }
 
     public long getId() {
@@ -184,5 +188,45 @@ public class  Project {
 
     public long getDonationAmount(long donationID) {
         return 0;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setTargetAmount(Double targetAmount) {
+        this.targetAmount = targetAmount;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImg(String image) {
+        this.image = image;
+    }
+
+    public void setStatus(ProjectStatus status) {
+        this.status = status;
+    }
+
+    public void setThumbnail(String thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
+    public void setSummary(String summary) {
+        this.summary = summary;
+    }
+
+    public void setCharityId(long charityId) {
+        this.charityId = charityId;
     }
 }
