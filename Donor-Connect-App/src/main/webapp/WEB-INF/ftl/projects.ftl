@@ -21,7 +21,7 @@
         </div>
         <div class="col3">
             <div class="projectTag">
-                here is tag
+                TO DO PROJECT TAG
             </div>
         </div>
 

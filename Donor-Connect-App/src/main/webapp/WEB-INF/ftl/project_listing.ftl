@@ -6,9 +6,11 @@
     </div>
 
     <div class="projectSummary">
+        <div class="projectBriefInfo">
         <h4><a class="projectName" href="project?id=${project.getId()}"> ${project.getName()}</a> </h4>
 
         <p class="projectBrief"> ${project.getSummary()}</p>
+        </div>
         <div class="thumbnailProgress">
             <progress value="${project.donationPercentage()}" max="100"></progress>
             <span style="font-size: 12px">${project.donationPercentage()}%</span>

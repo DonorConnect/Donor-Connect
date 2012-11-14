@@ -8,15 +8,23 @@
 }
 
 #donate-form {
-    background: #EEECE3;
+    background: #DCF0F7;
     border: 1px solid #ccc;
     padding: 10px;
     margin-right: 26px;
     margin-top: 7px;
 }
 #donate-form button{
-    padding: 4px;
+    background: #4DA0EF;
+    border: none;
+    color: white;
+    font-weight: bold;
+    padding: 6px 8px;
     margin-left: 52px;
+}
+#donate-form button:hover {
+    background: #7075F1;
+    cursor: pointer;
 }
 
 p {
@@ -56,14 +64,13 @@ p {
 }
 
 .project {
-    box-shadow: 0px 4px 8px 1px #CCC;
+    box-shadow: 0px 6px 8px 1px #CCC;
     background-color: white;
+    width: 940px;
+    margin-left: 10px;
 }
 .pageHeader {
     padding-left: 10px;
-}
-.pageHeader h2{
-    margin-bottom: 5px;
 }
 
 .projectContent {
@@ -98,8 +105,9 @@ p {
 }
 
 /*-----------------------------projects page css */
-.project-list {
-    background-color: #fff;
+.projectlist {
+    /*background-color: #fff;*/
+    margin-bottom: 100px;
 }
 
 .eachProject {
@@ -110,7 +118,9 @@ p {
     margin-bottom: 20px;
 }
 
-
+.projectBriefInfo {
+    margin: 10px;
+}
 .projectThumbnail {
     border: 1px solid #ccc;
     margin-right: 10px;
@@ -138,7 +148,7 @@ p {
 
 
 .thumbnailImage{
-    margin-top: 5px;
+    margin: 2px 0px;
     width: 167px;
     height: 167px;
 }
@@ -148,15 +158,15 @@ p {
     font-size: 14px;
     margin: 0;
     overflow: auto;
-    height: 70px;
+    height: 67px;
 }
 
 .projectSummary {
+    background: #F6F6F6;
     width: 470px;
-    padding: 10px;
     border: 1px solid #ccc;
     float: left;
-    height: 153px;
+    height: 172px;
 }
 .projectProgressInfo {
     box-shadow: 0px 0px 8px 1px #CCC;
@@ -164,13 +174,13 @@ p {
 }
 .projectProgressInfo .progressTitle {
     font-size: 14px;
-    color: #666;
+    color: #333;
     font-weight: normal;
 
 }
 .projectProgressInfo table {
     width: 100%;
-    background: #EEECE3;
+    background: #DCF0F7;
     border: 1px solid #ccc;
     border-collapse: collapse;
 
@@ -183,9 +193,10 @@ p {
 
 }
 .thumbnailProgress {
+    padding: 8px 10px 2px 10px;
+    border-top: 1px dashed #CCC;
     text-align: left;
-    background: #E9E7DC;
-    padding: 5px;
+    background: #DCF0F7;
 }
 .thumbnailProgress table{
 }
@@ -195,7 +206,7 @@ p {
     padding-right: 20px;
 }
 .thumbnailProgress .progressTitle {
-    color: #666;
+    color: #333;
     font-size: 12px;
 }
 .thumbnailProgress progress{
@@ -207,8 +218,9 @@ p {
     display: block;
     float: left;
     width: 50;
+    color: #333;
 }
 .donateForm {
-    padding: 10px 36px;
+    padding: 10px 24px;
 }
 

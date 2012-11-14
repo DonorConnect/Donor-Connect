@@ -2,9 +2,11 @@
 <@layout.defaultLayout title="${model['project'].getName()}" desc="${model['project'].getSummary()}" img="static/${model['project'].getThumbnail()}">
 
 <div class="row">
-    <h2 class="col12 project-name">
-    ${model["project"].getName()}
-    </h2>
+    <div class="pageHeader">
+        <h2>
+        ${model["project"].getName()}
+        </h2>
+    </div>
 </div>
 
 <div class="row">
@@ -47,23 +49,28 @@
                 </div>
             </div>
         </div>
-        <div class="col4">
+        <div class="col4" style="width: 280px;">
             <div id="donate-form">
                 <#include "donate_form.ftl"/>
             </div>
             <div id="donation-status">
-               <#if model['donationStatus']=="success" > <br><br>
-               <div id="successMessage">
-               Thank you for your donation of <br> Rs. ${model['donationValue']}
-               </div>
+                <#if model['donationStatus']=="success" > <br><br>
+
+                    <div id="successMessage">
+                        Thank you for your donation of <br> Rs. ${model['donationValue']}
+                    </div>
                 </#if>
                 <#if model['donationStatus']=="failure" > <br><br>
-                 <div id="errorMessage">
-                    Sorry! <br> We could not complete your donation.<br>
-                    Your account has not been charged.<br>
-                    Please try again.
-                 </div>
+
+                    <div id="errorMessage">
+                        Sorry! <br> We could not complete your donation.<br>
+                        Your account has not been charged.<br>
+                        Please try again.
+                    </div>
                 </#if>
+            </div>
+            <div style="margin-top: 50px;">
+            TO DO CONTACT INFORMATION
             </div>
 
 
