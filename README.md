@@ -27,6 +27,7 @@ Contents
 
 ###Donors Connect is
 
+---
 
 **For** the Indian Middle Class
 
@@ -41,7 +42,7 @@ Contents
 
 **Our Product** will allow users to keep track of their donations
 
-***
+---
 
 **For** Charities in India
 
