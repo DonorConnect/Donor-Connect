@@ -37,4 +37,14 @@ public WebDriver webDriver;
 
             }        });
     }
+
+    public void waitLongForElementToLoad(WebDriver webDriver, final By xpath) {
+        WebDriverWait wait = new WebDriverWait(webDriver, 60);
+        wait.until(new Predicate<WebDriver>() {
+            @Override
+            public boolean apply(@Nullable WebDriver input) {
+                return input.findElement(xpath).isDisplayed();
+
+            }        });
+    }
 }

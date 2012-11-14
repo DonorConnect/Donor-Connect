@@ -12,7 +12,7 @@ public class TwitterStory extends InsertClass {
     public void TwitterShare() {
         project_id=insertDataForCurrentProject("TwitterStory","Checking the Twitter Story for sharing project on twitter","image/children.jpg","image/children.png","Testing Twitter Story","2012-12-12","20000");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        waitForElementToLoad(webDriver, By.xpath("//a[@title='Tweet This']"));
+        waitLongForElementToLoad(webDriver, By.xpath("//a[@title='Tweet This']"));
 
         webDriver.findElement(By.xpath("//a[@title='Tweet This']")).click();
         String parentWindowHandle = webDriver.getWindowHandle(); // save the current window handle.
@@ -22,7 +22,7 @@ public class TwitterStory extends InsertClass {
             String windowHandle = windowIterator.next();
             webDriver = webDriver.switchTo().window(windowHandle);
         }
-        waitForElementToLoad(webDriver, By.id("username_or_email"));
+        waitLongForElementToLoad(webDriver, By.id("username_or_email"));
         webDriver.findElement(By.id("username_or_email")).sendKeys("TestUser1691");
         webDriver.findElement(By.id("password")).sendKeys("test_user");
         webDriver.findElement(By.xpath("//input[@class='button selected submit']")).click();
@@ -31,7 +31,7 @@ public class TwitterStory extends InsertClass {
         String URL = webDriver.getCurrentUrl();
         webDriver.get("http://www.twitter.com");
 
-        waitForElementToLoad(webDriver, By.className("js-timeline-title"));
+        waitLongForElementToLoad(webDriver, By.className("js-timeline-title"));
 
         String tweet=webDriver.findElement(By.xpath("(//p[@class='js-tweet-text'])[1]")).getText();
 

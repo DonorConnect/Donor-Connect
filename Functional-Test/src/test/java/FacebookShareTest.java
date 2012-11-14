@@ -19,7 +19,7 @@ public class FacebookShareTest extends InsertClass {
     public void facebookLogin() {
        project_id=insertDataForCurrentProject("Pragya","def","image/images.jpeg","image/small.jpeg","summary","2012-12-12","2000");
        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-       waitForElementToLoad(webDriver, By.xpath("//a[@class='project-share addthis_button_preferred_1 addthis_button_facebook at300b']"));
+       waitLongForElementToLoad(webDriver, By.xpath("//a[@class='project-share addthis_button_preferred_1 addthis_button_facebook at300b']"));
        webDriver.findElement(By.xpath("//a[@class='project-share addthis_button_preferred_1 addthis_button_facebook at300b']")).click();
        parentWindowHandle = webDriver.getWindowHandle(); // save the current window handle.
        set = webDriver.getWindowHandles();
@@ -31,7 +31,7 @@ public class FacebookShareTest extends InsertClass {
 
            }
        }
-       waitForElementToLoad(webDriver, By.id("email"));
+       waitLongForElementToLoad(webDriver, By.id("email"));
        assertThat(webDriver.getCurrentUrl().contains("www.facebook.com"), is(true));
        webDriver.close();
     }
