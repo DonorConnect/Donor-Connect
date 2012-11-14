@@ -53,12 +53,16 @@
             </div>
             <div id="donation-status">
                <#if model['donationStatus']=="success" > <br><br>
-               Thank you for your donation of Rs. ${model['donationValue']}
+               <div id="successMessage">
+               Thank you for your donation of <br> Rs. ${model['donationValue']}
+               </div>
                 </#if>
                 <#if model['donationStatus']=="failure" > <br><br>
-                    Sorry! We could not complete your donation.<br>
+                 <div id="errorMessage">
+                    Sorry! <br> We could not complete your donation.<br>
                     Your account has not been charged.<br>
                     Please try again.
+                 </div>
                 </#if>
             </div>
 
