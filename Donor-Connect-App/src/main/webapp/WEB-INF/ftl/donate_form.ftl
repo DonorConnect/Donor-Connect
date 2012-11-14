@@ -1,6 +1,6 @@
 <script type="text/javascript" src="static/javascript/project_details_bindings.js"></script>
 <form accept-charset="utf-8" action="https://api.ammadodemo.com/v1/donate" method="post">
-    <div>
+    <div class="donateForm">
         <label>Rs:</label>
         <input id="donationAmount" name="donationAmount" type="text"/> <br/><br/>
         <label>Email:</label>
