@@ -28,33 +28,34 @@ Contents
 ###Donors Connect is
 
 
-For the Indian Middle Class
+**For** the Indian Middle Class
 
-Who want to contribute to the welfare of society
+**Who** want to contribute to the welfare of society
 
-Donors Connect
+**Donors Connect**
+**Is a** website
 
-Is a website
+**That** allows users to make an affordable contribution to a big cause
 
-That allows users to make an affordable contribution to a big cause
+**Unlike** other options for donation in India
 
-Unlike other options for donation in India
+**Our Product** will allow users to keep track of their donations
 
-Our Product will allow users to keep track of their donations
+***
 
-For Charities in India
+**For** Charities in India
 
-Who need funding for their projects
+**Who** need funding for their projects
 
-DonorsConnect
+**DonorsConnect**
 
-Is a website
+**Is a** website
 
-That facilitates easy collection of funds for the Indian middle class
+**That** facilitates easy collection of funds for the Indian middle class
 
-Unlike donorschoose & when we wish
+**Unlike** donorschoose & when we wish
 
-Our Product is tailored to the Indian context
+**Our** Product is tailored to the Indian context
 
 
 2. Tech Stack
