@@ -107,6 +107,10 @@ You can find the installation instructions at the end of this document.
 
     - Then the intellij project is ready for development.
 
+- The domain name "www.donrsconnect.com" is not a registered domain as yet but the Payment API (Ammado) will redirect the page to donorsconnect.com after donation. 
+    
+     - Open  /etc/hosts in an editor and add the following line to it: 127.0.0.1  www.donorsconnect.com  
+
 ### CI Server / QA Environment / Showcase Environment
 
 - Clone the repository at `git@github.com:DonorConnect/Infrastructure.git`
