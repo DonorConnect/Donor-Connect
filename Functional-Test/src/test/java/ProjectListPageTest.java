@@ -28,7 +28,7 @@ public class ProjectListPageTest extends InsertClass{
     public void clickableSeeAll() {
         assertThat(webDriver.findElement(By.xpath("//div[@class='activeProject']/a[@href='projects']")).isDisplayed(),is(true));
         webDriver.findElement(By.xpath("//div[@class='activeProject']/a[@href='projects']")).click();
-        waitForElementToLoad(webDriver,By.xpath("//div[@class='projectHeader']/h3"))  ;
+        waitForElementToLoad(webDriver,By.xpath("//div[@class='pageHeader']/h2"))  ;
         assertThat(webDriver.getCurrentUrl(), is("http://10.10.4.121:8080/Donor-Connect-App/projects"));
     }
 
@@ -36,7 +36,7 @@ public class ProjectListPageTest extends InsertClass{
     public void checkLogoAndHeadline() {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
         assertThat(webDriver.findElement(By.className("logopic")).isDisplayed(), is(true));
-        assertThat(webDriver.findElement(By.xpath("//div[@class='projectHeader']/h3")).isDisplayed(), is(true));
+        assertThat(webDriver.findElement(By.xpath("//div[@class='pageHeader']/h2")).isDisplayed(), is(true));
     }
 
     @Test
@@ -48,8 +48,8 @@ public class ProjectListPageTest extends InsertClass{
         assertThat(thumbnail.isDisplayed(), is(true));
         thumbnail.click();
 
-        waitForElementToLoad(webDriver, By.xpath("//h2[@class='project-name']"));
-        assertThat(webDriver.findElement(By.xpath("//h2[@class='project-name']")).getText(), is("Project Check Clickable Thumbnail"));
+        waitForElementToLoad(webDriver, By.xpath("//h2[@class='col12 project-name']"));
+        assertThat(webDriver.findElement(By.xpath("//h2[@class='col12 project-name']")).getText(), is("Project Check Clickable Thumbnail"));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class ProjectListPageTest extends InsertClass{
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
         webDriver.findElement(By.xpath("//h4/a[contains(text(), 'Project Check Clickable Thumbnail')]")).click();
 
-        waitForElementToLoad(webDriver, By.xpath("//h2[@class='project-name']"));
+        waitForElementToLoad(webDriver, By.xpath("//h2[@class='col12 project-name']"));
         assertThat(webDriver.getCurrentUrl(), is(String.format("http://10.10.4.121:8080/Donor-Connect-App/project?id=%s", project_id)));
     }
 

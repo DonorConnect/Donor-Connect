@@ -44,7 +44,7 @@ public class NavigationBarTest extends InsertClass{
     public void projectsLinkOnHomePageRedirectsToAllProjectsPage() {
         webDriver.get(URLhomepage);
         webDriver.findElement(By.xpath("//nav[@class='menubar']/ul/li/a[@href='/Donor-Connect-App/projects']")).click();
-        waitForElementToLoad(webDriver, By.xpath("//div[@class='projectHeader']/h3"));
+        waitForElementToLoad(webDriver, By.xpath("//div[@class='pageHeader']/h2"));
         assertThat(webDriver.getCurrentUrl(),is(URLprojectpage));
     }
 
