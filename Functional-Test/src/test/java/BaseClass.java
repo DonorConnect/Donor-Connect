@@ -22,7 +22,7 @@ public WebDriver webDriver;
         webDriver.close();
     }
 
-    private void clearProjects() {
+    public void clearProjects() {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_project.ftl");
         webDriver.findElement(By.xpath("//div[@id='delete_projects']/a")).click();
         waitForElementToLoad(webDriver, By.xpath("//div[@id='delete_projects']/a"));

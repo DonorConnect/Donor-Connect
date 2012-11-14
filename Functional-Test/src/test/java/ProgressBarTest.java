@@ -16,6 +16,7 @@ public class ProgressBarTest extends InsertClass{
     String project_id;
     String xpathProgressBar ="(//div[@class='projectProgressInfo']/table/tbody/tr/th)";
     String xpathThumbnail = "(//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/table/tbody/tr/th)";
+
     @Test
     public void initialZeroState(){
         project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
