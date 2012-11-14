@@ -22,11 +22,11 @@
 </head>
 
 <body>
-<div><#include "header.ftl" /></div>
+<#include "header.ftl" />
 <div class="body">
     <#nested />
 </div>
-<div style="background: #BFD9DA"><#include "footer.ftl" /></div>
+ <#include "footer.ftl" />
 </body>
 </html>
 </#macro>

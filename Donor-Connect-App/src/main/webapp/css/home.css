@@ -1,6 +1,5 @@
 .welcomeBody {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px 0px;
 }
 .projectPic {
     border: 2px solid #7E9BB4;
@@ -12,8 +11,7 @@
     margin: 10px;
 }
 .activeProject {
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px 0px;
 }
 .keyProjectsImage{
     text-align: center;
