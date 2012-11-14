@@ -13,7 +13,7 @@
             <table>
                 <th>${model["project"].targetAmount}<br><span class="progressTitle">Target Number</span></th>
                 <th>${model["donationAmount"]}<br><span class="progressTitle">Pledged</span></th>
-                <th> ${model["project"].leftDays()}<br><span class="progressTitle">Days Left</span></th>
+                <th>${model["project"].leftDays()}<br><span class="progressTitle">Days Left</span></th>
                 <th>
                     <progress value="${model["donationPercentage"]}" max="100"></progress>
 
@@ -51,6 +51,17 @@
             <div id="donate-form">
                 <#include "donate_form.ftl"/>
             </div>
+            <div id="donation-status">
+               <#if model['donationStatus']=="success" > <br><br>
+               Thank you for your donation of Rs. ${model['donationValue']}
+                </#if>
+                <#if model['donationStatus']=="failure" > <br><br>
+                    Sorry! We could not complete your donation.<br>
+                    Your account has not been charged.<br>
+                    Please try again.
+                </#if>
+            </div>
+
 
         </div>
         <div style="clear:both"></div>

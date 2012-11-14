@@ -3,6 +3,8 @@
     <div>
         <label>Rs:</label>
         <input id="donationAmount" name="donationAmount" type="text"/> <br/><br/>
+        <label>Email:</label>
+        <input id="donorEmail" name="donorEmail" type="text"/> <br/><br/>
         <button id="donateButton" type="submit">Donate</button>
     </div>
     <input id="currencyCode" name="currencyCode" type="hidden" value="INR"/>
@@ -10,4 +12,5 @@
     <input id="apiKey" name="apiKey" type="hidden" value="63B6849B-AF76-483F-8720-07D53BB2FD93"/>
     <input id="sharedSecret" name="sharedSecret" type="hidden" value="KDcI89v2gdlpXjB"/>
     <input id="onSuccess" name="onSuccess" type="hidden" value="http://www.donorsconnect.com:8080/Donor-Connect-App/confirmation.ftl?id=${model["project"].getId()}"/>
+    <input id="onError" name="onError" type="hidden" value="http://www.donorsconnect.com:8080/Donor-Connect-App/failure.ftl?id=${model["project"].getId()}"/>
 </form>

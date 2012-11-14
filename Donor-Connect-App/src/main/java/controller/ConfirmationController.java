@@ -25,7 +25,13 @@ public class ConfirmationController {
         Project project = projectDao.fetch(id);
         Donation donation = new Donation(project, donationAmount);
         projectDao.saveDonationToProject(donation);
-        return new ModelAndView("confirmation");
+        return new ModelAndView("redirect:project?id="+id+"&donationStatus=success&donationValue="+donationAmount);
+    }
+
+    @RequestMapping(value = "/failure", method = RequestMethod.GET)
+    public ModelAndView onFailure(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id) {
+        modelMap.addAttribute("projectId", id);
+        return new ModelAndView("redirect:project?id="+id+"&donationStatus=failure");
     }
 
     public void setDao(ProjectDAO projectDAO) {

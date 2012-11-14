@@ -51,7 +51,7 @@ public class ConfirmationControllerTest {
         ModelAndView modelView = adapter.handle(request, response, confirmationController);
         ModelMap modelMap = (ModelMap) modelView.getModel().get("model");
 
-        assertThat(modelView.getViewName(), is("confirmation"));
+        assertThat(modelView.getViewName(), is("redirect:project?id=1"));
         verify(projectDAO).saveDonationToProject(dummyDonation);
     }
 

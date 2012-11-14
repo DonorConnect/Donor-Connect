@@ -15,12 +15,14 @@ public class ProjectController {
     private ProjectDAO dao;
 
     @RequestMapping(value = "/project", method = RequestMethod.GET)
-    public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id){
+    public String showProjectDetail(@ModelAttribute("model") ModelMap modelMap, @RequestParam int id, @RequestParam(required=false, defaultValue = "default") String donationStatus, @RequestParam(required=false, defaultValue = "0") String donationValue){
         Project project = dao.fetch(id);
         modelMap.addAttribute("project", project);
         modelMap.addAttribute("donationPercentage", project.donationPercentage());
         modelMap.addAttribute("donationAmount", project.totalDonation());
         modelMap.addAttribute("anotherVar", id);
+        modelMap.addAttribute("donationStatus", donationStatus);
+        modelMap.addAttribute("donationValue", donationValue);
         return "project";
     }
 

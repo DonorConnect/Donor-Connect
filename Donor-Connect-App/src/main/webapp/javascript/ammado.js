@@ -3,15 +3,15 @@
 function AmmadoValidations() {
     this.minimumCustomAmountValidation = {
         expression: "if (VAL > 220) return true; else return false;",
-        message: "Should be greater than 220"
+        message: "Donation amount should be greater than 220."
     };
     this.maximumCustomAmountValidation = {
         expression: "if (VAL <=570000) return true; else return false;",
-        message: "Should be less than 570000"
+        message: "Donation amount should be less than 570000."
     };
     this.amountMustBeNumberValidation = {
         expression: "if (VAL.match(/^\\d+(\\.\\d{1,2}){0,1}$/)) return true; else return false;",
-        message: "Should be a number"
+        message: "Please enter a valid number."
     };
 }
 
