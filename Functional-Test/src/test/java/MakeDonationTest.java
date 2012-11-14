@@ -23,7 +23,7 @@ public class MakeDonationTest extends InsertClass {
         enterNumberAndDonate();
         webDriver.findElement(By.id("btnIncorrect")).click();
         waitForElementToLoad(webDriver,By.className("project-name"));
-        assertThat(webDriver.getCurrentUrl().contains("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id=" + project_id + "&donationStatus=failure"), is(true));
+        assertThat(webDriver.getCurrentUrl().contains("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=failure"), is(true));
     }
 
     @Test

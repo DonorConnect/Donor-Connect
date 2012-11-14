@@ -29,7 +29,7 @@ public class ProgressBarTest extends InsertClass{
 
     @Test
     public void firstDonation() {
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
+        project_id = insertDataForCurrentProject("First Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         insertDonation(project_id,"950");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
@@ -40,7 +40,7 @@ public class ProgressBarTest extends InsertClass{
 
     @Test
     public void multipleDonations() {
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
+        project_id = insertDataForCurrentProject("Multiple Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         insertDonation(project_id,"950");
         insertDonation(project_id,"200");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
@@ -52,7 +52,7 @@ public class ProgressBarTest extends InsertClass{
 
     @Test
     public void excessDonation() {
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
+        project_id = insertDataForCurrentProject("Excess Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         insertDonation(project_id,"2110");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
@@ -63,7 +63,7 @@ public class ProgressBarTest extends InsertClass{
 
     @Test
     public void refreshProgressBar(){
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
+        project_id = insertDataForCurrentProject("Refresh Progress Bar","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         insertDonation(project_id,"950");
         WebDriver webDriver1 = new FirefoxDriver();
         webDriver1.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
@@ -78,7 +78,7 @@ public class ProgressBarTest extends InsertClass{
 
     @Test
     public void allProjectsProgressBar() {
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
+        project_id = insertDataForCurrentProject("All Projects Progress Bar","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         insertDonation(project_id,"950");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
         assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));

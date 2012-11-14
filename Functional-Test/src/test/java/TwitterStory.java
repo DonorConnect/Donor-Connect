@@ -10,7 +10,7 @@ public class TwitterStory extends InsertClass {
 
     @Test
     public void TwitterShare() {
-        project_id=insertDataForCurrentProject("TwitterStory","Checking the Twitter Story for sharing project on twitter","image/children.jpg","image/children.png","Testing Twitter Story","2012-03-04","20000");
+        project_id=insertDataForCurrentProject("TwitterStory","Checking the Twitter Story for sharing project on twitter","image/children.jpg","image/children.png","Testing Twitter Story","2012-12-12","20000");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         waitForElementToLoad(webDriver, By.xpath("//a[@title='Tweet This']"));
 
