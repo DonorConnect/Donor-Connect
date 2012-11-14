@@ -60,5 +60,35 @@ describe("Ammado Validations", function() {
         expect(validate("$1000.00")).toBeFalsy();
     });
 
+    it("should return false when nothing is entered",function() {
+        var expressionToTest = validations.emailMustBeValid.expression;
 
+        eval("var validate = function(VAL){" + expressionToTest + "}");
+
+        expect(validate("")).toBeFalsy();
+    });
+
+    it("should return false when no @ is present in the email",function() {
+        var expressionToTest = validations.emailMustBeValid.expression;
+
+        eval("var validate = function(VAL){" + expressionToTest + "}");
+
+        expect(validate("abcgmail.com")).toBeFalsy();
+    });
+
+    it("should return true when email is valid",function() {
+        var expressionToTest = validations.emailMustBeValid.expression;
+
+        eval("var validate = function(VAL){" + expressionToTest + "}");
+
+        expect(validate("abc@gmail.com")).toBeTruthy();
+    });
+
+    it("should return false when no . is present in the email after the @ ",function() {
+        var expressionToTest = validations.emailMustBeValid.expression;
+
+        eval("var validate = function(VAL){" + expressionToTest + "}");
+
+        expect(validate("abc@gmailcom")).toBeFalsy();
+    });
 });
