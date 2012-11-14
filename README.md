@@ -6,21 +6,23 @@ This readme contains the instructions for setting up the development environment
 Contents
 -------------
 1. **What is Donors Connect?**
-2. **Repository Structure**
-3. **Set up Instructions**
+2. **Tech Stack**
+3. **Repository Structure**
+4. **Setup Instructions**
 
     i. Local Development Environment
 
-    ii. CI Server / QA Environment / Showcase Environment
+    ii. CI Server/QA Environment/Showcase Environment
 
-4. **Build the Project**
-5. **Software Installation**
+5. **Building the Project Locally**
+6. **Software Installation**
 
     i. PhantomJS
 
+    ii. MySQL
 
 
-What is Donors Connect?
+1. What is Donors Connect?
 --
 
 ###Donors Connect is
@@ -54,36 +56,37 @@ Unlike donorschoose & when we wish
 
 Our Product is tailored to the Indian context
 
-Tech Stack
+
+2. Tech Stack
 --
 
 * Web Framework - Spring MVC
-* Database - [MySQL](http://www.mysql.com)
-* UI - [freemarker](http://freemarker.sourceforge.net/)
-* Build Tool - [gradle](http://www.gradle.org/downloads)
-* Functional Test - [selenium](http://seleniumhq.org/)
+* Database - [MySQL](http://www.mysql.com/)
+* UI - [FreeMarker](http://freemarker.sourceforge.net/)
+* Build Tool - [Gradle](http://www.gradle.org/)
+* Functional Test - [Selenium](http://seleniumhq.org/)
 * Unit Test - JUnit & Jasmine (using PhantomJS to run)
 * Database Integration - [Hibernate](http://www.hibernate.org/)
-* CI - [Go](http://www.thoughtworks-studios.com/go-agile-release-management)
-* Version Control - [GitHub](https://github.com/DonorConnect)
+* CI - [Go](http://www.thoughtworks-studios.com/go-agile-release-management/)
+* Version Control - [GitHub](https://github.com/DonorConnect/)
 * Payment - [ammado](https://www.ammado.com/)
 * Web Server - Tomcat for server & Jetty for local debug
-* Project Management Application - [Mingle](https://mingle01.thoughtworks.com/projects/donors_connect) (requires an account to access)
+* Project Management Application - [Mingle](https://mingle01.thoughtworks.com/projects/donors_connect/) (requires an account to access)
 
 
-Repository Structure:
+3. Repository Structure
 --
 
-* Donor-Connect-App is the folder for the source files required for the Donors-Connect web application
-    i. SqlFiles contains the database schema needed for creating database env. 
+* Donor-Connect-App contains the source files required for the Donors-Connect web application
+ - SqlFiles contains the database schema needed for creating database environment 
 * Functional-Test contains the functional tests
 * tools contains the required software for the CI server.
 
 
-Set up Instructions: 
---------------------
+4. Setup Instructions 
+--
 
-### Local Development Environment
+###i. Local Development Environment
 
 - Clone the project 
 
@@ -99,35 +102,40 @@ Use the following command to clone the project repository:
 You can find the installation instructions at the end of this document.
 
 
-- Intellij Setup
+- IntelliJ setup
 
-    - In order to initialize the intellij project, run `./go cleanIdea ideaModule` in both `Donor-Connect-App` and `Functional-Test` directory.
+    - In order to initialize the IntelliJ project, run `./go cleanIdea ideaModule` in both `Donor-Connect-App` and `Functional-Test` directory.
 
-    - And then open the Donor-Connect directory in intellij, choose `File` -> `Add Module...`, and choose the .iml file in `Donor-Connect-App` and `Functional-Test` directory, respectively.
+    - And then open the Donor-Connect directory in IntelliJ, choose `File` -> `Add Module...`, and choose the .iml file in `Donor-Connect-App` and `Functional-Test` directory, respectively.
 
-    - Then the intellij project is ready for development.
+    - Then the IntelliJ project is ready for development.
 
-- The domain name "www.donrsconnect.com" is not a registered domain as yet but the Payment API (Ammado) will redirect the page to donorsconnect.com after donation. 
+
+**NOTICE:** The domain name `donorsconnect.com` is not a registered domain as yet but the Payment API (Ammado) will redirect the page to `donorsconnect.com` after donation. 
+
+- Modify the hosts file
+ - Open  `/etc/hosts` in an editor and add the following line to it: `127.0.0.1  www.donorsconnect.com`
+
     
-     - Open  /etc/hosts in an editor and add the following line to it: 127.0.0.1  www.donorsconnect.com  
 
-### CI Server / QA Environment / Showcase Environment
+
+###ii. CI Server/QA Environment/Showcase Environment
 
 - Clone the repository at `git@github.com:DonorConnect/Infrastructure.git`
 and follow the instruction of installing go-server and go-agent in the readme file.
 
 
-Local Build of the Project
+5. Building the Project Locally
 --
 
 In order to run the build switch folders to `Donor-Connect-App` and run `./go build` in cmdline.
 
 The build will compile and create a war package with its dependencies in the build folder called `Donor-Connect-App.war`, in the `Donor-Connect-App/build/libs/` directory.
 
-Software Tools Installation
+6. Software Tools Installation
 --
 
-###PhantomJS
+###i. PhantomJS
 
 For Linux machines, the build will automatically use the version in the `Donor-Connect-App/tools` directory. For other operating systems you will need to install the appropriate version on your machine from [http://phantomjs.org/download.html](http://phantomjs.org/download.html).
 
@@ -141,5 +149,5 @@ Add the following lines to your `.bash_profile` file in your user home directory
 
 Run your profile file using `. .bash_profile` and type `phantomjs` in your terminal to make sure that the path is set properly.
 
-###MySQL
+###ii. MySQL
 Go to [MySQL Download Page](http://dev.mysql.com/downloads/mysql/) to download version 5.5.28 of MySQL Community Server, and install.
