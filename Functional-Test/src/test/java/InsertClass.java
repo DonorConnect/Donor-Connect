@@ -33,4 +33,13 @@ public class InsertClass extends BaseClass{
         waitForElementToLoad(webDriver , By.id("project_id"));
         return webDriver.findElement(By.xpath("//span[@id='project_id']")).getText();
     }
+
+    public void insertDonation(String project_id,String amount) {
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/inject_donation.ftl");
+        webDriver.findElement(By.name("projectId")).sendKeys(project_id);
+        webDriver.findElement(By.name("donationAmount")).sendKeys(amount);
+        webDriver.findElement(By.xpath("//div[@id='submit_button']/input")).click();
+
+    }
+
 }
