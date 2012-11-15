@@ -17,7 +17,7 @@ public class ProgressBarTest extends InsertClass{
     String xpathProgressBar ="(//div[@class='projectProgressInfo']/table/tbody/tr/th)";
     String xpathThumbnail = "(//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/table/tbody/tr/th)";
 
-    /*@Test
+    @Test
     public void initialZeroState(){
         project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
@@ -84,76 +84,6 @@ public class ProgressBarTest extends InsertClass{
         assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
         assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[1]")).getText(), is("Target: 2,000"));
         assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[2]")).getText(), is("Pledged: 950"));
-        assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[3]")).getText(), is("Days: "+daysBetween()));
-    }*/
-
-    @Test
-    public void initialZeroState(){
-        project_id = insertDataForCurrentProject("Checking initial state","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).isDisplayed(), is(true));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='0']")).isDisplayed() , is(true));
-    }
-
-    @Test
-    public void firstDonation() {
-        project_id = insertDataForCurrentProject("First Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        insertDonation(project_id,"950");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).isDisplayed(), is(true));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
-    }
-
-    @Test
-    public void multipleDonations() {
-        project_id = insertDataForCurrentProject("Multiple Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        insertDonation(project_id,"950");
-        insertDonation(project_id,"200");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).isDisplayed(), is(true));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(1150,2000)+"']")).isDisplayed() , is(true));
-    }
-
-    @Test
-    public void excessDonation() {
-        project_id = insertDataForCurrentProject("Excess Donation","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        insertDonation(project_id,"2110");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).isDisplayed(), is(true));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(2110,2000)+"']")).isDisplayed() , is(true));
-    }
-
-    @Test
-    public void refreshProgressBar(){
-        project_id = insertDataForCurrentProject("Refresh Progress Bar","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        insertDonation(project_id,"950");
-        WebDriver webDriver1 = new FirefoxDriver();
-        webDriver1.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
-        insertDonation(project_id,"200");
-        webDriver1.navigate().refresh();
-        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
-        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[2]")).isDisplayed(), is(true));
-        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
-        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(1150,2000)+"']")).isDisplayed() , is(true));
-        webDriver1.close();
-    }
-
-    @Test
-    public void allProjectsProgressBar() {
-        project_id = insertDataForCurrentProject("All Projects Progress Bar","everything should have 0","image/images.jpeg","image/children_thumbnail.png","abcdefghij","2012-12-12","2000");
-        insertDonation(project_id,"950");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
-        assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
-        assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[1]")).getText(), is("Target: 2,000"));
-        assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[2]")).isDisplayed(), is(true));
         assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[3]")).getText(), is("Days: "+daysBetween()));
     }
 
