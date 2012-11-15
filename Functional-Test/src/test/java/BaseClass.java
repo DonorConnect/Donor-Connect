@@ -13,7 +13,7 @@ public WebDriver webDriver;
     @Before
     public void setUp(){
         webDriver = new FirefoxDriver();
-        clearProjects();
+        //clearProjects();
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/home");
     }
 

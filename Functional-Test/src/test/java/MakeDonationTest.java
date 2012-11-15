@@ -13,17 +13,18 @@ public class MakeDonationTest extends InsertClass {
         project_id=paymentFlow();
         enterNumberAndDonate();
         webDriver.findElement(By.id("btnCorrect")).click();
-        waitForElementToLoad(webDriver,By.className("project-name"));
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
         assertThat(webDriver.getCurrentUrl().contains("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=success"), is(true) );
     }
 
     @Test
     public void dontSubmitThePayment(){
-        paymentFlow();
+        project_id=paymentFlow();
         enterNumberAndDonate();
         webDriver.findElement(By.id("btnIncorrect")).click();
-        waitForElementToLoad(webDriver,By.className("project-name"));
-        assertThat(webDriver.getCurrentUrl().contains("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=failure"), is(true));
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
+        System.out.println(webDriver.getCurrentUrl());
+        assertThat(webDriver.getCurrentUrl(), is("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=failure"));
     }
 
     @Test
@@ -100,7 +101,7 @@ public class MakeDonationTest extends InsertClass {
     public String paymentFlow(){
         String project_id = insertDataForCurrentProject("Check Donation Page","Here I ll be checking the donation Page..","image/children.jpg","image/children_thumbnail.png","Still checking","2012-11-12","1000");
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
-        waitForElementToLoad(webDriver,By.className("project-name"))  ;
+        waitForElementToLoad(webDriver,By.className("pageHeader"))  ;
         return project_id;
     }
     
