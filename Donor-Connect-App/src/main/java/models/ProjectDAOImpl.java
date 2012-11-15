@@ -30,7 +30,9 @@ public class ProjectDAOImpl implements ProjectDAO {
     }
 
     public void deleteAll() {
+        Query deleteDonation = entityManager.createQuery("Delete From Donation");
         Query deleteQuery = entityManager.createQuery("Delete From Project");
+        deleteDonation.executeUpdate();
         deleteQuery.executeUpdate();
     }
 
