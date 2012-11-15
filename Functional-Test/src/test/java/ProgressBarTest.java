@@ -23,7 +23,7 @@ public class ProgressBarTest extends InsertClass{
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("0\nPledged"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-12")+"\nDays Left"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='0']")).isDisplayed() , is(true));
     }
 
@@ -34,7 +34,7 @@ public class ProgressBarTest extends InsertClass{
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("950\nPledged"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-12")+"\nDays Left"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
     }
 
@@ -46,7 +46,7 @@ public class ProgressBarTest extends InsertClass{
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("1,150\nPledged"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-12")+"\nDays Left"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(1150,2000)+"']")).isDisplayed() , is(true));
     }
 
@@ -57,7 +57,7 @@ public class ProgressBarTest extends InsertClass{
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id);
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("2,110\nPledged"));
-        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-12")+"\nDays Left"));
         assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(2110,2000)+"']")).isDisplayed() , is(true));
     }
 
@@ -71,7 +71,7 @@ public class ProgressBarTest extends InsertClass{
         webDriver1.navigate().refresh();
         assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
         assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("1,150\nPledged"));
-        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween()+"\nDays Left"));
+        assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-12")+"\nDays Left"));
         assertThat(webDriver1.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(1150,2000)+"']")).isDisplayed() , is(true));
         webDriver1.close();
     }
@@ -84,8 +84,37 @@ public class ProgressBarTest extends InsertClass{
         assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div[@class='thumbnailProgress']/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
         assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[1]")).getText(), is("Target: 2,000"));
         assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[2]")).getText(), is("Pledged: 950"));
-        assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[3]")).getText(), is("Days: "+daysBetween()));
+        assertThat(webDriver.findElement(By.xpath(xpathThumbnail+"[3]")).getText(), is("Days: "+daysBetween("2012-12-12")));
     }
+
+    @Test
+    public void donationShouldAffectProgressBar() {
+        String project_id = insertDataForCurrentProject("Check Donation Page","Here I ll be checking the donation Page..","image/children.jpg","image/children_thumbnail.png","Still checking","2012-12-25","2000");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
+        waitForElementToLoad(webDriver,By.className("pageHeader"))  ;
+        enterNumberAndDonate("950");
+        webDriver.findElement(By.id("btnCorrect")).click();
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("950\nPledged"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-25")+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+percent(950,2000)+"']")).isDisplayed() , is(true));
+    }
+
+    @Test
+    public void donationFailureShouldNotAffectProgressBar() {
+        String project_id = insertDataForCurrentProject("Check Donation Page","Here I ll be checking the donation Page..","image/children.jpg","image/children_thumbnail.png","Still checking","2012-12-25","2000");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
+        waitForElementToLoad(webDriver,By.className("pageHeader"))  ;
+        enterNumberAndDonate("950");
+        webDriver.findElement(By.id("btnIncorrect")).click();
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[1]")).getText(), is("2,000\nTarget Number"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[2]")).getText(), is("0\nPledged"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[3]")).getText(), is(daysBetween("2012-12-25")+"\nDays Left"));
+        assertThat(webDriver.findElement(By.xpath(xpathProgressBar+"[4]/progress[@value='"+(int)percent(0,2000)+"']")).isDisplayed() , is(true));
+    }
+
 
     public double percent(int amount,int target){
         double multi = (amount * 100);
@@ -93,7 +122,7 @@ public class ProgressBarTest extends InsertClass{
         return percent;
     }
 
-    public int daysBetween(){
+    public int daysBetween(String d){
         Date date = new Date();
         Calendar cal1 = new GregorianCalendar();
         Calendar cal2 = new GregorianCalendar();
@@ -103,7 +132,7 @@ public class ProgressBarTest extends InsertClass{
         try {
             date = sdf.parse(sdf.format(date));
             cal1.setTime(date);
-            date = sdf.parse("2012-12-12");
+            date = sdf.parse(d);
             cal2.setTime(date);
             d1 = cal1.getTime();
             d2 = cal2.getTime();

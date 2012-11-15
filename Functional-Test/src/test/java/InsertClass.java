@@ -42,4 +42,20 @@ public class InsertClass extends BaseClass{
 
     }
 
+    public String paymentFlow(){
+        String project_id = insertDataForCurrentProject("Check Donation Page","Here I ll be checking the donation Page..","image/children.jpg","image/children_thumbnail.png","Still checking","2012-12-12","2000");
+        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
+        waitForElementToLoad(webDriver,By.className("pageHeader"))  ;
+        return project_id;
+    }
+
+    public void enterNumberAndDonate(String amount){
+        webDriver.findElement(By.id("donationAmount")).sendKeys(amount);
+        webDriver.findElement(By.id("donorEmail")).sendKeys("test.user1691@gmail.com");
+        webDriver.findElement(By.id("donateButton")).click();
+        waitForElementToLoad(webDriver,By.className("total"));
+        webDriver.findElement(By.xpath("//ul[@class='paymentMethods clearfix']/li[@class='aPM']/label[@class='aPM_label aPM_Mastercard']")).click();
+        waitForElementToLoad(webDriver,By.className("total"));
+    }
+
 }

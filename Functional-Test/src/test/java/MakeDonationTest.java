@@ -11,19 +11,39 @@ public class MakeDonationTest extends InsertClass {
     @Test
     public void checkHappyFlow(){
         project_id=paymentFlow();
-        enterNumberAndDonate();
+        enterNumberAndDonate("1000");
         webDriver.findElement(By.id("btnCorrect")).click();
         waitForElementToLoad(webDriver,By.className("pageHeader"));
         assertThat(webDriver.getCurrentUrl().contains("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=success"), is(true) );
     }
 
     @Test
-    public void dontSubmitThePayment(){
+    public void donationConfirmationAmount() {
         project_id=paymentFlow();
-        enterNumberAndDonate();
+        enterNumberAndDonate("250");
+        webDriver.findElement(By.id("btnCorrect")).click();
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
+        assertThat(webDriver.findElement(By.xpath("//div[@id='successMessage']")).getText(), is("Thank you for your donation of\nRs. 250.0"));
+    }
+
+    @Test
+    public void donationFailureMessagge() {
+        project_id=paymentFlow();
+        enterNumberAndDonate("250");
         webDriver.findElement(By.id("btnIncorrect")).click();
         waitForElementToLoad(webDriver,By.className("pageHeader"));
-        System.out.println(webDriver.getCurrentUrl());
+        assertThat(webDriver.findElement(By.xpath("//div[@id='errorMessage']")).getText(), is("Sorry!\n" +
+                "We could not complete your donation.\n" +
+                "Your account has not been charged.\n" +
+                "Please try again."));
+    }
+
+    @Test
+    public void dontSubmitThePayment(){
+        project_id=paymentFlow();
+        enterNumberAndDonate("1000");
+        webDriver.findElement(By.id("btnIncorrect")).click();
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
         assertThat(webDriver.getCurrentUrl(), is("http://www.donorsconnect.com:8080/Donor-Connect-App/project?id="+project_id+"&donationStatus=failure"));
     }
 
@@ -98,19 +118,5 @@ public class MakeDonationTest extends InsertClass {
 
     }
 
-    public String paymentFlow(){
-        String project_id = insertDataForCurrentProject("Check Donation Page","Here I ll be checking the donation Page..","image/children.jpg","image/children_thumbnail.png","Still checking","2012-11-12","1000");
-        webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
-        waitForElementToLoad(webDriver,By.className("pageHeader"))  ;
-        return project_id;
-    }
-    
-    public void enterNumberAndDonate(){
-        webDriver.findElement(By.id("donationAmount")).sendKeys("1000");
-        webDriver.findElement(By.id("donorEmail")).sendKeys("test.user1691@gmail.com");
-        webDriver.findElement(By.id("donateButton")).click();
-        waitForElementToLoad(webDriver,By.className("total"));
-        webDriver.findElement(By.xpath("//ul[@class='paymentMethods clearfix']/li[@class='aPM']/label[@class='aPM_label aPM_Mastercard']")).click();
-        waitForElementToLoad(webDriver,By.className("total"));
-    }
+
 }
