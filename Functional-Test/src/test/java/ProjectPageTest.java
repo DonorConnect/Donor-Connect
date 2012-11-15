@@ -50,8 +50,8 @@ public class ProjectPageTest extends InsertClass {
 
     public void assertPositive(String project_id,String name, String description, String image){
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
-        waitForElementToLoad(webDriver,By.className("project-name"));
-        assertThat(webDriver.findElement(By.className("project-name")).getText(),is(name));
+        waitForElementToLoad(webDriver,By.className("pageHeader"));
+        assertThat(webDriver.findElement(By.className("pageHeader")).getText(),is(name));
         assertThat(webDriver.findElement(By.className("project-detail")).getText(), is(description));
         assertThat(webDriver.findElement(By.xpath("//img[@alt='children' and @src='static/" + image + "']")).isDisplayed(),is(true));
     }
@@ -59,8 +59,8 @@ public class ProjectPageTest extends InsertClass {
 
     public void assertNegative(String project_id,String name, String description, String image){
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/project?id=" + project_id);
-        waitForElementToLoad(webDriver,By.className("project-name")   )  ;
-        assertThat(webDriver.findElement(By.className("project-name")).getText(), not( is(name) ));
+        waitForElementToLoad(webDriver,By.className("pageHeader")   )  ;
+        assertThat(webDriver.findElement(By.className("pageHeader")).getText(), not( is(name) ));
         assertThat(webDriver.findElement(By.className("project-detail")).getText(),is( description));
         assertThat(webDriver.findElement(By.xpath("//img[@alt='children' and @src='static/" + image + "']")).isDisplayed(),is(true));
     }

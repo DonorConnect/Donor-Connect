@@ -48,19 +48,19 @@ public class ProjectListPageTest extends InsertClass{
         assertThat(thumbnail.isDisplayed(), is(true));
         thumbnail.click();
 
-        waitForElementToLoad(webDriver, By.xpath("//h2[@class='col12 project-name']"));
-        assertThat(webDriver.findElement(By.xpath("//h2[@class='col12 project-name']")).getText(), is("Project Check Clickable Thumbnail"));
+        waitForElementToLoad(webDriver, By.xpath("//div[@class='pageHeader']/h2"));
+        assertThat(webDriver.findElement(By.xpath("//div[@class='pageHeader']/h2")).getText(), is("Project Check Clickable Thumbnail"));
     }
 
     @Test
     public void clickableProjectName() {
         project_id = insertDataForCurrentProject("Project Check Clickable Thumbnail", "This is clickable thumbnail test", "image/children.jpg", "image/children_thumbnail.png", "This is project summary","2012-12-12","20000.00");
-
+        System.out.println(project_id);
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
         webDriver.findElement(By.xpath("//h4/a[contains(text(), 'Project Check Clickable Thumbnail')]")).click();
 
-        waitForElementToLoad(webDriver, By.xpath("//h2[@class='col12 project-name']"));
-        assertThat(webDriver.getCurrentUrl(), is(String.format("http://10.10.4.121:8080/Donor-Connect-App/project?id=%s", project_id)));
+        waitForElementToLoad(webDriver, By.xpath("//div[@class='pageHeader']/h2"));
+        assertThat(webDriver.getCurrentUrl(), is("http://10.10.4.121:8080/Donor-Connect-App/project?id="+project_id));
     }
 
     @Test
@@ -80,14 +80,14 @@ public class ProjectListPageTest extends InsertClass{
 
     public void verifyPositive(String name, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
-        assertThat((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText()), is(name));
-        assertThat((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/p[@class='projectBrief']")).getText()), is(summary));
+        assertThat((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div/h4/a[@class='projectName']")).getText()), is(name));
+        assertThat((webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div/p[@class='projectBrief']")).getText()), is(summary));
         assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/a/img[@src='static/" + thumbnail + "']")).isDisplayed(),is(true));
     }
 
     public void verifyNegative(String name, String thumbnail, String summary) {
         webDriver.get("http://10.10.4.121:8080/Donor-Connect-App/projects");
-        assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div/h4/a[@class='projectName']")).getText(),is(not(name)));
+        assertThat(webDriver.findElement(By.xpath("//div[@class='eachProject'][last()]/div[@class='projectSummary']/div/h4/a[@class='projectName']")).getText(),is(not(name)));
     }
 
 
